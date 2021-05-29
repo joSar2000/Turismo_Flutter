@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1095714768429",
+    "project_id": "turismobd-60712",
+    "storage_bucket": "turismobd-60712.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095714768429:android:962c0b80909ec87374daa4",
+        "android_client_info": {
+          "package_name": "com.sistemasUTPL.turismo_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095714768429-rotk7e4i11dou6mg9qjihohmg3odhui3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0l7_SD7YB_Sf3r5vU-UGOaQZAyoz1ikw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095714768429-rotk7e4i11dou6mg9qjihohmg3odhui3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
