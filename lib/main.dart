@@ -8,7 +8,7 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class GetData {
   final firebaseInstance = FirebaseFirestore.instance;
   void getData() {
     firebaseInstance.collection("usuario").add({
@@ -16,8 +16,11 @@ class MyApp extends StatelessWidget {
       "Apellido" : "Sarmiento"
     });
   }
+}
 
-  //var data = new GetData();
+class MyApp extends StatelessWidget {
+
+  var data = new GetData();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  getData();
+                  data.getData();
                 },
                 child: Text(
                     "Añadir"
