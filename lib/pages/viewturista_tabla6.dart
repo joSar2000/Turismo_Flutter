@@ -2,7 +2,7 @@ import 'dart:developer';
 
 
 import 'package:flutter/material.dart';
-import 'package:turismo_flutter/GUI/check.dart';
+import 'package:turismo_flutter/pages/check_6.dart';
 
 class SavePage extends StatelessWidget {
 
@@ -12,11 +12,7 @@ class SavePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add), onPressed : () {
-          Navigator.pushNamed(context, CheckBoxTurism.ROUTE );
-        },
-        ),
+
       appBar: AppBar(
         title: Text('Estado de conservación e integración a atractivo/entorno',
           textAlign: TextAlign.center,
@@ -51,6 +47,7 @@ class _FormSaveTurism extends StatelessWidget {
               height: 15,
             ),
             TextFormField(
+
               maxLines: 10,
               decoration: InputDecoration(
                 contentPadding:
