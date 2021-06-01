@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:turismo_flutter/pages/viewturista_tabla6.dart';
+import 'package:turismo_flutter/pages/check_6.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,43 +12,20 @@ void main() async {
   runApp(MyApp());
 }
 
-class GetData {
-  final firebaseInstance = FirebaseFirestore.instance;
-  void getData() {
-    firebaseInstance.collection("usuario").add({
-      "Nombre": "Jorge",
-      "Apellido" : "Sarmiento"
-    });
-  }
-}
+
 
 class MyApp extends StatelessWidget {
 
-  var data = new GetData();
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Inicio APP',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("ATRACTIVOS TURISTICOS DEL ECUADOR"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  data.getData();
-                },
-                child: Text(
-                    "Añadir"
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      initialRoute: CheckBoxTurism.ROUTE,
+      routes: {
+        SavePage.ROUTE : (_) => SavePage(),
+        CheckBoxTurism.ROUTE : (_) => CheckBoxTurism(),
+      },
     );
   }
 }
