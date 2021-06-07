@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: CheckBoxTurism.ROUTE,
+      //initialRoute: SavePage.ROUTE,
       routes: {
         SavePage.ROUTE : (_) => SavePage(),
         CheckBoxTurism.ROUTE : (_) => CheckBoxTurism(),
