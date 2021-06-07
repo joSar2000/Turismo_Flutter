@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:turismo_flutter/pages/viewturista_tabla6.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,11 +39,12 @@ class CheckboxWidget extends StatefulWidget {
 }
 
 class CheckboxWidgetState extends State {
-  var form = new FormSave();
+  final _formkey = GlobalKey<FormState>();
+  static TextEditingController obs = TextEditingController();
   final firebaseInstance = FirebaseFirestore.instance;
 
   Map<String, String> valorObservaciones = {
-    "observaciones_atractivo_U": FormSave().valorObs
+    "observaciones_atractivo_U": obs.text
   };
   Map<String, bool> values = {
     //Tabla6
@@ -57,31 +60,38 @@ class CheckboxWidgetState extends State {
   };
 
   var table6_1Arr = [];
-  getCheckboxItems() {
+  getCheckboxItems() async {
     values.forEach((key, value) {
       if (value == true) {
         table6_1Arr.add(key);
       }
     });
-
     table6_1Arr.clear();
-
-    firebaseInstance.collection("usuario").add({
-      //Tabla6
-      "si_estado_conservacion": values.values.elementAt(0),
-      "no_estado_conservacion": values.values.elementAt(1),
-      "s_i_estado_conservacion": values.values.elementAt(2),
-      //Tabla6.1
-      "atractivo_U": values.values.elementAt(3),
-      "conservado_atractivo_U": values.values.elementAt(4),
-      "alterado_atractivo_U": values.values.elementAt(5),
-      "deterioro_atractivo_U": values.values.elementAt(6),
-      "deteriorado_atractivo_U": values.values.elementAt(7),
-      "observaciones_atractivo_U": valorObservaciones.values.elementAt(0),
-    });
-    print("valores observacion: ");
+    try {
+      await firebaseInstance.collection("atractivos_turisticos_6.1").add({
+        "si_estado_conservacion": values.values.elementAt(0),
+        "no_estado_conservacion": values.values.elementAt(1),
+        "s_i_estado_conservacion": values.values.elementAt(2),
+        "atractivo_U": values.values.elementAt(3),
+        "conservado_atractivo_U": values.values.elementAt(4),
+        "alterado_atractivo_U": values.values.elementAt(5),
+        "deterioro_atractivo_U": values.values.elementAt(6),
+        "deteriorado_atractivo_U": values.values.elementAt(7),
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
+  void getTextForm() async {
+    try {
+      await firebaseInstance.collection("observaciones_6.1").add({
+        "observaciones_atractivo_U": valorObservaciones.values.elementAt(0)
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +99,11 @@ class CheckboxWidgetState extends State {
       titleSection,
       Expanded(
         child: ListView(
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+          padding: EdgeInsets.fromLTRB(15.0, 1.0, 15.0, 10.0),
           children: values.keys.map((String key) {
             return new CheckboxListTile(
+                secondary: const Icon(Icons.touch_app),
+                subtitle: Text('Marque en caso de ser necesario'),
                 title: new Text(key),
                 value: values[key],
                 activeColor: Colors.green,
@@ -99,19 +111,67 @@ class CheckboxWidgetState extends State {
                 onChanged: (value) {
                   setState(() {
                     values[key] = value!;
-                    //print('valores: $values.$value');
-                    print(values.values.elementAt(0));
+                    //print('valores: $values');
+                    //print(values.values.elementAt(0));
                   });
                 });
           }).toList(),
         ),
       ),
       DividerSection,
-      FormSave(),
+      Expanded(
+        child: Form(
+            key: _formkey,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                  controller: obs,
+                  maxLines: 3,
+                  validator: (value) {
+                    if (value!.isNotEmpty) {
+                      return "correcto";
+                    } else {
+                      return "ingrese valores!";
+                    }
+                  },
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.input_outlined),
+                    contentPadding: EdgeInsets.all(20.0),
+                    hintText:
+                        "Ingrese sus observaciones en caso de ser necesarias",
+                    labelText: ("Observaciones"),
+                    isCollapsed: true,
+                    //observaciones_atractivo_U
+                    border: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.all(Radius.elliptical(10, 10))),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                MaterialButton(
+                  minWidth: 100.0,
+                  height: 40.0,
+                  onPressed: () {
+                    getCheckboxItems();
+                    CheckboxWidgetState().getTextForm();
+                    print(obs.text);
+                  },
+                  color: Colors.blue,
+                  child: Text('Guardar', style: TextStyle(color: Colors.white)),
+                )
+              ],
+            )),
+      ),
     ]);
   }
 
   Widget DividerSection = Container(
+    padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
     child: Column(
       children: [
         Divider(
@@ -126,7 +186,7 @@ class CheckboxWidgetState extends State {
   );
 
   Widget titleSection = Container(
-    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+    padding: const EdgeInsets.fromLTRB(10.0, 3.0, 10.0, 0.0),
     child: Row(
       children: [
         Expanded(
@@ -137,13 +197,13 @@ class CheckboxWidgetState extends State {
               /*2*/
               Container(
                 color: Colors.amberAccent,
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   'Estado de conservación e integración a atractivo/entorno',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ),
@@ -189,12 +249,14 @@ class CheckboxWidgetState extends State {
   }
 }
 
+
+/*
 //Formulario de observaciones
 @immutable
 // ignore: must_be_immutable
 class FormSave extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
-  final obs = TextEditingController();
+  static TextEditingController obs = TextEditingController();
   String valorObs = "";
 
   @override
@@ -209,9 +271,6 @@ class FormSave extends StatelessWidget {
                 height: 5,
               ),
               TextFormField(
-                onChanged: (observacion) {
-                   this.valorObs = observacion;
-                },
                 controller: obs,
                 maxLines: 8,
                 validator: (value) {
@@ -239,6 +298,7 @@ class FormSave extends StatelessWidget {
                 minWidth: 100.0,
                 height: 40.0,
                 onPressed: () {
+                  valorObs = obs.text;
                   CheckboxWidgetState().getCheckboxItems();
                   print ("Valor obs: "+valorObs);
                 },
@@ -250,3 +310,6 @@ class FormSave extends StatelessWidget {
     );
   }
 }
+
+
+ */
