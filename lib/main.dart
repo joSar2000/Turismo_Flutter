@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:turismo_flutter/pages/viewturista_tabla6.dart';
-import 'package:turismo_flutter/pages/check_6.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:turismo_flutter/pages/viewturista_table6_1.dart';
+import 'package:turismo_flutter/pages/viewturista_table6.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,20 +10,15 @@ void main() async {
   runApp(MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
-
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: CheckBoxTurism.ROUTE,
-      //initialRoute: SavePage.ROUTE,
+      initialRoute: turismTable6.ROUTE,
       routes: {
-        SavePage.ROUTE : (_) => SavePage(),
-        CheckBoxTurism.ROUTE : (_) => CheckBoxTurism(),
+        turismTable6.ROUTE : (_) => turismTable6(),
+        turismTable6_1.ROUTE : (_) => turismTable6_1(),
       },
     );
   }
