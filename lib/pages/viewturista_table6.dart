@@ -1,10 +1,9 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:turismo_flutter/pages/viewturista_tabla6.dart';
+import 'package:turismo_flutter/pages/viewturista_table6_1.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CheckBoxTurism extends StatelessWidget {
+class turismTable6 extends StatelessWidget {
   static const String ROUTE = "/check_6";
   @override
   Widget build(BuildContext context) {
@@ -13,27 +12,32 @@ class CheckBoxTurism extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.arrow_forward_ios),
           onPressed: () {
-            Navigator.pushNamed(context, SavePage.ROUTE);
+            //Navigator.pushNamed(context, turismTable6_1.ROUTE);
+            Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => turismTable6_1())
+            );
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar(
           title: Text(
-            'Ficha Atractivos Turísticos del Ecuador',
+            'ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
             textAlign: TextAlign.center,
             maxLines: 2,
           ),
         ),
         body: Center(
             child: Center(
-          child: CheckboxWidget(),
-        )),
+          child: TableTurism6(),
+        )
+        ),
       ),
     );
   }
 }
 
-class CheckboxWidget extends StatefulWidget {
+class TableTurism6 extends StatefulWidget {
   @override
   CheckboxWidgetState createState() => new CheckboxWidgetState();
 }
@@ -99,10 +103,10 @@ class CheckboxWidgetState extends State {
       titleSection,
       Expanded(
         child: ListView(
-          padding: EdgeInsets.fromLTRB(15.0, 1.0, 15.0, 10.0),
+          padding: EdgeInsets.all(20.0),
           children: values.keys.map((String key) {
             return new CheckboxListTile(
-                secondary: const Icon(Icons.touch_app),
+                secondary: const Icon(Icons.touch_app_outlined),
                 subtitle: Text('Marque en caso de ser necesario'),
                 title: new Text(key),
                 value: values[key],
