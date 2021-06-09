@@ -15,7 +15,7 @@ class turismTable6 extends StatelessWidget {
             //Navigator.pushNamed(context, turismTable6_1.ROUTE);
             Navigator.push(
                 context, 
-                MaterialPageRoute(builder: (context) => turismTable6_1())
+                MaterialPageRoute(builder: (context) => turismTable6_1()),
             );
           },
         ),
@@ -97,6 +97,32 @@ class CheckboxWidgetState extends State {
     }
   }
 
+  void _showAlertDialogNo (BuildContext context) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(
+        SnackBar(
+          content: const Text ("Por favor, navegue hasta la próxima pantalla con el botón de flecha"),
+          action: SnackBarAction(
+            label: "OK", onPressed: scaffold.hideCurrentSnackBar,
+          ),
+        )
+    );
+  }
+
+  void _showAlertDialogAtractivo (BuildContext context) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(
+        SnackBar(
+          content: const Text ("Debe especificar en qué condiciones se encuentra utilizando las opciones de abajo"),
+          action: SnackBarAction(
+            label: "OK", onPressed: scaffold.hideCurrentSnackBar,
+          ),
+        )
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -115,8 +141,12 @@ class CheckboxWidgetState extends State {
                 onChanged: (value) {
                   setState(() {
                     values[key] = value!;
-                    //print('valores: $values');
-                    //print(values.values.elementAt(0));
+                    if (values.values.elementAt(1) == true) {
+                        _showAlertDialogNo(context);
+                    }
+                    if (values.values.elementAt(3) == true) {
+                      _showAlertDialogAtractivo(context);
+                    }
                   });
                 });
           }).toList(),
@@ -135,7 +165,7 @@ class CheckboxWidgetState extends State {
                   controller: obs,
                   maxLines: 3,
                   validator: (value) {
-                    if (value!.isNotEmpty) {
+                    if (value!.isEmpty) {
                       return "correcto";
                     } else {
                       return "ingrese valores!";
@@ -203,7 +233,7 @@ class CheckboxWidgetState extends State {
                 color: Colors.amberAccent,
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  'Estado de conservación e integración a atractivo/entorno',
+                  'ATRACTIVO (U)',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

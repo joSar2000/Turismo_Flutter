@@ -1,7 +1,8 @@
 
+import 'package:turismo_flutter/pages/viewturista_table6_2.dart';
+import 'package:turismo_flutter/pages/viewturista_table6.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:turismo_flutter/pages/viewturista_table6.dart';
 
 class turismTable6_1 extends StatelessWidget {
 
@@ -15,13 +16,16 @@ class turismTable6_1 extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.arrow_back_ios_outlined),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+                context,
+              MaterialPageRoute(builder: (context) => turismTable6())
+            );
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         appBar: AppBar(
           title: Text(
-            'FACTORES DE ALTERACIÓN Y DETERIORO (M)',
+            'FACTORES DE ALTERACIÓN Y DETERIORO (M) - ATRACTIVO',
             textAlign: TextAlign.center,
             maxLines: 2,
           ),
@@ -73,7 +77,7 @@ class FormWidgetState extends State {
   };
   var table6_1Arr = [];
   var table6_1_1Arr = [];
-  getCheckboxItems_6_1_1() {
+  getCheckboxItems_6_1_1() async {
     values.forEach((key, value) {
       if (value == true) {
         table6_1Arr.add(key);
@@ -87,29 +91,34 @@ class FormWidgetState extends State {
     });
     table6_1Arr.clear();
     table6_1_1Arr.clear();
-    firebaseInstance.collection("Factores de alteracion y deterioro (M)").add({
-      "erosion_M_fac": values.values.elementAt(0),
-      "humedad_M_fac": values.values.elementAt(1),
-      "desastres_naturales_M_fac": values.values.elementAt(2),
-      "flora_fauna_M_fac": values.values.elementAt(3),
-      "clima_M_fac" : values.values.elementAt(4),
-      "otro_M_fac": values.values.elementAt(5),
-      "actividades_agricolas_M_fac": valores.values.elementAt(0),
-      "actividades_forestales_M_fac": valores.values.elementAt(1),
-      "actividades_mineria_M_fac": valores.values.elementAt(2),
-      "actividades_industriales_M_fac": valores.values.elementAt(3),
-      "neglicencia_M_fac": valores.values.elementAt(4),
-      "huaqueria_M_fac": valores.values.elementAt(5),
-      "conflicto_tenencia_M_fac": valores.values.elementAt(6),
-      "condiciones_uso_M_fac": valores.values.elementAt(7),
-      "falta_mantenimiento_M_fac": valores.values.elementAt(8),
-      "contaminacion_ambiente_M_fac": valores.values.elementAt(9),
-      "generacion_residuos_M_fac": valores.values.elementAt(10),
-      "expansion_urbana_M_fac": valores.values.elementAt(11),
-      "conflicto_politico_social_M_fac": valores.values.elementAt(12),
-      "desarrollo_industrial_M_fac": valores.values.elementAt(13),
-      "vandalismo_M_fac": valores.values.elementAt(14),
-    });
+    try {
+      await firebaseInstance.collection("Factores de alteracion y deterioro (M)").add({
+        "erosion_M_fac": values.values.elementAt(0),
+        "humedad_M_fac": values.values.elementAt(1),
+        "desastres_naturales_M_fac": values.values.elementAt(2),
+        "flora_fauna_M_fac": values.values.elementAt(3),
+        "clima_M_fac" : values.values.elementAt(4),
+        "otro_M_fac": values.values.elementAt(5),
+        "actividades_agricolas_M_fac": valores.values.elementAt(0),
+        "actividades_forestales_M_fac": valores.values.elementAt(1),
+        "actividades_mineria_M_fac": valores.values.elementAt(2),
+        "actividades_industriales_M_fac": valores.values.elementAt(3),
+        "neglicencia_M_fac": valores.values.elementAt(4),
+        "huaqueria_M_fac": valores.values.elementAt(5),
+        "conflicto_tenencia_M_fac": valores.values.elementAt(6),
+        "condiciones_uso_M_fac": valores.values.elementAt(7),
+        "falta_mantenimiento_M_fac": valores.values.elementAt(8),
+        "contaminacion_ambiente_M_fac": valores.values.elementAt(9),
+        "generacion_residuos_M_fac": valores.values.elementAt(10),
+        "expansion_urbana_M_fac": valores.values.elementAt(11),
+        "conflicto_politico_social_M_fac": valores.values.elementAt(12),
+        "desarrollo_industrial_M_fac": valores.values.elementAt(13),
+        "vandalismo_M_fac": valores.values.elementAt(14),
+      });
+    } catch (e) {
+      print (e);
+    }
+
   }
 
   void _showAlertDialog (BuildContext context) {
@@ -264,6 +273,10 @@ class buttonClass extends StatelessWidget {
           heroTag: "btn2",
           child: Icon(Icons.text_fields),
           onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Textrute()),
+            );
           }
         ),
         Container(
@@ -273,6 +286,12 @@ class buttonClass extends StatelessWidget {
             heroTag: "btn3",
             child: Icon(Icons.arrow_forward_ios),
             onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => turismTable6_2(),
+                  ),
+              );
             }
         ),
       ],
@@ -280,7 +299,174 @@ class buttonClass extends StatelessWidget {
   }
 }
 
+class Textrute extends StatelessWidget {
+  final firebaseInstance = FirebaseFirestore.instance;
+  static TextEditingController esp = TextEditingController();
+  static TextEditingController obs = TextEditingController();
 
+  Map<String,String> valoresTexto = {
+    'Especifique': esp.text,
+    'Observaciones' : obs.text,
+  };
+
+  void getTextForm () async {
+    try {
+      await firebaseInstance.collection("Especificaciones_Observaciones Factores estado deterioro").add({
+        "especifique_M_fac": valoresTexto.values.elementAt(0),
+        "observaciones_M_fac": valoresTexto.values.elementAt(1)
+      });
+    } catch (e) {
+      print (e);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_back_ios_outlined),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      appBar: AppBar(
+        title: Text(
+          'FACTORES DE ALTERACIÓN Y DETERIORO (M)',
+          textAlign: TextAlign.center,
+          maxLines: 2,
+        ),
+      ),
+      body: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget> [
+              SizedBox(
+                height: 8,
+              ),
+              titleSection1,
+              TextFormField(
+                controller: esp,
+                maxLines: 5,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "correcto";
+                  } else {
+                    return "ingrese valores!";
+                  }
+                },
+                decoration: InputDecoration(
+                  icon: Icon(Icons.input_outlined),
+                  contentPadding: EdgeInsets.all(20.0),
+                  hintText:
+                  "Ingrese las especificaciones en caso de haber elegido 'NO' en la lista anterior",
+                  labelText: ("Especificaciones"),
+                  isCollapsed: true,
+                  //observaciones_atractivo_U
+                  border: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.elliptical(10, 10))),
+                ),
+              ),
+              titleSection2,
+              TextFormField(
+                controller: obs,
+                maxLines: 5,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "correcto";
+                  } else {
+                    return "ingrese valores!";
+                  }
+                },
+                decoration: InputDecoration(
+                  icon: Icon(Icons.input_outlined),
+                  contentPadding: EdgeInsets.all(20.0),
+                  hintText:
+                  "Ingrese sus observaciones en caso de ser necesarias",
+                  labelText: ("Observaciones"),
+                  isCollapsed: true,
+                  //observaciones_atractivo_U
+                  border: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.elliptical(10, 10))),
+                ),
+              ),
+              MaterialButton(
+                minWidth: 100.0,
+                height: 40.0,
+                onPressed: () {
+                  Textrute().getTextForm();
+                  print(esp.text);
+                  print(obs.text);
+                },
+                color: Colors.blue,
+                child: Text('Guardar', style: TextStyle(color: Colors.white)),
+              )
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget titleSection1 = Container(
+    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              /*2*/
+              Container(
+                color: Colors.amberAccent,
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  'INGRESE LAS ESPECIFICACIONES DE LAS ALTERACIONES Y DETERIOROS',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget titleSection2 = Container(
+    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              /*2*/
+              Container(
+                color: Colors.amberAccent,
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  'INGRESE LAS OBSERVACIONES',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 
 
