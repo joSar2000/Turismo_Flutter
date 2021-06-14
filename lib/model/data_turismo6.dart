@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:turismo_flutter/pages/viewturista_table6.dart';
 
 class ViewTURISM {
   //Declaración de variables para almacenamiento en base de datos
   //Tabla 6
+
   int _id_estado_conservacion = 0;
-  bool _si_estado_conservacion = false;
+  bool si_estado_conservacion = false;
   bool _no_estado_conservacion = false;
   bool _s_i_estado_conservacion = false;
   //Tabla 6.1
@@ -87,7 +89,7 @@ class ViewTURISM {
       //Declaracion de los id's para cada una de las tablas derivadas de la n° 6
       this._id_estado_conservacion, this._id_atractivo_U, this._id_entorno_U, this._id_factores_alteracion_entorno,
       this._id_factores_alteracion_atractivo, this._id_declaratoria, //Declaratoria n° 6
-      this._si_estado_conservacion, this._no_estado_conservacion, this._s_i_estado_conservacion, //Declaratoria n°6.1
+      this.si_estado_conservacion, this._no_estado_conservacion, this._s_i_estado_conservacion, //Declaratoria n°6.1
       this._atractivo_U, this._conservado_atractivo_U, this._alterado_atractivo_U, this._deterioro_atractivo_U,
       this._deteriorado_atractivo_U, //Declaratoria n°6.1.1
       this._erosion_M_fac, this._humedad_M_fac, this._desastres_naturales_M_fac, this._flora_fauna_M_fac, this._clima_M_fac,
@@ -103,9 +105,10 @@ class ViewTURISM {
       this._desarrollo_industrial_M_ent, this._vandalismo_M_ent, this._otro_M_ent, this._especifique_M_ent, this._observaciones_M_ent, //Declaratoria n°6.3
       this._declaratoria_espacio, this._declarante_espacio, this._denominacion_espacio, this._alcance_espacio, this._observaciones_espacio
       );
+  /*
   //Mapeo
   ViewTURISM.map(dynamic obj) {
-    this._si_estado_conservacion = obj['si_estado_conservacion'];
+    this.si_estado_conservacion = obj['si_estado_conservacion'];
     this._no_estado_conservacion = obj['no_estado_conservacion'];
     this._s_i_estado_conservacion = obj['s_i_estado_conservacion'];
     this._atractivo_U = obj['atractivo_U'];
@@ -172,7 +175,7 @@ class ViewTURISM {
   int get id_entorno_U => _id_entorno_U;
   int get id_factores_alteracion_entorno => _id_factores_alteracion_entorno;
   int get id_declaratoria => _id_declaratoria;
-  bool get si_estado_conservacion => _si_estado_conservacion;
+  bool get si_estado_conservacion => si_estado_conservacion;
   bool get no_estado_conservacion => _no_estado_conservacion;
   bool get s_i_estado_conservacion => _s_i_estado_conservacion;
   bool get atractivo_U => _atractivo_U;
@@ -246,7 +249,7 @@ class ViewTURISM {
     _id_entorno_U = snapshot.key as int;
     _id_factores_alteracion_entorno = snapshot.key as int;
     _id_declaratoria = snapshot.key as int;
-    _si_estado_conservacion = snapshot.value['si_estado_conservacion'];
+    si_estado_conservacion = snapshot.value['si_estado_conservacion'];
     _no_estado_conservacion = snapshot.value['no_estado_conservacion'];
     _s_i_estado_conservacion = snapshot.value['s_i_estado_conservacion'];
     _atractivo_U = snapshot.value['atractivo_U'];
@@ -307,4 +310,6 @@ class ViewTURISM {
     _observaciones_espacio = snapshot.value['observaciones_espacio'];
 
   }
+
+   */
 }
