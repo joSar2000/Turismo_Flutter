@@ -193,7 +193,7 @@ class FormWidgetState extends State {
           minWidth: 100.0,
           height: 40.0,
           onPressed: () {
-            getCheckboxItems_6_1_1();
+
           },
           color: Colors.blue,
           child: Text('Guardar', style: TextStyle(color: Colors.white)),
