@@ -3,6 +3,8 @@ import 'package:turismo_flutter/pages/viewturista_table6_2.dart';
 import 'package:turismo_flutter/pages/viewturista_table6.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class turismTable6_1 extends StatelessWidget {
 
@@ -13,22 +15,19 @@ class turismTable6_1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_back_ios_outlined),
-          onPressed: () {
-            Navigator.push(
-                context,
-              MaterialPageRoute(builder: (context) => turismTable6())
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
-          title: Text(
-            'FACTORES DE ALTERACIÓN Y DETERIORO (M) - ATRACTIVO',
-            textAlign: TextAlign.center,
-            maxLines: 2,
-          ),
+          elevation: 0,
+          backgroundColor: HexColor("#F0F2F2"),
+          title:
+          Text('HIGIENE Y SEGURIDAD TURÍSTICA',
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: HexColor("#A65005"),
+              )),
         ),
         body: Center(
             child: Center(
@@ -46,427 +45,286 @@ class FormSaveWidget extends StatefulWidget {
 }
 
 class FormWidgetState extends State {
-  final firebaseInstance = FirebaseFirestore.instance;
 
-  Map<String, bool> values = {
-    //Tabla6.1.1.1
-    'Erosión': false,
-    'Humedad': false,
-    'Desastres Naturales': false,
-    'Flora/Fauna': false,
-    'Clima': false,
-    'Otros' : false,
-  };
-  Map<String, bool> valores = {
-    //Tabla6.1.1.1
-    'Actividades agrícolas y ganaderas': false,
-    'Actividades forestales': false,
-    'Actividades extractivas/minería': false,
-    'Actividades industriales': false,
-    'Negligencia/Abandono': false,
-    'Huaquearía': false,
-    'Conflicto de tendencia': false,
-    'Condiciones de uso y exposición': false,
-    'Falta de mantenimiento': false,
-    'Contaminación del ambiente': false,
-    'Generación de residuos': false,
-    'Expansión urbana': false,
-    'Conflicto político/social': false,
-    'Desarrollo industrial/comercial': false,
-    'Vandalismo': false,
-  };
-  var table6_1Arr = [];
-  var table6_1_1Arr = [];
-  getCheckboxItems_6_1_1() async {
-    values.forEach((key, value) {
-      if (value == true) {
-        table6_1Arr.add(key);
-      }
-    });
+  static TextEditingController obs_atractivo = TextEditingController();
+  static TextEditingController obs_energia_atractivo = TextEditingController();
+  static TextEditingController obs_saneamiento_atractivo = TextEditingController();
+  static TextEditingController obs_desechos_atractivo = TextEditingController();
+  static TextEditingController obs_atractivo_ciudad = TextEditingController();
+  static TextEditingController obs_energia_ciudad = TextEditingController();
+  static TextEditingController obs_saneamiento_ciudad = TextEditingController();
+  static TextEditingController obs_especifique_pic = TextEditingController();
+  static TextEditingController obs_especifique_pic_a_c = TextEditingController();
+  static TextEditingController obs_especifique_pic_a_t = TextEditingController();
+  static TextEditingController obs_especifique_pic_s_a = TextEditingController();
+  static TextEditingController obs_especifique_pic_r = TextEditingController();
+  static TextEditingController obs_especifique_totems_a_t = TextEditingController();
+  static TextEditingController obs_especifique_totems_s = TextEditingController();
+  static TextEditingController obs_especifique_totems_d = TextEditingController();
+  static TextEditingController obs_especifique_pic_a_n_N = TextEditingController();
+  static TextEditingController obs_especifique_pic_a_t_N = TextEditingController();
+  static TextEditingController obs_especifique_pic_r_N = TextEditingController();
+  static TextEditingController obs_especifique_seniales_t_a = TextEditingController();
+  static TextEditingController obs_especifique_paneles_d_a = TextEditingController();
+  static TextEditingController obs_especifique_panel_i_a = TextEditingController();
+  static TextEditingController obs_especifique_panel_i_d = TextEditingController();
+  static TextEditingController obs_especifique_mesas_i = TextEditingController();
+  static TextEditingController obs_especifique_totems_s_N = TextEditingController();
+  static TextEditingController obs_especifique_totem_d = TextEditingController();
 
-    valores.forEach((key, value) {
-      if (value == true) {
-        table6_1_1Arr.add(key);
-      }
-    });
-    table6_1Arr.clear();
-    table6_1_1Arr.clear();
-    try {
-      await firebaseInstance.collection("Factores de alteracion y deterioro (M)").add({
-        "erosion_M_fac": values.values.elementAt(0),
-        "humedad_M_fac": values.values.elementAt(1),
-        "desastres_naturales_M_fac": values.values.elementAt(2),
-        "flora_fauna_M_fac": values.values.elementAt(3),
-        "clima_M_fac" : values.values.elementAt(4),
-        "otro_M_fac": values.values.elementAt(5),
-        "actividades_agricolas_M_fac": valores.values.elementAt(0),
-        "actividades_forestales_M_fac": valores.values.elementAt(1),
-        "actividades_mineria_M_fac": valores.values.elementAt(2),
-        "actividades_industriales_M_fac": valores.values.elementAt(3),
-        "neglicencia_M_fac": valores.values.elementAt(4),
-        "huaqueria_M_fac": valores.values.elementAt(5),
-        "conflicto_tenencia_M_fac": valores.values.elementAt(6),
-        "condiciones_uso_M_fac": valores.values.elementAt(7),
-        "falta_mantenimiento_M_fac": valores.values.elementAt(8),
-        "contaminacion_ambiente_M_fac": valores.values.elementAt(9),
-        "generacion_residuos_M_fac": valores.values.elementAt(10),
-        "expansion_urbana_M_fac": valores.values.elementAt(11),
-        "conflicto_politico_social_M_fac": valores.values.elementAt(12),
-        "desarrollo_industrial_M_fac": valores.values.elementAt(13),
-        "vandalismo_M_fac": valores.values.elementAt(14),
-      });
-    } catch (e) {
-      print (e);
-    }
+  //VARIABLES
+  bool si_higiene_turistica = false;
+  bool no_higiene_turistica = false;
+  bool s_i_higiene_turistica = false;
+  //
+  bool servicio_basico = false;
+  bool atractivo_servicio_basico = false;
+  bool agua_servicio = false;
+  String especifique_agua_atractivo = obs_atractivo.toString();
+  bool energia_atractivo = false;
+  String especifique_energia_atractivo = obs_energia_atractivo.toString();
+  bool saneamiento_atractivo = false;
+  String especifique_saneamiento_atractivo = obs_saneamiento_atractivo.toString();
+  bool desechos_atractivo = false;
+  String especifique_desechos_atractivo = obs_desechos_atractivo.toString();
+  String onservaciones_atractivo_ciudad = obs_atractivo_ciudad.toString();
+  bool ciudad_poblado_servicio_basico = false;
+  bool agua_ciudad = false;
+  String especifique_energia_ciudad = obs_energia_ciudad.toString();
+  bool saneamiento_ciudad = false;
+  String especifique_saneamiento_ciudad = obs_saneamiento_ciudad.toString();
+  bool desechos_ciudad = false;
+  bool especifique_desechos_ciudad = false;
+  //
+  bool senialeticas_atarctivo = false;
+  bool areas_urbanas = false;
+  int pic_a_n_madera = 0;
+  int pic_a_n_aluminio = 0;
+  int pic_a_n_otro = 0;
+  String especifique_pic_a_n = obs_especifique_pic.toString();
+  bool pic_a_n_bueno = false;
+  bool pic_a_n_regular = false;
+  bool pic_a_n_malo = false;
+  int pic_a_c_madera = 0;
+  int pic_a_c_aluminio = 0;
+  int pic_a_c_otro = 0;
+  String especifique_pic_a_c = obs_especifique_pic_a_c.toString();
+  bool pic_a_c_bueno = false;
+  bool pic_a_c_regular = false;
+  bool pic_a_c_malo = false;
+  int pic_a_t_madera = 0;
+  int pic_a_t_aluminio = 0;
+  int pic_a_t_otro = 0;
+  String especifique_pic_a_t = obs_especifique_pic_a_t.toString();
+  bool pic_a_t_bueno = false;
+  bool pic_a_t_regular = false;
+  bool pic_a_t_malo = false;
+  int pic_s_a_madera = 0;
+  int pic_s_a_aluminio = 0;
+  int pic_s_a_otro = 0;
+  String especifique_pic_s_a = obs_especifique_pic_s_a.toString();
+  bool pic_s_a_bueno = false;
+  bool pic_s_a_regular = false;
+  bool pic_s_a_malo = false;
+  int pic_r_madera = 0;
+  int pic_r_aluminio = 0;
+  int pic_r_otro = 0;
+  String especifique_pic_r = obs_especifique_pic_r.toString();
+  bool pic_r_bueno = false;
+  bool pic_r_regular = false;
+  bool pic_r_malo = false;
+  int totems_a_t_madera = 0;
+  int totems_a_t_aluminio = 0;
+  int totems_a_t_otro = 0;
+  String especifique_totems_a_t = obs_especifique_totems_a_t.toString();
+  bool totems_a_t_bueno = false;
+  bool totems_a_t_regular = false;
+  bool totems_a_t_malo = false;
+  int totems_s_madera = 0;
+  int totems_s_aluminio = 0;
+  int totems_s_otro = 0;
+  String especifique_totems_s = obs_especifique_totems_s.toString();
+  bool totems_s_bueno = false;
+  bool totems_s_regular = false;
+  bool totems_s_malo = false;
+  int totems_d_madera = 0;
+  int totems_d_aluminio = 0;
+  int totems_d_otro = 0;
+  String especifique_totems_d = obs_especifique_totems_d.toString();
+  bool totems_d_bueno = false;
+  bool totems_d_regular = false;
+  bool totems_d_malo = false;
+  bool areas_naturales = false;
+  int pic_a_n_madera_N = 0;
+  int pic_a_n_aluminio_N = 0;
+  int pic_a_n_otro_N = 0;
+  String especifique_pic_a_n_N = obs_especifique_pic_a_n_N.toString();
+  bool pic_a_c_bueno_N = false;
+  bool pic_a_c_regular_N = false;
+  bool pic_a_c_malo_N = false;
+  int pic_a_t_madera_N = 0;
+  int pic_a_t_aluminio_N = 0;
+  int pic_a_t_otro_N = 0;
+  String especifique_pic_a_t_N = obs_especifique_pic_a_t_N.toString();
+  bool pic_s_a_bueno_N = false;
+  bool pic_s_a_regular_N = false;
+  bool pic_s_a_malo_N = false;
+  int pic_r_madera_N = 0;
+  int pic_r_alumunio_N = 0;
+  int pic_r_otro_N = 0;
+  String especifique_pic_r_N = obs_especifique_pic_r_N.toString();
+  bool pic_r_bueno_N = false;
+  bool pic_r_regular_N = false;
+  bool pic_r_malo_N = false;
+  int seniales_t_a_madera = 0;
+  int seniales_t_a_aluminio = 0;
+  int seniales_t_a_otro = 0;
+  String especifique_seniales_t_a = obs_especifique_seniales_t_a.toString();
+  bool seniales_t_a_bueno = false;
+  bool seniales_t_a_regular = false;
+  bool seniales_t_a_malo = false;
+  int paneles_d_a_madera = 0;
+  int paneles_d_a_aluminio = 0;
+  int paneles_d_a_otro = 0;
+  String especifique_paneles_d_a = obs_especifique_paneles_d_a.toString();
+  bool paneles_d_a_bueno = false;
+  bool paneles_d_a_regular = false;
+  bool paneles_d_a_malo = false;
+  int panel_i_a_madera = 0;
+  int panel_i_a_aluminio = 0;
+  int panel_i_a_otro = 0;
+  String especifique_panel_i_a = obs_especifique_panel_i_a.toString();
+  bool panel_i_a_bueno = false;
+  bool panel_i_a_regular = false;
+  bool panel_i_a_malo = false;
+  int panel_i_d_madera = 0;
+  int panel_i_d_aluminio = 0;
+  int panel_i_d_otro = 0;
+  String especifique_panel_i_d = obs_especifique_panel_i_d.toString();
+  bool panel_i_d_bueno = false;
+  bool panel_i_d_regular = false;
+  bool panel_i_d_malo = false;
+  int mesas_i_madera = 0;
+  int mesas_i_aluminio = 0;
+  int mesas_i_otro = 0;
+  String especifique_mesas_i = obs_especifique_mesas_i.toString();
+  bool mesas_i_bueno = false;
+  bool mesas_i_regular = false;
+  bool mesas_i_malo = false;
+  int totems_s_madera_N = 0;
+  int totems_s_aluminio_N = 0;
+  int totems_s_otro_N = 0;
+  String especifique_totems_s_N = obs_especifique_totems_s_N.toString();
+  bool totems_s_bueno_N = false;
+  bool totems_s_regular_N = false;
+  bool totems_s_malo_N = false;
+  int totem_d_madera = 0;
+  int totem_d_aluminio = 0;
+  int totem_d_otro = 0;
+  String especifique_totem_d = obs_especifique_totem_d.toString();
+  bool totem_d_bueno = false;
+  bool totem_d_regular = false;
+  bool totem_d_malo = false;
+  bool letreros_informativos = false;
+  int letrero_i_b_madera = 0;
+  int letrero_i_b_aluminio = 0;
+  int letrero_i_b_otro = 0;
 
-  }
-
-  void _showAlertDialog (BuildContext context) {
+  void _showAlertDialog(BuildContext context) {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
         SnackBar(
-            content: const Text ("Debe añadir una observación dando click en el botón de texto"),
-            action: SnackBarAction(
-              label: "OK", onPressed: scaffold.hideCurrentSnackBar,
-            ),
+          content: const Text (
+              "Por favor, navegue hasta la próxima pantalla con el botón de flecha"),
+          action: SnackBarAction(
+            label: "OK", onPressed: scaffold.hideCurrentSnackBar,
+          ),
         )
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    //print(DateTime.now());
-    return Column(
-      children:<Widget> [
-        titleSection,
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            children: values.keys.map((String key) {
-              return new CheckboxListTile(
-                  subtitle: Text("Marque la casilla en caso de ser necesario"),
-                  secondary: const Icon(Icons.touch_app_outlined),
-                  title: new Text(key),
-                  value: values[key],
-                  activeColor: Colors.green,
-                  checkColor: Colors.white,
-                  onChanged: (value) {
-                    setState(() {
-                      values[key] = value!;
-                      //print('valores: $values');
-                      //print(values.values.elementAt(0));
-                      if (values.values.elementAt(5) == true) {
-                        print ("debes poner un texto");
-                        _showAlertDialog(context);
-                      }
-                    });
-                  }
-                  );
-            }).toList(),
-          ),
-        ),
-        titleSection2,
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            children: valores.keys.map((String key) {
-              return new CheckboxListTile(
-                  subtitle: Text("Marque la casilla en caso de ser necesario"),
-                  secondary: const Icon(Icons.touch_app_outlined),
-                  title: new Text(key),
-                  value: valores[key],
-                  activeColor: Colors.green,
-                  checkColor: Colors.white,
-                  onChanged: (value) {
-                    setState(() {
-                      valores[key] = value!;
-                      //print('valores: $valores');
-                      //print(values.values.elementAt(0));
-                    });
-                  }
-              );
-            }).toList(),
-          ),
-        ),
-        MaterialButton(
-          minWidth: 100.0,
-          height: 40.0,
-          onPressed: () {
-            getCheckboxItems_6_1_1();
-          },
-          color: Colors.blue,
-          child: Text('Guardar', style: TextStyle(color: Colors.white)),
-        ),
-        buttonClass(),
-      ],
-    );
-  }
-  Widget titleSection = Container(
-    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-    child: Row(
-      children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /*2*/
-              Container(
-                color: Colors.amberAccent,
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'NATURALES (M)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: HexColor("#F0F2F2"),
+        body: ListView(
+          padding: EdgeInsets.all(10.0),
+          children: <Widget> [
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget> [
+                Flexible(
+                  child: Container(
+                    child: CheckboxListTile(
+                      tristate: false,
+                      title: Text(
+                        "SI",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                      value: this.si_higiene_turistica,
+                      onChanged: (value) {
+                        setState(() {
+                          this.si_higiene_turistica = value!;
+                        });
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-  Widget titleSection2 = Container(
-    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-    child: Row(
-      children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /*2*/
-              Container(
-                color: Colors.amberAccent,
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'ANTRÓPICOS/ANTROPOGÉNICOS (M)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                Flexible(
+                  child: Container(
+                    child: CheckboxListTile(
+                      tristate: false,
+                      title: Text(
+                        "NO",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                      value: this.no_higiene_turistica,
+                      onChanged: (value) {
+                        setState(() {
+                          this.no_higiene_turistica = value!;
+                          if (this.no_higiene_turistica == true) {
+                            _showAlertDialog(context);
+                          }
+                        });
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-class buttonClass extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //crossAxisAlignment:  CrossAxisAlignment.center,
-      children: <Widget> [
-        Container(
-          padding: EdgeInsets.fromLTRB(50.0, 32.0, 100.0, 55.0),
-        ),
-        new FloatingActionButton(
-          heroTag: "btn2",
-          child: Icon(Icons.text_fields),
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Textrute()),
-            );
-          }
-        ),
-        Container(
-          padding: EdgeInsets.fromLTRB(75.0, 32.0, 0.0, 55.0),
-        ),
-        new FloatingActionButton(
-            heroTag: "btn3",
-            child: Icon(Icons.arrow_forward_ios),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => turismTable6_2(),
+                Flexible(
+                  child: Container(
+                    child: CheckboxListTile(
+                      tristate: false,
+                      title: Text(
+                        "S/I",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                      value: this.s_i_higiene_turistica,
+                      onChanged: (value) {
+                        setState(() {
+                          this.s_i_higiene_turistica = value!;
+                        });
+                      },
+                    ),
                   ),
-              );
-            }
-        ),
-      ],
-    );
-  }
-}
-
-class Textrute extends StatelessWidget {
-  final firebaseInstance = FirebaseFirestore.instance;
-  static TextEditingController esp = TextEditingController();
-  static TextEditingController obs = TextEditingController();
-
-  Map<String,String> valoresTexto = {
-    'Especifique': esp.text,
-    'Observaciones' : obs.text,
-  };
-
-  void getTextForm () async {
-    try {
-      await firebaseInstance.collection("Especificaciones_Observaciones Factores estado deterioro").add({
-        "especifique_M_fac": valoresTexto.values.elementAt(0),
-        "observaciones_M_fac": valoresTexto.values.elementAt(1)
-      });
-    } catch (e) {
-      print (e);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_back_ios_outlined),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      appBar: AppBar(
-        title: Text(
-          'FACTORES DE ALTERACIÓN Y DETERIORO (M)',
-          textAlign: TextAlign.center,
-          maxLines: 2,
-        ),
-      ),
-      body: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget> [
-              SizedBox(
-                height: 8,
-              ),
-              titleSection1,
-              TextFormField(
-                controller: esp,
-                maxLines: 5,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "correcto";
-                  } else {
-                    return "ingrese valores!";
-                  }
-                },
-                decoration: InputDecoration(
-                  icon: Icon(Icons.input_outlined),
-                  contentPadding: EdgeInsets.all(20.0),
-                  hintText:
-                  "Ingrese las especificaciones en caso de haber elegido 'NO' en la lista anterior",
-                  labelText: ("Especificaciones"),
-                  isCollapsed: true,
-                  //observaciones_atractivo_U
-                  border: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.elliptical(10, 10))),
                 ),
-              ),
-              titleSection2,
-              TextFormField(
-                controller: obs,
-                maxLines: 5,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "correcto";
-                  } else {
-                    return "ingrese valores!";
-                  }
-                },
-                decoration: InputDecoration(
-                  icon: Icon(Icons.input_outlined),
-                  contentPadding: EdgeInsets.all(20.0),
-                  hintText:
-                  "Ingrese sus observaciones en caso de ser necesarias",
-                  labelText: ("Observaciones"),
-                  isCollapsed: true,
-                  //observaciones_atractivo_U
-                  border: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.elliptical(10, 10))),
-                ),
-              ),
-              MaterialButton(
-                minWidth: 100.0,
-                height: 40.0,
-                onPressed: () {
-                  Textrute().getTextForm();
-                  print(esp.text);
-                  print(obs.text);
-                },
-                color: Colors.blue,
-                child: Text('Guardar', style: TextStyle(color: Colors.white)),
-              )
-            ],
-          )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
-
-  Widget titleSection1 = Container(
-    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-    child: Row(
-      children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /*2*/
-              Container(
-                color: Colors.amberAccent,
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'INGRESE LAS ESPECIFICACIONES DE LAS ALTERACIONES Y DETERIOROS',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-
-  Widget titleSection2 = Container(
-    padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-    child: Row(
-      children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              /*2*/
-              Container(
-                color: Colors.amberAccent,
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'INGRESE LAS OBSERVACIONES',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
 }
-
-
-
