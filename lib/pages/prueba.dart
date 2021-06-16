@@ -49,7 +49,10 @@ class MyApp extends State<MyHomePage> {
                     ]),
                   ]),
                   TableRow(children: [
-                    Column(children: [TextField(textAlign: TextAlign.center,
+                    Column(children: [
+                      TextField(
+                        keyboardType:  TextInputType.number,
+                        textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         hintText: "Ingrese número",
                       ),
