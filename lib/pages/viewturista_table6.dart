@@ -281,7 +281,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                     color: HexColor("#99AD8F"),
                   ),
                 ),
-                value: atractivo_U,
+                value: this.atractivo_U,
                 onChanged: (value) {
                   setState(() {
                     this.atractivo_U = value!;
@@ -311,7 +311,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conservado_atractivo_U,
+                    value: this.conservado_atractivo_U,
                     onChanged: (value) {
                       setState(() {
                         this.conservado_atractivo_U = value!;
@@ -338,7 +338,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: alterado_atractivo_U,
+                    value: this.alterado_atractivo_U,
                     onChanged: (value) {
                       setState(() {
                         this.alterado_atractivo_U = value!;
@@ -365,7 +365,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: deterioro_atractivo_U,
+                    value: this.deterioro_atractivo_U,
                     onChanged: (value) {
                       setState(() {
                         this.deterioro_atractivo_U = value!;
@@ -392,7 +392,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: deteriorado_atractivo_U,
+                    value: this.deteriorado_atractivo_U,
                     onChanged: (value) {
                       setState(() {
                         this.deteriorado_atractivo_U = value!;
@@ -483,7 +483,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: erosion_M_fac,
+                    value: this.erosion_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.erosion_M_fac = value!;
@@ -510,7 +510,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: humedad_M_fac,
+                    value: this.humedad_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.humedad_M_fac = value!;
@@ -537,7 +537,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: desastres_naturales_M_fac,
+                    value: this.desastres_naturales_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.desastres_naturales_M_fac = value!;
@@ -564,7 +564,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: flora_fauna_M_fac,
+                    value: this.flora_fauna_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.flora_fauna_M_fac = value!;
@@ -591,7 +591,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: clima_M_fac,
+                    value: this.clima_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.clima_M_fac = value!;
@@ -630,7 +630,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_agricolas_M_fac,
+                    value: this.actividades_agricolas_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_agricolas_M_fac = value!;
@@ -657,7 +657,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_forestales_M_fac,
+                    value: this.actividades_forestales_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_forestales_M_fac = value!;
@@ -684,7 +684,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_minera_M_fac,
+                    value: this.actividades_minera_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_minera_M_fac = value!;
@@ -711,7 +711,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_industriales_M_fac,
+                    value: this.actividades_industriales_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_industriales_M_fac = value!;
@@ -738,7 +738,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: neglicencia_M_fac,
+                    value: this.neglicencia_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.neglicencia_M_fac = value!;
@@ -765,7 +765,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: huaqueria_M_fac,
+                    value: this.huaqueria_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.huaqueria_M_fac = value!;
@@ -792,7 +792,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conflictos_tenencia_M_fac,
+                    value: this.conflictos_tenencia_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.conflictos_tenencia_M_fac = value!;
@@ -819,7 +819,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: condiciones_uso_M_fac,
+                    value: this.condiciones_uso_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.condiciones_uso_M_fac = value!;
@@ -846,7 +846,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: falta_mantenimiento_M_fac,
+                    value: this.falta_mantenimiento_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.falta_mantenimiento_M_fac = value!;
@@ -873,7 +873,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: contaminacion_ambiente_M_fac,
+                    value: this.contaminacion_ambiente_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.contaminacion_ambiente_M_fac = value!;
@@ -900,7 +900,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: generacion_residuos_M_fac,
+                    value: this.generacion_residuos_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.generacion_residuos_M_fac = value!;
@@ -927,7 +927,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: expansion_urbana_M_fac,
+                    value: this.expansion_urbana_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.expansion_urbana_M_fac = value!;
@@ -954,7 +954,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conflicto_poliico_social_M_fac,
+                    value: this.conflicto_poliico_social_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.conflicto_poliico_social_M_fac = value!;
@@ -978,7 +978,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                               color: HexColor("#99AD8F"),
                             ),
                           ),
-                          value: neglicencia_M_fac,
+                          value: this.neglicencia_M_fac,
                           onChanged: (value) {
                             setState(() {
                               this.neglicencia_M_fac = value!;
@@ -1008,7 +1008,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: desarrollo_industrial_M_fac,
+                    value: this.desarrollo_industrial_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.desarrollo_industrial_M_fac = value!;
@@ -1035,7 +1035,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: vandalismo_M_fac,
+                    value: this.vandalismo_M_fac,
                     onChanged: (value) {
                       setState(() {
                         this.vandalismo_M_fac = value!;
@@ -1059,7 +1059,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                           color: HexColor("#364C59"),
                         ),
                       ),
-                      value: otro_M_fac,
+                      value: this.otro_M_fac,
                       onChanged: (value) {
                         setState(() {
                           this.otro_M_fac = value!;
@@ -1172,7 +1172,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: entorno_U,
+                    value: this.entorno_U,
                     onChanged: (value) {
                       setState(() {
                         this.entorno_U = value!;
@@ -1199,7 +1199,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conservado_entorno_U,
+                    value: this.conservado_entorno_U,
                     onChanged: (value) {
                       setState(() {
                         this.conservado_entorno_U = value!;
@@ -1226,7 +1226,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: alterado_entorno_U,
+                    value: this.alterado_entorno_U,
                     onChanged: (value) {
                       setState(() {
                         this.alterado_entorno_U = value!;
@@ -1253,7 +1253,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: deterioro_entorno_U,
+                    value: this.deterioro_entorno_U,
                     onChanged: (value) {
                       setState(() {
                         this.deterioro_entorno_U = value!;
@@ -1280,7 +1280,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: deteriorado_entorno_U,
+                    value: this.deteriorado_entorno_U,
                     onChanged: (value) {
                       setState(() {
                         this.deteriorado_entorno_U = value!;
@@ -1331,7 +1331,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: erosion_M_ent,
+                    value: this.erosion_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.erosion_M_ent = value!;
@@ -1358,7 +1358,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: humedad_M_ent,
+                    value: this.humedad_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.humedad_M_ent = value!;
@@ -1385,7 +1385,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: desastres_naturales_M_ent,
+                    value: this.desastres_naturales_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.desastres_naturales_M_ent = value!;
@@ -1412,7 +1412,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: flora_fauna_M_ent,
+                    value: this.flora_fauna_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.flora_fauna_M_ent = value!;
@@ -1439,7 +1439,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: clima_M_ent,
+                    value: this.clima_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.clima_M_ent = value!;
@@ -1478,7 +1478,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_agricolas_M_ent,
+                    value: this.actividades_agricolas_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_agricolas_M_ent = value!;
@@ -1505,7 +1505,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_forestales_M_ent,
+                    value: this.actividades_forestales_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_forestales_M_ent = value!;
@@ -1532,7 +1532,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_minera_M_ent,
+                    value: this.actividades_minera_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_minera_M_ent = value!;
@@ -1559,7 +1559,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: actividades_industriales_M_ent,
+                    value: this.actividades_industriales_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.actividades_industriales_M_ent = value!;
@@ -1586,7 +1586,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: neglicencia_M_ent,
+                    value: this.neglicencia_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.neglicencia_M_ent = value!;
@@ -1613,7 +1613,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: huaqueria_M_ent,
+                    value: this.huaqueria_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.huaqueria_M_ent = value!;
@@ -1640,7 +1640,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conflictos_tenencia_M_ent,
+                    value: this.conflictos_tenencia_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.conflictos_tenencia_M_ent = value!;
@@ -1667,7 +1667,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: condiciones_uso_M_ent,
+                    value: this.condiciones_uso_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.condiciones_uso_M_ent = value!;
@@ -1694,7 +1694,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: falta_mantenimiento_M_ent,
+                    value: this.falta_mantenimiento_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.falta_mantenimiento_M_ent = value!;
@@ -1721,7 +1721,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: contaminacion_ambiente_M_ent,
+                    value: this.contaminacion_ambiente_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.contaminacion_ambiente_M_ent = value!;
@@ -1748,7 +1748,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: generacion_residuos_M_ent,
+                    value: this.generacion_residuos_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.generacion_residuos_M_ent = value!;
@@ -1775,7 +1775,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: expansion_urbana_M_ent,
+                    value: this.expansion_urbana_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.expansion_urbana_M_ent = value!;
@@ -1802,7 +1802,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: conflicto_poliico_social_M_ent,
+                    value: this.conflicto_poliico_social_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.conflicto_poliico_social_M_ent = value!;
@@ -1826,7 +1826,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                               color: HexColor("#99AD8F"),
                             ),
                           ),
-                          value: neglicencia_M_ent,
+                          value: this.neglicencia_M_ent,
                           onChanged: (value) {
                             setState(() {
                               this.neglicencia_M_ent = value!;
@@ -1856,7 +1856,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: desarrollo_industrial_M_ent,
+                    value: this.desarrollo_industrial_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.desarrollo_industrial_M_ent = value!;
@@ -1883,7 +1883,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: vandalismo_M_ent,
+                    value: this.vandalismo_M_ent,
                     onChanged: (value) {
                       setState(() {
                         this.vandalismo_M_ent = value!;
@@ -1907,7 +1907,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                           color: HexColor("#364C59"),
                         ),
                       ),
-                      value: otro_M_ent,
+                      value: this.otro_M_ent,
                       onChanged: (value) {
                         setState(() {
                           this.otro_M_ent = value!;
@@ -2020,7 +2020,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
                         color: HexColor("#99AD8F"),
                       ),
                     ),
-                    value: declaratoria_espacio,
+                    value: this.declaratoria_espacio,
                     onChanged: (value) {
                       setState(() {
                         this.declaratoria_espacio = value!;
