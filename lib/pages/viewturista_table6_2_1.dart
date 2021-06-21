@@ -17,10 +17,13 @@ class turismTable6_2_1 extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.arrow_back_ios_outlined),
           onPressed: () {
+            /*
             Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => turismTable6_2())
             );
+
+             */
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,

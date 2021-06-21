@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       initialRoute: turismTable6.ROUTE,
       routes: {
         turismTable6.ROUTE : (_) => turismTable6(),
-        turismTable6_1.ROUTE : (_) => turismTable6_1(),
-        turismTable6_2.ROUTE: (_) => turismTable6_2(),
-        turismTable6_2_1.ROUTE: (_) => turismTable6_2_1(),
-        turismTable6_3.ROUTE: (_) => turismTable6_3(),
+        //turismTable6_1.ROUTE : (_) => turismTable6_1(),
+        //turismTable6_2.ROUTE: (_) => turismTable6_2(),
+        //turismTable6_2_1.ROUTE: (_) => turismTable6_2_1(),
+        //turismTable6_3.ROUTE: (_) => turismTable6_3(),
       },
     );
   }

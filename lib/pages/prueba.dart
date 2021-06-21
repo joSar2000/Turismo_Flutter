@@ -217,5 +217,16 @@ class MyApp extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class Values {
+  bool si_estado_conservacion = false;
+  String observaciones_atractivo_U = "";
+
+  setValues(bool si_estado_conservacion, String observaciones_atractivo_U){
+    this.si_estado_conservacion = si_estado_conservacion;
+    this.observaciones_atractivo_U = observaciones_atractivo_U;
+    print(observaciones_atractivo_U);
+  }
 
 }

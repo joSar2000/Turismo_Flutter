@@ -1,56 +1,26 @@
-import 'package:turismo_flutter/pages/viewturista_table6_2.dart';
-import 'package:turismo_flutter/pages/viewturista_table6.dart';
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class turismTable6_1 extends StatelessWidget {
-  static const String ROUTE = "/estado_conservacion";
-  DateTime currentDate = DateTime.now();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: HexColor("#F0F2F2"),
-        /*
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_forward_ios),
-          onPressed: () {
-            //Navigator.pushNamed(context, turismTable6_1.ROUTE);
-            Navigator.pop(context);
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        */
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: HexColor("#F0F2F2"),
-          title: Text('7. HIGIENE Y SEGURIDAD TURÍSTICA',
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: GoogleFonts.dmSans(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: HexColor("#A65005"),
-              )),
-        ),
-        body: Center(
-            child: Center(
-          child: FormSaveWidget(),
-        )),
-      ),
-    );
-  }
-}
+import 'package:turismo_flutter/pages/viewturista_table6.dart';
+import 'package:turismo_flutter/pages/viewturista_table6_2.dart';
 
 class FormSaveWidget extends StatefulWidget {
+  final bool si_estado_conservacion;
+  final String observaciones_atractivo_U;
+
+  FormSaveWidget(
+      {Key? key,
+      required this.si_estado_conservacion,
+      required this.observaciones_atractivo_U})
+      : super(key: key);
   @override
-  FormWidgetState createState() => new FormWidgetState();
+  State<StatefulWidget> createState() => new FormWidgetState();
 }
 
-class FormWidgetState extends State {
+class FormWidgetState extends State<FormSaveWidget> {
   static TextEditingController obs_atractivo = TextEditingController();
   static TextEditingController obs_energia_atractivo = TextEditingController();
   static TextEditingController obs_saneamiento_atractivo =
@@ -193,6 +163,41 @@ class FormWidgetState extends State {
   static TextEditingController obs_normativos_c_aluminio =
       TextEditingController();
   static TextEditingController obs_normativos_c_otro = TextEditingController();
+  static TextEditingController obs_pic_a_c_madera_N = TextEditingController();
+  static TextEditingController obs_pic_a_c_aluminio_N = TextEditingController();
+  static TextEditingController obs_pic_a_c_otro_N = TextEditingController();
+  static TextEditingController obs_especifique_pic_a_c_N =
+      TextEditingController();
+  static TextEditingController obs_pic_s_a_madera_N = TextEditingController();
+  static TextEditingController obs_pic_s_a_aluminio_N = TextEditingController();
+  static TextEditingController obs_pic_s_a_otro_N = TextEditingController();
+  static TextEditingController obs_especifique_pic_s_a_N =
+      TextEditingController();
+  static TextEditingController obs_proteccion_elementos_madera =
+      TextEditingController();
+  static TextEditingController obs_proteccion_elementos_aluminio =
+      TextEditingController();
+  static TextEditingController obs_proteccion_elementos_otro =
+      TextEditingController();
+  static TextEditingController obs_especifique_proteccion =
+      TextEditingController();
+  static TextEditingController obs_atractivo_hospital = TextEditingController();
+  static TextEditingController obs_atractivo_centro = TextEditingController();
+  static TextEditingController obs_atractivo_dispensario =
+      TextEditingController();
+  static TextEditingController obs_atractivo_botiquin = TextEditingController();
+  static TextEditingController obs_atractivo_otros = TextEditingController();
+  static TextEditingController obs_ciudad_hospital = TextEditingController();
+  static TextEditingController obs_ciudad_centro = TextEditingController();
+  static TextEditingController obs_ciudad_dispensario = TextEditingController();
+  static TextEditingController obs_ciudad_botiqui = TextEditingController();
+  static TextEditingController obs_ciudad_otro = TextEditingController();
+  static TextEditingController obs_seguridad_privada = TextEditingController();
+  static TextEditingController obs_seguridad_policia_nacional =
+      TextEditingController();
+  static TextEditingController obs_seguridad_policia_municipal =
+      TextEditingController();
+  static TextEditingController obs_seguridad_otra = TextEditingController();
 
   //VARIABLES
   bool si_higiene_turistica = false;
@@ -286,9 +291,15 @@ class FormWidgetState extends State {
   String pic_a_n_aluminio_N = obs_pic_a_n_aluminio_N.toString();
   String pic_a_n_otro_N = obs_pic_a_n_otro_N.toString();
   String especifique_pic_a_n_N = obs_especifique_pic_a_n_N.toString();
+  bool pic_a_n_bueno_N = false;
+  bool pic_a_n_regular_N = false;
+  bool pic_a_n_malo_N = false;
   bool pic_a_c_bueno_N = false;
   bool pic_a_c_regular_N = false;
   bool pic_a_c_malo_N = false;
+  bool pic_a_t_bueno_N = false;
+  bool pic_a_t_regular_N = false;
+  bool pic_a_t_malo_N = false;
   String pic_a_t_madera_N = obs_pic_a_t_madera_N.toString();
   String pic_a_t_aluminio_N = obs_pic_a_t_aluminio_N.toString();
   String pic_a_t_otro_N = obs_pic_a_t_otro_N.toString();
@@ -370,7 +381,18 @@ class FormWidgetState extends State {
   bool otros_senialetica = false;
   String otros_senialetica_texto = obs_otros_senialetica_texto.toString();
   String observaciones_senialetica = obs_observaciones_senialetica.toString();
+  bool senialetica_interna = false;
+  String proteccion_elementos_madera =
+      obs_proteccion_elementos_madera.toString();
+  String proteccion_elementos_aluminio =
+      obs_proteccion_elementos_aluminio.toString();
+  String proteccion_elementos_otro = obs_proteccion_elementos_otro.toString();
+  String especifique_proteccion = obs_especifique_proteccion.toString();
+  bool proteccion_bueno = false;
+  bool proteccion_regular = false;
+  bool proteccion_malo = false;
   //
+  bool salud_cercana = false;
   bool salud_atractivo = false;
   bool atractivo_hospital = false;
   bool atractivo_centro = false;
@@ -387,19 +409,29 @@ class FormWidgetState extends State {
   int ciudad_cantidad = 0;
   String salud_observaciones = obs_salud_observaciones.toString();
   //
+  String seguridad_privada_detalle = obs_seguridad_privada.text;
+  String seguridad_policia_nacional_detalle =
+      obs_seguridad_policia_nacional.text;
+  String seguridad_policia_municipal_detalle =
+      obs_seguridad_policia_municipal.text;
+  String seguridad_otra_detalle = obs_seguridad_otra.text;
   bool seguridad_M = false;
   bool seguridad_privada = false;
   bool seguridad_policia_nacional = false;
   bool seguridad_policia_municipal = false;
   bool seguridad_otra = false;
-  bool seguridad_privada_detalle = false;
-  String seguridad_policia_nacional_detalle =
-      obs_seguridad_policia_nacional_detalle.toString();
-  String seguridad_policia_municipal_detalle =
-      obs_seguridad_policia_municipal_detalle.toString();
-  String seguridad_otra_detalle = obs_seguridad_otra_detalle.toString();
   String seguridad_observaciones = obs_seguridad_observaciones.toString();
   //
+  String num_atractivo_centro = obs_atractivo_centro.toString();
+  String num_atractivo_hospital = obs_atractivo_hospital.toString();
+  String num_atractivo_dispensario = obs_atractivo_dispensario.toString();
+  String num_atractivo_botiquin = obs_atractivo_botiquin.text;
+  String num_atractivo_otros = obs_atractivo_otros.text;
+  String num_ciudad_hospital = obs_ciudad_hospital.text;
+  String num_ciudad_centro = obs_ciudad_centro.text;
+  String num_ciudad_dispensario = obs_ciudad_dispensario.text;
+  String num_ciudad_botiquin = obs_ciudad_botiqui.text;
+  String num_ciudad_otros = obs_ciudad_otro.text;
   bool servicio_publico = false;
   bool servicio_atractivo = false;
   bool servicio_ciudad = false;
@@ -454,7 +486,69 @@ class FormWidgetState extends State {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        bottomNavigationBar: BottomAppBar(
+          //bottom navigation bar on scaffold
+          color: HexColor("#364C59"),
+          shape: CircularNotchedRectangle(), //shape of notch
+          notchMargin:
+              10, //notche margin between floating button and bottom appbar
+          child: Row(
+            //children inside bottom appbar
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => turismTable6()
+                    )
+                  );
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+        /*
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.arrow_forward_ios),
+          onPressed: () {
+            //Navigator.pushNamed(context, TableTurism6_2.ROUTE);
+            _sendData(context);
+            //Navigator.pop(context);
+            //print(widget.si_estado_conservacion);
+            //print("Valor del string: "+widget.observaciones_atractivo_U);
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+         */
         backgroundColor: HexColor("#F0F2F2"),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: HexColor("#F0F2F2"),
+          title: Text('7. HIGIENE Y SEGURIDAD TURÍSTICA',
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: HexColor("#A65005"),
+              )),
+        ),
         body: ListView(padding: EdgeInsets.all(5.0), children: <Widget>[
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1069,7 +1163,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.1
+          ), //Titulo 7.2.1
           new Container(
             child: CheckboxListTile(
               title: Text(
@@ -1095,7 +1189,7 @@ class FormWidgetState extends State {
                 });
               },
             ),
-          ),//CheckBox 7.2.1
+          ), //CheckBox 7.2.1
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1119,7 +1213,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Pictograma de atractivos naturales",
@@ -1130,7 +1224,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1154,7 +1248,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1199,7 +1293,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -1229,7 +1323,7 @@ class FormWidgetState extends State {
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -1253,10 +1347,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -1270,7 +1364,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_n_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_n_bueno = value!;
                       });
@@ -1291,7 +1385,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_n_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_n_regular = value!;
                       });
@@ -1312,7 +1406,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_n_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_n_malo = value!;
                       });
@@ -1321,7 +1415,7 @@ class FormWidgetState extends State {
                 ),
               )
             ],
-          ),//CheckBox 7.2.4
+          ), //CheckBox 7.2.4
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1345,7 +1439,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Pictograma de atractivos culturales",
@@ -1356,7 +1450,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1380,7 +1474,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1425,7 +1519,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -1449,13 +1543,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -1479,10 +1573,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -1496,7 +1590,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_c_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_c_bueno = value!;
                       });
@@ -1517,7 +1611,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_c_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_c_regular = value!;
                       });
@@ -1538,7 +1632,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_c_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_c_malo = value!;
                       });
@@ -1571,7 +1665,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Pictograma de actividades turísticas",
@@ -1582,7 +1676,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1606,7 +1700,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1651,7 +1745,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -1675,13 +1769,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -1705,10 +1799,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -1722,7 +1816,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_t_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_t_bueno = value!;
                       });
@@ -1743,7 +1837,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_t_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_t_regular = value!;
                       });
@@ -1764,7 +1858,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_a_t_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_a_t_malo = value!;
                       });
@@ -1797,7 +1891,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Pictograma de servicios de apoyo",
@@ -1808,7 +1902,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1832,7 +1926,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -1877,7 +1971,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -1901,13 +1995,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -1931,10 +2025,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -1948,7 +2042,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_s_a_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_s_a_bueno = value!;
                       });
@@ -1969,7 +2063,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_s_a_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_s_a_regular = value!;
                       });
@@ -1990,7 +2084,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_s_a_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_s_a_malo = value!;
                       });
@@ -2023,7 +2117,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Pictograma de restricción",
@@ -2034,7 +2128,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2058,7 +2152,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2103,7 +2197,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -2127,13 +2221,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -2157,10 +2251,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -2174,7 +2268,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_r_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_r_bueno = value!;
                       });
@@ -2195,7 +2289,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_r_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_r_regular = value!;
                       });
@@ -2216,7 +2310,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.pic_r_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.pic_r_malo = value!;
                       });
@@ -2249,7 +2343,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Tótems de atractivos turísticos",
@@ -2260,7 +2354,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2284,7 +2378,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2329,7 +2423,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -2353,13 +2447,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -2383,10 +2477,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -2400,7 +2494,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_a_t_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_a_t_bueno = value!;
                       });
@@ -2421,7 +2515,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_a_t_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_a_t_regular = value!;
                       });
@@ -2442,7 +2536,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_a_t_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_a_t_malo = value!;
                       });
@@ -2475,7 +2569,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Tótems de sitio",
@@ -2486,7 +2580,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2510,7 +2604,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2555,7 +2649,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -2579,13 +2673,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -2609,10 +2703,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -2626,7 +2720,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_s_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_s_bueno = value!;
                       });
@@ -2647,7 +2741,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_s_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_s_regular = value!;
                       });
@@ -2668,7 +2762,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_s_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_s_malo = value!;
                       });
@@ -2701,7 +2795,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.2
+          ), //Titulo 7.2.2
           new Container(
             child: Text(
               "Tótems direccionales",
@@ -2712,7 +2806,7 @@ class FormWidgetState extends State {
                 color: HexColor("#364C59"),
               ),
             ),
-          ),//Subtitulo 7.2.2
+          ), //Subtitulo 7.2.2
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2736,7 +2830,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Titulo 7.2.3
+          ), //Titulo 7.2.3
           new Container(
             margin: EdgeInsets.all(15.0),
             child: Table(
@@ -2781,7 +2875,7 @@ class FormWidgetState extends State {
                 ]),
               ],
             ),
-          ),//Opciones madera,...
+          ), //Opciones madera,...
           new Container(
             padding: EdgeInsets.all(10.0),
             child: Form(
@@ -2805,13 +2899,13 @@ class FormWidgetState extends State {
                       labelText: ("Especificaciones para la casilla 'Otros'"),
                       border: OutlineInputBorder(
                           borderRadius:
-                          BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                     ),
                   )
                 ],
               ),
             ),
-          ),//Formulario
+          ), //Formulario
           new Container(
             margin: EdgeInsets.all(10),
             child: Table(
@@ -2835,10 +2929,10 @@ class FormWidgetState extends State {
                 ])
               ],
             ),
-          ),//Titulo 7.2.4
+          ), //Titulo 7.2.4
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget> [
+            children: <Widget>[
               Flexible(
                 child: Container(
                   child: CheckboxListTile(
@@ -2852,7 +2946,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_d_bueno,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_d_bueno = value!;
                       });
@@ -2873,7 +2967,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_d_regular,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_d_regular = value!;
                       });
@@ -2894,7 +2988,7 @@ class FormWidgetState extends State {
                       ),
                     ),
                     value: this.totems_d_malo,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         this.totems_d_malo = value!;
                       });
@@ -2903,9 +2997,4486 @@ class FormWidgetState extends State {
                 ),
               )
             ],
-          )//CheckBox 7.2.4
+          ),
+          new Container(
+            child: CheckboxListTile(
+              title: Text(
+                "En áreas naturales",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.areas_naturales,
+              onChanged: (value) {
+                setState(() {
+                  this.areas_naturales = value!;
+                });
+              },
+            ),
+          ), //CheckBox 7.2.1
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Pictograma de atractivos naturales",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_n_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_n_aluminio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_n_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_a_n_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_n_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_n_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_n_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_n_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_n_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_n_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Pictograma de atractivos culturales",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_c_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_c_aluminio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_c_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_a_c_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_c_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_c_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_c_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_c_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_c_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_c_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Pictograma de atractivos turísticos",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_t_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_t_aluminio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_a_t_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_a_t_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_t_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_t_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_t_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_t_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_a_t_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_a_t_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Pictograma de servicios de apoyo",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_s_a_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_s_a_aluminio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_s_a_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_s_a_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_s_a_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_s_a_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_s_a_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_s_a_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_s_a_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_s_a_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Pictograma de restricción",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_alumunio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_r_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Señales turísticas de aproximación",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_seniales_t_a_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_seniales_t_a_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_seniales_t_a_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_seniales_t_a,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.seniales_t_a_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.seniales_t_a_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.seniales_t_a_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.seniales_t_a_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.seniales_t_a_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.seniales_t_a_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Paneles de direccionamiento hacia atractivos",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_paneles_d_a_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_paneles_d_a_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_paneles_d_a_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_paneles_d_a,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.paneles_d_a_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.paneles_d_a_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.paneles_d_a_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.paneles_d_a_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.paneles_d_a_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.paneles_d_a_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Panel informativo de atractivos",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_panel_i_a_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_panel_i_a_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_panel_i_a_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_panel_i_a,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.panel_i_a_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.panel_i_a_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.panel_i_a_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.panel_i_a_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.panel_i_a_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.panel_i_a_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Panel informativo de direccionamiento hacia atractivos, servicios y actividades",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_alumunio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_pic_r_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_pic_r_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.pic_r_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.pic_r_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Mesas interpretativas",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_mesas_i_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_mesas_i_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_mesas_i_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_mesas_i,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.mesas_i_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.mesas_i_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.mesas_i_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.mesas_i_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.mesas_i_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.mesas_i_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Tótems de sitio",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_s_madera_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_s_aluminio_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_s_otro_N,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_totems_s_N,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totems_s_bueno_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totems_s_bueno_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totems_s_regular_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totems_s_regular_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totems_s_malo_N,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totems_s_malo_N = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Tótem de direccionamiento",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_d_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_d_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_totems_d_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_totem_d,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totem_d_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totem_d_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totem_d_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totem_d_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.totem_d_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.totem_d_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            child: CheckboxListTile(
+              title: Text(
+                "Letreros informativos",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.letreros_informativos,
+              onChanged: (value) {
+                setState(() {
+                  this.letreros_informativos = value!;
+                });
+              },
+            ),
+          ), //CheckBox 7.2.1
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "De información botánica",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_letrero_i_b_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_letrero_i_b_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_letrero_i_b_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_letrero_i_b,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.letrero_i_b_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.letrero_i_b_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.letrero_i_b_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.letrero_i_b_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.letrero_i_b_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.letrero_i_b_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Normativos de concientización",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_normativos_c_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_normativos_c_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_normativos_c_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_normativos_c,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.normativos_c_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.normativos_c_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.normativos_c_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.normativos_c_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.normativos_c_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.normativos_c_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            child: CheckboxListTile(
+              title: Text(
+                "Señalética interna de seguridad",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.senialetica_interna,
+              onChanged: (value) {
+                setState(() {
+                  this.senialetica_interna = value!;
+                });
+              },
+            ),
+          ), //CheckBox
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.2 Tipo",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.2
+          new Container(
+            child: Text(
+              "Protección de los elementos del atractivo",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: HexColor("#364C59"),
+              ),
+            ),
+          ), //Subtitulo 7.2.2
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.3 Materialidad",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+              ],
+            ),
+          ), //Titulo 7.2.3
+          new Container(
+            margin: EdgeInsets.all(15.0),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_proteccion_elementos_madera,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " a. Madera",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_proteccion_elementos_aluminio,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " b. Aluminio",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                  Column(children: [
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: obs_proteccion_elementos_otro,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        labelText: " c. Otro",
+                        hintText: "Ingrese número",
+                      ),
+                    )
+                  ]),
+                ]),
+              ],
+            ),
+          ), //Opciones madera,...
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_especifique_proteccion,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para la casilla 'Otros'"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ), //Formulario
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      Text(
+                        "7.2.4 Estado",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24,
+                          color: HexColor("#364C59"),
+                        ),
+                      )
+                    ],
+                  )
+                ])
+              ],
+            ),
+          ), //Titulo 7.2.4
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "B",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.proteccion_bueno,
+                    onChanged: (value) {
+                      setState(() {
+                        this.proteccion_bueno = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "R",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.proteccion_regular,
+                    onChanged: (value) {
+                      setState(() {
+                        this.proteccion_regular = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: CheckboxListTile(
+                    tristate: false,
+                    title: Text(
+                      "M",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                    value: this.proteccion_malo,
+                    onChanged: (value) {
+                      setState(() {
+                        this.proteccion_malo = value!;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+          new Container(
+            child: CheckboxListTile(
+              title: Text(
+                "Otros",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.otros_senialetica,
+              onChanged: (value) {
+                setState(() {
+                  this.otros_senialetica = value!;
+                });
+              },
+            ),
+          ), //CheckBox
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: Form(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: obs_otros_senialetica_texto,
+                    maxLines: 3,
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: HexColor("#99AD8F"),
+                    ),
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.input_outlined),
+                      contentPadding: EdgeInsets.all(20.0),
+                      hintText: "Ingrese sus especificaciones",
+                      labelText: ("Especificaciones para más señaléticas"),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.elliptical(10, 10))),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Observaciones",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_observaciones_senialetica,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                                "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "Salud (más cercano)",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.salud_cercana,
+              onChanged: (value) {
+                setState(() {
+                  this.salud_cercana = value!;
+                });
+              },
+            ),
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "a. En el atractivo",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.salud_atractivo,
+              onChanged: (value) {
+                setState(() {
+                  this.salud_atractivo = value!;
+                });
+              },
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Hospital o Clínica",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.atractivo_hospital,
+                  onChanged: (value) {
+                    setState(() {
+                      this.atractivo_hospital = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          enabled: this.atractivo_hospital,
+                          keyboardType: TextInputType.number,
+                          controller: obs_atractivo_hospital,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Puesto/Centro de salud",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.atractivo_centro,
+                  onChanged: (value) {
+                    setState(() {
+                      this.atractivo_centro = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          enabled: this.atractivo_centro,
+                          keyboardType: TextInputType.number,
+                          controller: obs_atractivo_centro,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Dispensario médico",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.atractivo_dispensario,
+                  onChanged: (value) {
+                    setState(() {
+                      this.atractivo_dispensario = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          enabled: this.atractivo_dispensario,
+                          keyboardType: TextInputType.number,
+                          controller: obs_atractivo_dispensario,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Botiquín de primeros auxilios",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.atractivo_botiquin,
+                  onChanged: (value) {
+                    setState(() {
+                      this.atractivo_botiquin = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_atractivo_botiquin,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Otros",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.atractivo_otros,
+                  onChanged: (value) {
+                    setState(() {
+                      this.atractivo_otros = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_atractivo_otros,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "b. En la ciudad o poblado máciudad",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.salud_ciudad,
+              onChanged: (value) {
+                setState(() {
+                  this.salud_ciudad = value!;
+                });
+              },
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Hospital o Clínica",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.ciudad_hospital,
+                  onChanged: (value) {
+                    setState(() {
+                      this.ciudad_hospital = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_ciudad_hospital,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Puesto/Centro de salud",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.ciudad_centro,
+                  onChanged: (value) {
+                    setState(() {
+                      this.ciudad_centro = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_ciudad_centro,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Dispensario médico",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.ciudad_dispensario,
+                  onChanged: (value) {
+                    setState(() {
+                      this.ciudad_dispensario = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_ciudad_dispensario,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Botiquín de primeros auxilios",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.ciudad_botiquin,
+                  onChanged: (value) {
+                    setState(() {
+                      this.ciudad_botiquin = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_ciudad_botiqui,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "Otros",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.ciudad_otros,
+                  onChanged: (value) {
+                    setState(() {
+                      this.ciudad_otros = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: obs_ciudad_otro,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese cantidad",
+                            labelText: ("Cantidad"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Observaciones",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_salud_observaciones,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                                "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "Seguridad (M)",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.seguridad_M,
+              onChanged: (value) {
+                setState(() {
+                  this.seguridad_M = value!;
+                });
+              },
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "a. Privada",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.seguridad_privada,
+                  onChanged: (value) {
+                    setState(() {
+                      this.seguridad_privada = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_seguridad_privada,
+                          maxLines: 4,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese observación",
+                            labelText: ("Observación"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "b. Policía nacional",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.seguridad_policia_nacional,
+                  onChanged: (value) {
+                    setState(() {
+                      this.seguridad_policia_nacional = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_seguridad_policia_nacional,
+                          maxLines: 4,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese observación",
+                            labelText: ("Observación"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "c. Policía metropolitana/Municipal",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.seguridad_policia_municipal,
+                  onChanged: (value) {
+                    setState(() {
+                      this.seguridad_policia_municipal = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_seguridad_policia_municipal,
+                          maxLines: 4,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese observación",
+                            labelText: ("Observación"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: CheckboxListTile(
+                  title: Text(
+                    "d. Otra",
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16,
+                      color: HexColor("#364C59"),
+                    ),
+                  ),
+                  value: this.seguridad_otra,
+                  onChanged: (value) {
+                    setState(() {
+                      this.seguridad_otra = value!;
+                    });
+                  },
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_seguridad_otra,
+                          maxLines: 4,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: "Ingrese observación",
+                            labelText: ("Observación"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ]),
       ),
     );
+  }
+
+  void _sendData(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => TableTurism6_2(
+                si_estado_conservacion: widget.si_estado_conservacion,
+                observaciones_atractivo_U: widget.observaciones_atractivo_U,
+                si_higiene_turistica: si_higiene_turistica)));
   }
 }

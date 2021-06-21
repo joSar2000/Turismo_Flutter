@@ -5,55 +5,40 @@ import 'package:turismo_flutter/pages/viewturista_table6_1.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:turismo_flutter/pages/prueba.dart';
 
-class turismTable6 extends StatelessWidget {
-  static const String ROUTE = "/check_6";
+class turismTable6 extends StatelessWidget{
+  static const String ROUTE = "/entorno_conservacion";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: HexColor("#F0F2F2"),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_forward_ios),
-          onPressed: () {
-            //Navigator.pushNamed(context, turismTable6_1.ROUTE);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => turismTable6_1()),
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: HexColor("#F0F2F2"),
-          title:
-              Text('ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  style: GoogleFonts.dmSans(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: HexColor("#A65005"),
-                  )),
-        ),
         body: Center(
             child: Center(
-          child: TableTurism6(),
-        )),
+              child: TableTurism_6(),
+            )
+        ),
       ),
     );
   }
 }
 
-class TableTurism6 extends StatefulWidget {
+class TableTurism_6 extends StatefulWidget {
+
+  /*
+  OJO, DESDE LA PRIMERA PANTALLA SE DEBEN IR INGRESANDO LOS DATOS
+  Preparar valores de las pantallas anteiores y poner en constructor
+  FormSaveWidget({Key? key,
+    required this.si_estado_conservacion,
+    required this.observaciones_atractivo_U
+  }) : super(key: key);
+   */
   @override
-  CheckboxWidgetState createState() => new CheckboxWidgetState();
+  State <StatefulWidget> createState() => new CheckboxWidgetState1();
 }
 
-class CheckboxWidgetState extends State<TableTurism6> {
+class CheckboxWidgetState1 extends State<TableTurism_6> {
   DateTime currentDate = DateTime.now();
-
 
    Future <void> _selectDate (BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -70,16 +55,16 @@ class CheckboxWidgetState extends State<TableTurism6> {
   }
   //VARIABLES
   final _formkey = GlobalKey<FormState>();
-  static TextEditingController obs = TextEditingController();
-  static TextEditingController obsOtro_M_fac = TextEditingController();
-  static TextEditingController obs_M_fac = TextEditingController();
-  static TextEditingController obsEntorno = TextEditingController();
-  static TextEditingController obsOtro_M_ent = TextEditingController();
-  static TextEditingController obs_M_ent = TextEditingController();
-  static TextEditingController obsDeclarante = TextEditingController();
-  static TextEditingController obsDenominacion = TextEditingController();
-  static TextEditingController obsAlcance = TextEditingController();
-  static TextEditingController obsDeclaratoria = TextEditingController();
+  TextEditingController obs = TextEditingController();
+  TextEditingController obsOtro_M_fac = TextEditingController();
+  TextEditingController obs_M_fac = TextEditingController();
+  TextEditingController obsEntorno = TextEditingController();
+  TextEditingController obsOtro_M_ent = TextEditingController();
+  TextEditingController obs_M_ent = TextEditingController();
+  TextEditingController obsDeclarante = TextEditingController();
+  TextEditingController obsDenominacion = TextEditingController();
+  TextEditingController obsAlcance = TextEditingController();
+  TextEditingController obsDeclaratoria = TextEditingController();
   late DateTime _dateTime;
 
   bool si_estado_conservacion = false;
@@ -90,7 +75,7 @@ class CheckboxWidgetState extends State<TableTurism6> {
   bool alterado_atractivo_U = false;
   bool deterioro_atractivo_U = false;
   bool deteriorado_atractivo_U = false;
-  String observaciones_atractivo_U = obs.toString();
+  //String observaciones_atractivo_U = "";
   bool erosion_M_fac = false;
   bool humedad_M_fac = false;
   bool desastres_naturales_M_fac = false;
@@ -112,15 +97,15 @@ class CheckboxWidgetState extends State<TableTurism6> {
   bool desarrollo_industrial_M_fac = false;
   bool vandalismo_M_fac = false;
   bool otro_M_fac = false;
-  String especifique_M_fac = obsOtro_M_fac.toString();
-  String observaciones_M_fac = obs_M_fac.toString();
+  //String especifique_M_fac = obsOtro_M_fac.toString();
+  //String observaciones_M_fac = obs_M_fac.toString();
   //
   bool entorno_U = false;
   bool conservado_entorno_U = false;
   bool alterado_entorno_U = false;
   bool deterioro_entorno_U = false;
   bool deteriorado_entorno_U = false;
-  String observaciones_entorno_U = obsEntorno.toString();
+  //String observaciones_entorno_U = obsEntorno.toString();
   bool erosion_M_ent = false;
   bool humedad_M_ent = false;
   bool desastres_naturales_M_ent = false;
@@ -142,15 +127,15 @@ class CheckboxWidgetState extends State<TableTurism6> {
   bool desarrollo_industrial_M_ent = false;
   bool vandalismo_M_ent = false;
   bool otro_M_ent = false;
-  String especifique_M_ent = obsOtro_M_ent.toString();
-  String observaciones_M_ent = obs_M_ent.toString();
+  //String especifique_M_ent = obsOtro_M_ent.toString();
+  //String observaciones_M_ent = obs_M_ent.toString();
   //
   bool declaratoria_espacio = false;
-  String declarante_espacio = obsDeclarante.toString();
-  String denominacion_espacio = obsDenominacion.toString();
+  //String declarante_espacio = obsDeclarante.toString();
+  //String denominacion_espacio = obsDenominacion.toString();
   final fecha_declaracion_espacio = new DateTime.now();
-  String alcance_espacio = obsAlcance.toString();
-  String observaciones_espacio = obsDeclaratoria.toString();
+  //String alcance_espacio = obsAlcance.toString();
+  //String observaciones_espacio = obsDeclaratoria.toString();
 
   void _showAlertDialogNo(BuildContext context) {
     final scaffold = Scaffold.of(context);
@@ -181,7 +166,65 @@ class CheckboxWidgetState extends State<TableTurism6> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        bottomNavigationBar: BottomAppBar(elevation: 10.0,
+          //bottom navigation bar on scaffold
+          color: HexColor("#364C59"),
+          shape: CircularNotchedRectangle(), //shape of notch
+          notchMargin:
+          10, //notche margin between floating button and bottom appbar
+          child: Row(
+            //children inside bottom appbar
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  print("Agregamos luego");
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _sendData(context);
+                },
+              ),
+            ],
+          ),
+        ),
+        /*
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.arrow_forward_ios),
+          onPressed: () {
+            //Navigator.pushNamed(context, turismTable6_1.ROUTE);
+            _sendData(context);
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+         */
         backgroundColor: HexColor("#F0F2F2"),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: HexColor("#F0F2F2"),
+          title:
+          Text('ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: HexColor("#A65005"),
+              )),
+        ),
         body: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
@@ -2161,6 +2204,19 @@ class CheckboxWidgetState extends State<TableTurism6> {
           ],
         ),
       ),
+    );
+  }
+
+  void _sendData(BuildContext context) {
+    String observaciones_atractivo_U = obs.text;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FormSaveWidget(
+          si_estado_conservacion: si_estado_conservacion,
+          observaciones_atractivo_U: observaciones_atractivo_U,
+        ),
+      )
     );
   }
 }
