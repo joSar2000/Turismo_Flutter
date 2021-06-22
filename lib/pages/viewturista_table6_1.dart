@@ -21,6 +21,21 @@ class FormSaveWidget extends StatefulWidget {
 }
 
 class FormWidgetState extends State<FormSaveWidget> {
+  DateTime currentDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2021),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentDate) {
+      setState(() {
+        currentDate = pickedDate;
+      });
+    }
+    currentDate.toString();
+  }
   static TextEditingController obs_atractivo = TextEditingController();
   static TextEditingController obs_energia_atractivo = TextEditingController();
   static TextEditingController obs_saneamiento_atractivo =
@@ -440,7 +455,17 @@ class FormWidgetState extends State<FormSaveWidget> {
   bool servicio_atractivo_t_fija = false;
   bool servicio_atractivo_t_movil = false;
   bool servicio_atractivo_t_satelital = false;
+  bool servicio_atractivo_i_fibra = false;
+  bool servicio_atractivo_i_satelite = false;
+  bool servicio_atractivo_i_redes = false;
+  bool servicio_atractivo_i_telefonia = false;
+  bool servicio_ciudad_telefonia = false;
+  bool servicio_ciudad_internet = false;
+  bool servicio_ciudad_t_fija = false;
+  bool servicio_ciudad_t_movil = false;
+  bool servicio_ciudad_t_satelital = false;
   bool servicio_atractivo_i_linea = false;
+  bool servicio_ciudad_i_linea = false;
   bool servicio_ciudad_i_fibra = false;
   bool servicio_ciudad_i_satelite = false;
   bool servicio_ciudad_i_redes = false;
@@ -470,16 +495,79 @@ class FormWidgetState extends State<FormSaveWidget> {
       obs_multiamenazas_observaciones.toString();
   DateTime multiamenaza_anio = DateTime.now();
 
-  void _showAlertDialog(BuildContext context) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(SnackBar(
-      content: const Text(
-          "Por favor, navegue hasta la próxima pantalla con el botón de flecha"),
-      action: SnackBarAction(
-        label: "OK",
-        onPressed: scaffold.hideCurrentSnackBar,
-      ),
-    ));
+  void _showAlertDialogNo(BuildContext context) {
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              title: const Text(
+                'AVISO',
+                textAlign: TextAlign.center,
+              ),
+              content: const Text(
+                'Debe navegar hasta la siguiente pantalla con el botón de la parte inferior',
+                textAlign: TextAlign.center,
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
+            ));
+  }
+  void _showAlertDialogSi(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar esta pantalla con la información correspondiente',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
+  }
+  void _showAlertDialogTable(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar esta columna con la información correspondiente',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
+  }
+  void _showAlertDialogObservaciones(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar este apartado con sus especificaciones',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
   }
 
   @override
@@ -505,10 +593,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => turismTable6()
-                    )
-                  );
+                      MaterialPageRoute(builder: (context) => TableTurism_6()));
                 },
               ),
               IconButton(
@@ -569,6 +654,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     onChanged: (value) {
                       setState(() {
                         this.si_higiene_turistica = value!;
+                        if (this.si_higiene_turistica == true) {
+                          _showAlertDialogSi(context);
+                        }
                       });
                     },
                   ),
@@ -591,7 +679,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                       setState(() {
                         this.no_higiene_turistica = value!;
                         if (this.no_higiene_turistica == true) {
-                          _showAlertDialog(context);
+                          _showAlertDialogNo(context);
                         }
                       });
                     },
@@ -635,6 +723,9 @@ class FormWidgetState extends State<FormSaveWidget> {
             onChanged: (value) {
               setState(() {
                 this.servicio_basico = value!;
+                if (this.servicio_basico == true) {
+                  _showAlertDialogSi(context);
+                }
               });
             },
           ),
@@ -661,6 +752,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                         onChanged: (value) {
                           setState(() {
                             this.atractivo_servicio_basico = value!;
+                            if (this.atractivo_servicio_basico == true) {
+                              _showAlertDialogTable(context);
+                            }
                           });
                         },
                       )
@@ -681,6 +775,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                         onChanged: (value) {
                           setState(() {
                             this.ciudad_poblado_servicio_basico = value!;
+                            if (this.ciudad_poblado_servicio_basico == true) {
+                              _showAlertDialogTable(context);
+                            }
                           });
                         },
                       )
@@ -739,6 +836,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.agua_atractivo,
                               maxLength: 300,
                               controller: obs_atractivo,
                               maxLines: 5,
@@ -766,6 +864,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.agua_ciudad,
                               maxLength: 300,
                               controller: obs_especifique_agua_ciudad,
                               maxLines: 3,
@@ -837,6 +936,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.energia_atractivo,
                               maxLength: 300,
                               controller: obs_energia_atractivo,
                               maxLines: 3,
@@ -864,6 +964,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.energia_ciudad,
                               maxLength: 300,
                               controller: obs_energia_ciudad,
                               maxLines: 3,
@@ -935,6 +1036,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.saneamiento_atractivo,
                               maxLength: 300,
                               controller: obs_saneamiento_atractivo,
                               maxLines: 3,
@@ -962,6 +1064,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.saneamiento_ciudad,
                               maxLength: 300,
                               controller: obs_saneamiento_ciudad,
                               maxLines: 3,
@@ -1033,6 +1136,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled:this.desechos_atractivo,
                               maxLength: 300,
                               controller: obs_desechos_atractivo,
                               maxLines: 3,
@@ -1060,6 +1164,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
+                              enabled: this.desechos_ciudad,
                               maxLength: 300,
                               controller: obs_especifique_desechos_ciudad,
                               maxLines: 3,
@@ -1090,6 +1195,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 5,
                   ),
                   TextFormField(
+                    enabled: this.si_higiene_turistica,
                     controller: obs_atractivo_ciudad,
                     maxLines: 5,
                     style: GoogleFonts.dmSans(
@@ -1136,6 +1242,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.senialeticas_atarctivo = value!;
+                  if (this.senialeticas_atarctivo == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -1186,6 +1295,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.areas_urbanas = value!;
+                  if (this.areas_urbanas == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -3020,6 +3132,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.areas_naturales = value!;
+                  if (this.areas_naturales == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -5758,6 +5873,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.letreros_informativos = value!;
+                  if (this.letreros_informativos == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -6236,6 +6354,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.senialetica_interna = value!;
+                  if (this.senialetica_interna == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -6488,6 +6609,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.otros_senialetica = value!;
+                  if (this.otros_senialetica == true) {
+                    _showAlertDialogObservaciones(context);
+                  }
                 });
               },
             ),
@@ -6591,6 +6715,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.salud_cercana = value!;
+                  if (this.salud_cercana == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -6598,7 +6725,6 @@ class FormWidgetState extends State<FormSaveWidget> {
           new Container(
             padding: EdgeInsets.all(10.0),
             child: CheckboxListTile(
-              secondary: const Icon(Icons.fact_check_sharp),
               title: Text(
                 "a. En el atractivo",
                 style: GoogleFonts.dmSans(
@@ -6619,6 +6745,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.salud_atractivo = value!;
+                  if (this.salud_atractivo == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -6894,7 +7023,6 @@ class FormWidgetState extends State<FormSaveWidget> {
           new Container(
             padding: EdgeInsets.all(10.0),
             child: CheckboxListTile(
-              secondary: const Icon(Icons.fact_check_sharp),
               title: Text(
                 "b. En la ciudad o poblado máciudad",
                 style: GoogleFonts.dmSans(
@@ -6915,6 +7043,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.salud_ciudad = value!;
+                  if (this.salud_ciudad == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -7253,6 +7384,9 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.seguridad_M = value!;
+                  if (this.seguridad_M == true) {
+                    _showAlertDialogSi(context);
+                  }
                 });
               },
             ),
@@ -7465,9 +7599,1156 @@ class FormWidgetState extends State<FormSaveWidget> {
               ),
             ],
           ),
-        ]),
-      ),
-    );
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "Servicio de comunicación de uso público (M)",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.servicio_publico,
+              onChanged: (value) {
+                setState(() {
+                  this.servicio_publico = value!;
+                  if (this.servicio_publico == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              title: Text(
+                "a. En el atractivo",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.servicio_atractivo,
+              onChanged: (value) {
+                setState(() {
+                  this.servicio_atractivo = value!;
+                  if (this.servicio_atractivo == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Telefonía (M)",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_telefonia,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_telefonia = value!;
+                            if (this.servicio_atractivo_telefonia == true) {
+                              _showAlertDialogTable(context);
+                            }
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Conexión a internet (M)",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_internet,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_internet = value!;
+                            if (this.servicio_atractivo_internet) {
+                              _showAlertDialogTable(context);
+                            }
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Fija",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_t_fija,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_t_fija = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Línea telefónica",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_i_linea,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_i_linea = value!;
+                          });
+                        },
+                      ),
+                      new CheckboxListTile(
+                        title: Text(
+                          "Fibra óptica",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_i_fibra,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_i_fibra = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(
+                    children: [
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Móvil",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_atractivo_t_movil,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_atractivo_t_movil = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Satélite",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_atractivo_i_satelite,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_atractivo_i_satelite = value!;
+                              });
+                            },
+                          ),
+                          new CheckboxListTile(
+                            title: Text(
+                              "Redes inalámbricas",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_atractivo_i_redes,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_atractivo_i_redes = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ]
+                ),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Satelital",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_t_satelital,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_t_satelital = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Telefonía móvil",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_atractivo_i_telefonia,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_atractivo_i_telefonia = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              title: Text(
+                "b. En la ciudad o poblado mas cercano",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.servicio_ciudad,
+              onChanged: (value) {
+                setState(() {
+                  this.servicio_ciudad = value!;
+                  if (this.servicio_ciudad == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Telefonía (M)",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_telefonia,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_telefonia = value!;
+                            if (this.servicio_ciudad_telefonia == true) {
+                              _showAlertDialogTable(context);
+                            }
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Conexión a internet (M)",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_internet,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_internet = value!;
+                            if (this.servicio_ciudad_internet == true) {
+                              _showAlertDialogTable(context);
+                            }
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Fija",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_t_fija,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_t_fija = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Línea telefónica",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_i_linea,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_i_linea = value!;
+                          });
+                        },
+                      ),
+                      new CheckboxListTile(
+                        title: Text(
+                          "Fibra óptica",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_i_fibra,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_i_fibra = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(
+                    children: [
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Móvil",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_ciudad_t_movil,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_ciudad_t_movil = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Satélite",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_ciudad_i_satelite,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_ciudad_i_satelite = value!;
+                              });
+                            },
+                          ),
+                          new CheckboxListTile(
+                            title: Text(
+                              "Redes inalámbricas",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_ciudad_i_redes,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_ciudad_i_redes = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ]
+                ),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Satelital",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_t_satelital,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_t_satelital = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Telefonía móvil",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_ciudad_i_telefonia,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_ciudad_i_telefonia = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Observaciones",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_servicio_observaciones,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                            "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Radio portátil (U)",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_radio,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_radio = value!;
+                            if (this.servicio_radio == true) {
+                              _showAlertDialogTable(context);
+                            }
+                          });
+                        },
+                      )
+                    ],
+                  ),
+
+                ]),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "De uso exclusivo para el visitante",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_radio_exclusivo,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_radio_exclusivo = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(
+                    children: [
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "De uso exclusivo para conunicación interna",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.servicio_radio_interna,
+                            onChanged: (value) {
+                              setState(() {
+                                this.servicio_radio_interna = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ]
+                ),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "De uso exclusivo en caso de emergencia",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.servicio_radio_emergencia,
+                        onChanged: (value) {
+                          setState(() {
+                            this.servicio_radio_emergencia = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Observaciones",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_servicio_radio_observaciones,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                            "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              title: Text(
+                "Multiamenazas (M)",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.multiamenaza_M,
+              onChanged: (value) {
+                setState(() {
+                  this.multiamenaza_M = value!;
+                  if (this.multiamenaza_M == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+          ),
+          new Container(
+            margin: EdgeInsets.all(10),
+            child: Table(
+              defaultColumnWidth: FixedColumnWidth(110.0),
+              border: TableBorder.all(
+                  color: Colors.black, style: BorderStyle.solid, width: 2),
+              children: [
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Deslaves",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenaza_deslaves,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenaza_deslaves = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Sismos",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenaza_sismos,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenaza_sismos = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Erupciones volcánicas",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenaza_erupciones,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenaza_erupciones = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Incendios forestales",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenaza_incendios,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenaza_incendios = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+                TableRow(
+                    children: [
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Sequía",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.multiamenaza_sequia,
+                            onChanged: (value) {
+                              setState(() {
+                                this.multiamenaza_sequia = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          new CheckboxListTile(
+                            title: Text(
+                              "Inundaciones",
+                              style: GoogleFonts.dmSans(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                                color: HexColor("#364C59"),
+                              ),
+                            ),
+                            value: this.multiamenaza_inundaciones,
+                            onChanged: (value) {
+                              setState(() {
+                                this.multiamenaza_inundaciones = value!;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ]
+                ),
+                TableRow(children: [
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Aguajes",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenaza_aguajes,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenaza_aguajes = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      new CheckboxListTile(
+                        title: Text(
+                          "Tsunami",
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 18,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                        value: this.multiamenazas_tsunami,
+                        onChanged: (value) {
+                          setState(() {
+                            this.multiamenazas_tsunami = value!;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ]),
+              ],
+            ),
+          ),
+          new Container(
+            padding: EdgeInsets.all(10.0),
+            child: CheckboxListTile(
+              title: Text(
+                "¿Existe un plan de contingencia en caso de catástrofes?",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.multiamenaza_plan_contin,
+              onChanged: (value) {
+                setState(() {
+                  this.multiamenaza_plan_contin = value!;
+                  if (this.multiamenaza_plan_contin == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Institución que elaboró el documento",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_multiamenaza_institucion_doc,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                            "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Nombre del documento",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_multiamenaza_nombre_doc,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                            "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Año de elaboración del documento",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          enabled: false,
+                          controller: obs_multiamenaza_nombre_doc,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText: currentDate.toString(),
+                            labelText: ("[AAAA-MM-DD]\n[" +
+                                currentDate.toString() +
+                                "]"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          new RaisedButton(
+            child: Text("Obtener Fecha"),
+            onPressed: () => _selectDate(context),
+          ),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  child: Text("Observaciones",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Form(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          controller: obs_multiamenazas_observaciones,
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: HexColor("#0D0D0D"),
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(20.0),
+                            hintText:
+                            "Ingrese sus observaciones en caso de ser necesarias",
+                            labelText: ("Observaciones"),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(10, 10))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+      ]),
+    ));
   }
 
   void _sendData(BuildContext context) {

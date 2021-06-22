@@ -7,7 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/pages/prueba.dart';
 
-class turismTable6 extends StatelessWidget{
+class turismTable6 extends StatelessWidget {
   static const String ROUTE = "/entorno_conservacion";
   @override
   Widget build(BuildContext context) {
@@ -15,16 +15,15 @@ class turismTable6 extends StatelessWidget{
       home: Scaffold(
         body: Center(
             child: Center(
-              child: TableTurism_6(),
-            )
-        ),
+          child: TableTurism_6(),
+        )),
       ),
     );
   }
 }
 
 class TableTurism_6 extends StatefulWidget {
-
+  static const String ROUTE = "/entorno_conservacion";
   /*
   OJO, DESDE LA PRIMERA PANTALLA SE DEBEN IR INGRESANDO LOS DATOS
   Preparar valores de las pantallas anteiores y poner en constructor
@@ -34,13 +33,13 @@ class TableTurism_6 extends StatefulWidget {
   }) : super(key: key);
    */
   @override
-  State <StatefulWidget> createState() => new CheckboxWidgetState1();
+  State<StatefulWidget> createState() => new CheckboxWidgetState1();
 }
 
 class CheckboxWidgetState1 extends State<TableTurism_6> {
   DateTime currentDate = DateTime.now();
 
-   Future <void> _selectDate (BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
@@ -53,6 +52,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
     }
     currentDate.toString();
   }
+
   //VARIABLES
   final _formkey = GlobalKey<FormState>();
   TextEditingController obs = TextEditingController();
@@ -138,40 +138,91 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   //String observaciones_espacio = obsDeclaratoria.toString();
 
   void _showAlertDialogNo(BuildContext context) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(SnackBar(
-      content: const Text(
-          "Por favor, navegue hasta la próxima pantalla con el botón de flecha"),
-      action: SnackBarAction(
-        label: "OK",
-        onPressed: scaffold.hideCurrentSnackBar,
-      ),
-    ));
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+              'Debe navegar hasta la siguiente pantalla con el botón de la parte inferior',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
+  }
+  void _showAlertDialogSi(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar esta pantalla con la información correspondiente',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
+  }
+  void _showAlertDialogObservaciones(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar este apartado con sus especificaciones',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
+  }
+  void _showAlertDialogDeclaratoria(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Debe llenar este apartado con la información correspondiente',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
   }
 
-  void _showAlertDialogObservaciones(BuildContext context) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(SnackBar(
-      content: const Text(
-          "Debe especificar sus observaciones/especificaciones en la caja de texto correspondiente"),
-      action: SnackBarAction(
-        label: "OK",
-        onPressed: scaffold.hideCurrentSnackBar,
-      ),
-    ));
-  }
 
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(elevation: 10.0,
+        bottomNavigationBar: BottomAppBar(
+          elevation: 10.0,
           //bottom navigation bar on scaffold
           color: HexColor("#364C59"),
           shape: CircularNotchedRectangle(), //shape of notch
           notchMargin:
-          10, //notche margin between floating button and bottom appbar
+              10, //notche margin between floating button and bottom appbar
           child: Row(
             //children inside bottom appbar
             mainAxisSize: MainAxisSize.max,
@@ -216,18 +267,19 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title:
-          Text('ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: GoogleFonts.dmSans(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: HexColor("#A65005"),
-              )),
+              Text('ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: HexColor("#A65005"),
+                  )),
         ),
         body: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
+
             new Text("ATRACTIVO (U)",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
@@ -254,6 +306,9 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         onChanged: (value) {
                           setState(() {
                             this.si_estado_conservacion = value!;
+                            if (this.si_estado_conservacion == true) {
+                              _showAlertDialogSi(context);
+                            }
                           });
                         },
                       ),
@@ -277,6 +332,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                             this.no_estado_conservacion = value!;
                             if (this.no_estado_conservacion == true) {
                               _showAlertDialogNo(context);
+
                             }
                           });
                         },
@@ -452,6 +508,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                   height: 5,
                 ),
                 TextFormField(
+                  enabled: this.si_estado_conservacion,
                   controller: obs,
                   maxLines: 3,
                   validator: (value) {
@@ -1122,6 +1179,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           height: 5,
                         ),
                         TextFormField(
+                          enabled: this.otro_M_fac,
                           controller: obsOtro_M_fac,
                           maxLines: 3,
                           validator: (value) {
@@ -1157,6 +1215,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                   height: 10,
                 ),
                 TextFormField(
+                  enabled: this.si_estado_conservacion,
                   controller: obs_M_fac,
                   maxLines: 3,
                   validator: (value) {
@@ -1970,6 +2029,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           height: 5,
                         ),
                         TextFormField(
+                          enabled: this.otro_M_ent,
                           controller: obsOtro_M_ent,
                           maxLines: 3,
                           validator: (value) {
@@ -2067,17 +2127,21 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                     onChanged: (value) {
                       setState(() {
                         this.declaratoria_espacio = value!;
+                        if (this.declaratoria_espacio == true) {
+                          _showAlertDialogDeclaratoria(context);
+                        }
                       });
                     },
                   ),
                 ),
                 new Form(
                   child: Column(
-                    children: <Widget> [
+                    children: <Widget>[
                       SizedBox(
                         height: 10,
                       ),
                       TextFormField(
+                        enabled: this.declaratoria_espacio,
                         controller: obsDeclarante,
                         maxLines: 3,
                         validator: (value) {
@@ -2094,15 +2158,15 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         decoration: InputDecoration(
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText:
-                          "Ingrese su información",
+                          hintText: "Ingrese su información",
                           labelText: ("Declarante"),
                           border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.elliptical(10, 10))),
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
+                        enabled: this.declaratoria_espacio,
                         controller: obsDenominacion,
                         maxLines: 3,
                         validator: (value) {
@@ -2119,15 +2183,15 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         decoration: InputDecoration(
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText:
-                          "Ingrese su información",
+                          hintText: "Ingrese su información",
                           labelText: ("Denominación"),
                           border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.elliptical(10, 10))),
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
+                        enabled: this.declaratoria_espacio,
                         controller: obsAlcance,
                         maxLines: 3,
                         validator: (value) {
@@ -2144,15 +2208,15 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         decoration: InputDecoration(
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText:
-                          "Ingrese su información",
+                          hintText: "Ingrese su información",
                           labelText: ("Alcance"),
                           border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.elliptical(10, 10))),
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
+                        enabled: this.declaratoria_espacio,
                         controller: obsDeclaratoria,
                         maxLines: 3,
                         validator: (value) {
@@ -2170,11 +2234,11 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
                           hintText:
-                          "Ingrese sus observaciones en caso de ser necesarias",
+                              "Ingrese sus observaciones en caso de ser necesarias",
                           labelText: ("Observaciones"),
                           border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.elliptical(10, 10))),
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
@@ -2183,12 +2247,13 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         decoration: InputDecoration(
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText:
-                          currentDate.toString(),
-                          labelText: ("Fecha Actual: ["+currentDate.toString()+"]"),
+                          hintText: currentDate.toString(),
+                          labelText: ("[AAAA-MM-DD]\n[" +
+                              currentDate.toString() +
+                              "]"),
                           border: OutlineInputBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.elliptical(10, 10))),
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       //Text(currentDate.toString()),
@@ -2210,13 +2275,12 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   void _sendData(BuildContext context) {
     String observaciones_atractivo_U = obs.text;
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FormSaveWidget(
-          si_estado_conservacion: si_estado_conservacion,
-          observaciones_atractivo_U: observaciones_atractivo_U,
-        ),
-      )
-    );
+        context,
+        MaterialPageRoute(
+          builder: (context) => FormSaveWidget(
+            si_estado_conservacion: si_estado_conservacion,
+            observaciones_atractivo_U: observaciones_atractivo_U,
+          ),
+        ));
   }
 }
