@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turismo_flutter/pages/viewturista_table6_1.dart';
+import 'package:turismo_flutter/pages/viewturista_table7.dart';
 import 'package:turismo_flutter/pages/viewturista_table6.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:turismo_flutter/pages/viewturista_table6_2_1.dart';
