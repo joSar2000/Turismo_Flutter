@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:turismo_flutter/pages/viewturista_table6_1.dart';
+import 'package:turismo_flutter/pages/viewturista_table7.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/pages/prueba.dart';
 
 class turismTable6 extends StatelessWidget {
-  static const String ROUTE = "/entorno_conservacion";
+  static const String ROUTE = "/table6";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -267,12 +267,12 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title:
-              Text('ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
+              Text('6. ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
                   textAlign: TextAlign.center,
-                  maxLines: 2,
+                  maxLines: 5,
                   style: GoogleFonts.dmSans(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 18,
                     color: HexColor("#A65005"),
                   )),
         ),
