@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/pages/viewturista_table7.dart';
 import 'package:turismo_flutter/pages/viewturista_table6.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:turismo_flutter/pages/viewturista_table9.dart';
 
 class TableTurism8 extends StatefulWidget {
   static const String ROUTE = "tabla8";
@@ -169,7 +170,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TableTurism8()));
+                      MaterialPageRoute(builder: (context) => turismTable9()));
                 },
               ),
             ],
