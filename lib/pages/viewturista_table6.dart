@@ -21,7 +21,7 @@ class turismTable6 extends StatelessWidget {
     );
   }
 }
-
+//enum optionsRadioButton {javatpoint, w3schools, tutorialandexample}
 class TableTurism_6 extends StatefulWidget {
   static const String ROUTE = "/entorno_conservacion";
   /*
@@ -35,7 +35,7 @@ class TableTurism_6 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new CheckboxWidgetState1();
 }
-
+enum optionsRadioButton {SI, NO, SY}
 class CheckboxWidgetState1 extends State<TableTurism_6> {
   DateTime currentDate = DateTime.now();
 
@@ -66,6 +66,39 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   TextEditingController obsAlcance = TextEditingController();
   TextEditingController obsDeclaratoria = TextEditingController();
   late DateTime _dateTime;
+  int optionGroup = 0;
+  late int selectedOption;
+
+  void initState() {
+    super.initState();
+    optionGroup = 0;
+    selectedOption = 0;
+  }
+
+  setSelectedRadio (int val) {
+    setState(() {
+      optionGroup = val;
+      if (optionGroup == 1) {
+        this.si_estado_conservacion = true;
+        this.no_estado_conservacion = false;
+        this.s_i_estado_conservacion = false;
+        if (this.si_estado_conservacion == true) {
+          _showAlertDialogSi(context);
+        }
+      } else if (optionGroup == 2) {
+        this.si_estado_conservacion = false;
+        this.no_estado_conservacion = true;
+        this.s_i_estado_conservacion = false;
+        if (this.no_estado_conservacion == true) {
+          _showAlertDialogNo(context);
+        }
+      } else if (optionGroup == 3) {
+        this.si_estado_conservacion = false;
+        this.no_estado_conservacion = false;
+        this.s_i_estado_conservacion = true;
+      }
+    });
+  }
 
   bool si_estado_conservacion = false;
   bool no_estado_conservacion = false;
@@ -292,71 +325,43 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                 children: <Widget>[
                   Flexible(
                     child: Container(
-                      child: CheckboxListTile(
-                        tristate: false,
-                        title: Text(
-                          "SI",
-                          style: GoogleFonts.dmSans(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 18,
-                            color: HexColor("#364C59"),
-                          ),
-                        ),
-                        value: this.si_estado_conservacion,
-                        onChanged: (value) {
-                          setState(() {
-                            this.si_estado_conservacion = value!;
-                            if (this.si_estado_conservacion == true) {
-                              _showAlertDialogSi(context);
-                            }
-                          });
+                      child:RadioListTile(
+                        value: 1,
+                        groupValue: optionGroup,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
                         },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
                     ),
                   ),
                   Flexible(
                     child: Container(
-                      child: CheckboxListTile(
-                        tristate: false,
-                        title: Text(
-                          "NO",
-                          style: GoogleFonts.dmSans(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 18,
-                            color: HexColor("#364C59"),
-                          ),
-                        ),
-                        value: this.no_estado_conservacion,
-                        onChanged: (value) {
-                          setState(() {
-                            this.no_estado_conservacion = value!;
-                            if (this.no_estado_conservacion == true) {
-                              _showAlertDialogNo(context);
-
-                            }
-                          });
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroup,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
                         },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
                     ),
                   ),
                   Flexible(
                     child: Container(
-                      child: CheckboxListTile(
-                        tristate: false,
-                        title: Text(
-                          "S/I",
-                          style: GoogleFonts.dmSans(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 18,
-                            color: HexColor("#364C59"),
-                          ),
-                        ),
-                        value: this.s_i_estado_conservacion,
-                        onChanged: (value) {
-                          setState(() {
-                            this.s_i_estado_conservacion = value!;
-                          });
+                      child: RadioListTile(
+                        value: 3,
+                        groupValue: optionGroup,
+                        title: Text("S/I"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
                         },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
                     ),
                   ),
@@ -2257,9 +2262,13 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         ),
                       ),
                       //Text(currentDate.toString()),
-                      RaisedButton(
-                        child: Text("Obtener Fecha"),
-                        onPressed: () => _selectDate(context),
+                      new Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: FloatingActionButton(
+                          elevation: 20.0,
+                          child: Icon(Icons.calendar_today),
+                          onPressed: () => _selectDate(context),
+                        ),
                       ),
                     ],
                   ),

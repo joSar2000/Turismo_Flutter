@@ -1,6 +1,7 @@
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:turismo_flutter/pages/viewturista_table10.dart';
 import 'package:turismo_flutter/pages/viewturista_table7.dart';
 import 'package:turismo_flutter/pages/viewturista_table8.dart';
 import 'package:turismo_flutter/pages/viewturista_table6.dart';
@@ -97,6 +98,39 @@ class FormWidgetState9 extends State<turismTable9> {
   bool atractivo_cultural_otro = false;
   String atractivo_cultural_otro_txt = obs_atractivo_cultural_otro_txt.text;
   String atractivo_cultural_observaciones = obs_atractivo_cultural_observaciones.text;
+  int optionGroup = 0;
+  late int selectedOption;
+
+  void initState() {
+    super.initState();
+    optionGroup = 0;
+    selectedOption = 0;
+  }
+
+  setSelectedRadio (int val) {
+    setState(() {
+      optionGroup = val;
+      if (optionGroup == 1) {
+        this.actividades_si = true;
+        this.actividades_no = false;
+        this.actividades_s_i = false;
+        if (this.actividades_si == true) {
+          _showAlertDialogSi(context);
+        }
+      } else if (optionGroup == 2) {
+        this.actividades_si = false;
+        this.actividades_no = true;
+        this.actividades_s_i = false;
+        if (this.actividades_no == true) {
+          _showAlertDialogNo(context);
+        }
+      } else if (optionGroup == 3) {
+        this.actividades_si = false;
+        this.actividades_no = false;
+        this.actividades_s_i = true;
+      }
+    });
+  }
 
   void _showAlertDialogSi(BuildContext context) {
     showDialog <String> (
@@ -191,7 +225,7 @@ class FormWidgetState9 extends State<turismTable9> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TableTurism8()));
+                      MaterialPageRoute(builder: (context) => TurismTable10()));
                 },
               ),
             ],
@@ -218,70 +252,49 @@ class FormWidgetState9 extends State<turismTable9> {
               children: <Widget>[
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
+                    child: Container(
+                      child:RadioListTile(
+                        value: 1,
+                        groupValue: optionGroup,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
-                      value: this.actividades_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.actividades_si = value!;
-                          if (this.actividades_si == true) {
-                            _showAlertDialogSi(context);
-                          }
-                        });
-                      },
                     ),
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
+                    child: Container(
+                      child:RadioListTile(
+                        value: 2,
+                        groupValue: optionGroup,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
-                      value: this.actividades_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.actividades_no = value!;
-                          if (this.actividades_no == true) {
-                            _showAlertDialogNo(context);
-                          }
-                        });
-                      },
                     ),
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "S/I",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
+                    child: Container(
+                      child:RadioListTile(
+                        value: 3,
+                        groupValue: optionGroup,
+                        title: Text("S/I"),
+                        onChanged: (val) {
+                          setSelectedRadio(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
                       ),
-                      value: this.actividades_s_i,
-                      onChanged: (value) {
-                        setState(() {
-                          this.actividades_s_i = value!;
-                        });
-                      },
                     ),
                   ),
                 ),

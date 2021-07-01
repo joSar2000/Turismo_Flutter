@@ -60,6 +60,95 @@ class CheckboxWidgetState extends State<TableTurism8> {
   bool politicas_ordenanzas_no = false;
   String politicas_ordenanzas_espec = obs_politicas_ordenanzas_espec.text;
   String politicas_observaciones = obs_politicas_observaciones.text;
+  int optionGroupFirst = 0;
+  int optionGroupSecond = 0;
+  int optionGroupThird = 0;
+  int optionGroupFourth = 0;
+  int optionGroupFive = 0;
+  late int selectedOption;
+
+  void initState() {
+    super.initState();
+    optionGroupFirst = 0;
+    optionGroupSecond = 0;
+    optionGroupThird = 0;
+    optionGroupFourth = 0;
+    selectedOption = 0;
+    optionGroupFive = 0;
+  }
+
+  setSelectedRadioFirst (int val) {
+    setState(() {
+      optionGroupFirst = val;
+      if (optionGroupFirst == 1) {
+        this.politicas_si = true;
+        this.politicas_no = false;
+        this.politicas_s_i = false;
+        if (this.politicas_si == true) {
+          _showAlertDialogSi(context);
+        }
+      } else if (optionGroupFirst == 2) {
+        this.politicas_si = false;
+        this.politicas_no = true;
+        this.politicas_s_i = false;
+        if (this.politicas_no == true) {
+          _showAlertDialogNo(context);
+        }
+      } else if (optionGroupFirst == 3) {
+        this.politicas_si = false;
+        this.politicas_no = false;
+        this.politicas_s_i = true;
+      }
+    });
+  }
+  setSelectedRadioSecond (int val) {
+    setState(() {
+      optionGroupSecond = val;
+      if (optionGroupSecond == 1) {
+        this.politicas_gad_si = true;
+        this.politicas_gad_no = false;
+      } else if (optionGroupSecond == 2) {
+        this.politicas_gad_si = false;
+        this.politicas_gad_no = true;
+      }
+    });
+  }
+  setSelectedRadioThird (int val) {
+    setState(() {
+      optionGroupThird = val;
+      if (optionGroupThird == 1) {
+        this.politicas_planificacion_si = true;
+        this.politicas_planificacion_no = false;
+      } else if (optionGroupThird == 2) {
+        this.politicas_planificacion_si = false;
+        this.politicas_planificacion_no = true;
+      }
+    });
+  }
+  setSelectedRadioFourth (int val) {
+    setState(() {
+      optionGroupFourth = val;
+      if (optionGroupFourth == 1) {
+        this.politicas_normativas_si = true;
+        this.politicas_normativas_no = false;
+      } else if (optionGroupFourth == 2) {
+        this.politicas_normativas_si = false;
+        this.politicas_normativas_no = true;
+      }
+    });
+  }
+  setSelectedRadioFive (int val) {
+    setState(() {
+      optionGroupFive = val;
+      if (optionGroupFive == 1) {
+        this.politicas_ordenanzas_si = true;
+        this.politicas_ordenanzas_no = false;
+      } else if (optionGroupFive == 2) {
+        this.politicas_ordenanzas_si = false;
+        this.politicas_ordenanzas_no = true;
+      }
+    });
+  }
 
   void _showAlertDialogNo(BuildContext context) {
     showDialog<String>(
@@ -197,71 +286,44 @@ class CheckboxWidgetState extends State<TableTurism8> {
               children: <Widget>[
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_si = value!;
-                          if (this.politicas_si == true) {
-                            _showAlertDialogSi(context);
-                          }
-                        });
+                    child: RadioListTile(
+                      value: 1,
+                      groupValue: optionGroupFirst,
+                      title: Text("SI"),
+                      onChanged: (val) {
+                        setSelectedRadioFirst(val as int);
                       },
-                    ),
+                      activeColor: Colors.indigo,
+                      selected: false,
+                    )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_no = value!;
-                          if (this.politicas_no == true) {
-                            _showAlertDialogNo(context);
-                          }
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupFirst,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioFirst(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      tristate: false,
-                      title: Text(
-                        "S/I",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_s_i,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_s_i = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 3,
+                        groupValue: optionGroupFirst,
+                        title: Text("S/I"),
+                        onChanged: (val) {
+                          setSelectedRadioFirst(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
               ],
@@ -284,42 +346,30 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_gad_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_gad_si = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: optionGroupSecond,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadioSecond(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_gad_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_gad_no = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupSecond,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioSecond(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 )
               ],
@@ -371,9 +421,13 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
               ],
             ),
-            new RaisedButton(
-              child: Text("Obtener Fecha"),
-              onPressed: () => _selectDate(context),
+            new Container(
+              padding: EdgeInsets.all(10.0),
+              child: FloatingActionButton(
+                elevation: 20.0,
+                child: Icon(Icons.calendar_today),
+                onPressed: () => _selectDate(context),
+              ),
             ),
             new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -393,42 +447,30 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_planificacion_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_planificacion_si = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: optionGroupThird,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadioThird(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_planificacion_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_planificacion_no = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupThird,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioThird(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 )
               ],
@@ -497,42 +539,30 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_normativas_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_normativas_si = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: optionGroupFourth,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadioFourth(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_normativas_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_normativas_no = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupFourth,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioFourth(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 )
               ],
@@ -601,42 +631,30 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "SI",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_ordenanzas_si,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_ordenanzas_si = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: optionGroupFive,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadioFive(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 ),
                 Flexible(
                   child: Container(
-                    child: CheckboxListTile(
-                      title: Text(
-                        "NO",
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: HexColor("#364C59"),
-                        ),
-                      ),
-                      value: this.politicas_ordenanzas_no,
-                      onChanged: (value) {
-                        setState(() {
-                          this.politicas_ordenanzas_no = value!;
-                        });
-                      },
-                    ),
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupFive,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioFive(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
                   ),
                 )
               ],

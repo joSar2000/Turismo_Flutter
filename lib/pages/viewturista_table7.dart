@@ -494,6 +494,39 @@ class FormWidgetState extends State<FormSaveWidget> {
   String multiamenazas_observaciones =
       obs_multiamenazas_observaciones.toString();
   DateTime multiamenaza_anio = DateTime.now();
+  int optionGroup = 0;
+  late int selectedOption;
+
+  void initState() {
+    super.initState();
+    optionGroup = 0;
+    selectedOption = 0;
+  }
+
+  setSelectedRadio (int val) {
+    setState(() {
+      optionGroup = val;
+      if (optionGroup == 1) {
+        this.si_higiene_turistica = true;
+        this.no_higiene_turistica = false;
+        this.s_i_higiene_turistica = false;
+        if (this.si_higiene_turistica == true) {
+          _showAlertDialogSi(context);
+        }
+      } else if (optionGroup == 2) {
+        this.si_higiene_turistica = false;
+        this.no_higiene_turistica = true;
+        this.s_i_higiene_turistica = false;
+        if (this.no_higiene_turistica == true) {
+          _showAlertDialogNo(context);
+        }
+      } else if (optionGroup == 3) {
+        this.si_higiene_turistica = false;
+        this.no_higiene_turistica = false;
+        this.s_i_higiene_turistica = true;
+      }
+    });
+  }
 
   void _showAlertDialogNo(BuildContext context) {
     showDialog<String>(
@@ -644,71 +677,44 @@ class FormWidgetState extends State<FormSaveWidget> {
             children: <Widget>[
               Flexible(
                 child: Container(
-                  child: CheckboxListTile(
-                    tristate: false,
-                    title: Text(
-                      "SI",
-                      style: GoogleFonts.dmSans(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        color: HexColor("#364C59"),
-                      ),
-                    ),
-                    value: this.si_higiene_turistica,
-                    onChanged: (value) {
-                      setState(() {
-                        this.si_higiene_turistica = value!;
-                        if (this.si_higiene_turistica == true) {
-                          _showAlertDialogSi(context);
-                        }
-                      });
+                  child: RadioListTile(
+                    value: 1,
+                    groupValue: optionGroup,
+                    title: Text("SI"),
+                    onChanged: (val) {
+                      setSelectedRadio(val as int);
                     },
-                  ),
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  )
                 ),
               ),
               Flexible(
                 child: Container(
-                  child: CheckboxListTile(
-                    tristate: false,
-                    title: Text(
-                      "NO",
-                      style: GoogleFonts.dmSans(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        color: HexColor("#364C59"),
-                      ),
-                    ),
-                    value: this.no_higiene_turistica,
-                    onChanged: (value) {
-                      setState(() {
-                        this.no_higiene_turistica = value!;
-                        if (this.no_higiene_turistica == true) {
-                          _showAlertDialogNo(context);
-                        }
-                      });
+                  child: RadioListTile(
+                    value: 2,
+                    groupValue: optionGroup,
+                    title: Text("NO"),
+                    onChanged: (val) {
+                      setSelectedRadio(val as int);
                     },
-                  ),
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  )
                 ),
               ),
               Flexible(
                 child: Container(
-                  child: CheckboxListTile(
-                    tristate: false,
-                    title: Text(
-                      "S/I",
-                      style: GoogleFonts.dmSans(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        color: HexColor("#364C59"),
-                      ),
-                    ),
-                    value: this.s_i_higiene_turistica,
-                    onChanged: (value) {
-                      setState(() {
-                        this.s_i_higiene_turistica = value!;
-                      });
+                  child: RadioListTile(
+                    value: 3,
+                    groupValue: optionGroup,
+                    title: Text("S/I"),
+                    onChanged: (val) {
+                      setSelectedRadio(val as int);
                     },
-                  ),
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  )
                 ),
               ),
             ],
@@ -840,7 +846,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.agua_atractivo,
+                              enabled: this.agua_atractivo && this.atractivo_servicio_basico
+                              && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_atractivo,
                               maxLines: 5,
@@ -868,7 +875,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.agua_ciudad,
+                              enabled: this.agua_ciudad && this.ciudad_poblado_servicio_basico
+                              && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_especifique_agua_ciudad,
                               maxLines: 3,
@@ -940,7 +948,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.energia_atractivo,
+                              enabled: this.energia_atractivo && this.atractivo_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_energia_atractivo,
                               maxLines: 3,
@@ -968,7 +977,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.energia_ciudad,
+                              enabled: this.energia_ciudad && this.ciudad_poblado_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_energia_ciudad,
                               maxLines: 3,
@@ -1040,7 +1050,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.saneamiento_atractivo,
+                              enabled: this.saneamiento_atractivo && this.atractivo_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_saneamiento_atractivo,
                               maxLines: 3,
@@ -1068,7 +1079,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.saneamiento_ciudad,
+                              enabled: this.saneamiento_ciudad && this.ciudad_poblado_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_saneamiento_ciudad,
                               maxLines: 3,
@@ -1140,7 +1152,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled:this.desechos_atractivo,
+                              enabled:this.desechos_atractivo && this.atractivo_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_desechos_atractivo,
                               maxLines: 3,
@@ -1168,7 +1181,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                               height: 1,
                             ),
                             TextField(
-                              enabled: this.desechos_ciudad,
+                              enabled: this.desechos_ciudad && this.ciudad_poblado_servicio_basico
+                                  && this.servicio_basico && this.si_higiene_turistica,
                               maxLength: 300,
                               controller: obs_especifique_desechos_ciudad,
                               maxLines: 3,
@@ -1199,7 +1213,7 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 5,
                   ),
                   TextFormField(
-                    enabled: this.si_higiene_turistica && this.si_higiene_turistica,
+                    enabled: this.si_higiene_turistica && this.servicio_basico,
                     controller: obs_atractivo_ciudad,
                     maxLines: 5,
                     style: GoogleFonts.dmSans(
@@ -1376,7 +1390,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1388,7 +1403,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1400,7 +1416,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1422,7 +1439,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -1606,7 +1624,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1618,7 +1637,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1630,7 +1650,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1652,7 +1673,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_a_c,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -1836,7 +1858,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_t_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1848,7 +1871,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_t_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1860,7 +1884,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_t_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -1882,7 +1907,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_a_t,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -2066,7 +2092,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_s_a_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2078,7 +2105,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_s_a_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2090,7 +2118,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_s_a_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2112,7 +2141,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_s_a,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -2296,7 +2326,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_r_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2308,7 +2339,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_r_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2320,7 +2352,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_r_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2342,7 +2375,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_r,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -2526,7 +2560,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_a_t_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2538,7 +2573,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_a_t_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2550,7 +2586,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_a_t_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2572,7 +2609,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_totems_a_t,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -2756,7 +2794,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_s_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2768,7 +2807,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_s_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2780,7 +2820,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_s_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2802,7 +2843,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_totems_s,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -2986,7 +3028,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_d_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -2998,7 +3041,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_d_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3010,7 +3054,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_urbanas,
+                      enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_totems_d_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3032,7 +3077,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_urbanas,
+                    enabled: this.areas_urbanas && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_totems_d,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -3245,7 +3291,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3257,7 +3304,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_aluminio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3269,7 +3317,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_n_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3291,7 +3340,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_a_n_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -3475,7 +3525,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3487,7 +3538,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_aluminio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3499,7 +3551,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.senialeticas_atarctivo
+                          && this.si_higiene_turistica,
                       controller: obs_pic_a_c_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3521,7 +3574,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.senialeticas_atarctivo
+                        && this.si_higiene_turistica,
                     controller: obs_especifique_pic_a_c_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -3705,7 +3759,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                      && this.senialeticas_atarctivo,
                       controller: obs_pic_a_t_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3717,7 +3772,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_a_t_aluminio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3729,7 +3785,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_a_t_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3751,7 +3808,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_pic_a_t_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -3935,7 +3993,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_s_a_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3947,7 +4006,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_s_a_aluminio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3959,7 +4019,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_s_a_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -3981,7 +4042,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_pic_s_a_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -4165,7 +4227,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4177,7 +4240,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_alumunio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4189,7 +4253,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4211,7 +4276,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_pic_r_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -4395,7 +4461,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_seniales_t_a_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4407,7 +4474,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_seniales_t_a_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4419,7 +4487,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_seniales_t_a_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4441,7 +4510,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_seniales_t_a,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -4625,7 +4695,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_paneles_d_a_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4637,7 +4708,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_paneles_d_a_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4649,7 +4721,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_paneles_d_a_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4671,7 +4744,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_paneles_d_a,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -4855,7 +4929,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_panel_i_a_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4867,7 +4942,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_panel_i_a_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4879,7 +4955,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_panel_i_a_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -4901,7 +4978,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_panel_i_a,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -5085,7 +5163,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5097,7 +5176,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_alumunio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5109,7 +5189,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_pic_r_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5131,7 +5212,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_pic_r_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -5315,7 +5397,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_mesas_i_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5327,7 +5410,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_mesas_i_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5339,7 +5423,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_mesas_i_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5361,7 +5446,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_mesas_i,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -5545,7 +5631,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_s_madera_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5557,7 +5644,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_s_aluminio_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5569,7 +5657,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_s_otro_N,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5591,7 +5680,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_totems_s_N,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -5775,7 +5865,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_d_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5787,7 +5878,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_d_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5799,7 +5891,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.areas_naturales,
+                      enabled: this.areas_naturales && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_totems_d_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -5821,7 +5914,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.areas_naturales,
+                    enabled: this.areas_naturales && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_totem_d,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -6034,7 +6128,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_letrero_i_b_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6046,7 +6141,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_letrero_i_b_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6058,7 +6154,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_letrero_i_b_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6080,7 +6177,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.letreros_informativos,
+                    enabled: this.letreros_informativos && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_letrero_i_b,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -6264,7 +6362,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_normativos_c_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6276,7 +6375,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_normativos_c_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6288,7 +6388,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.letreros_informativos,
+                      enabled: this.letreros_informativos && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_normativos_c_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6310,7 +6411,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.letreros_informativos,
+                    enabled: this.letreros_informativos && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_normativos_c,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -6523,7 +6625,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.senialetica_interna,
+                      enabled: this.senialetica_interna && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_proteccion_elementos_madera,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6535,7 +6638,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.senialetica_interna,
+                      enabled: this.senialetica_interna && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_proteccion_elementos_aluminio,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6547,7 +6651,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   Column(children: [
                     TextField(
                       keyboardType: TextInputType.number,
-                      enabled: this.senialetica_interna,
+                      enabled: this.senialetica_interna && this.si_higiene_turistica
+                          && this.senialeticas_atarctivo,
                       controller: obs_proteccion_elementos_otro,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -6569,7 +6674,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.senialetica_interna,
+                    enabled: this.senialetica_interna && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_especifique_proteccion,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -6721,7 +6827,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                     height: 10,
                   ),
                   TextFormField(
-                    enabled: this.otros_senialetica,
+                    enabled: this.otros_senialetica && this.si_higiene_turistica
+                        && this.senialeticas_atarctivo,
                     controller: obs_otros_senialetica_texto,
                     maxLines: 3,
                     style: GoogleFonts.dmSans(
@@ -6765,7 +6872,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.senialeticas_atarctivo && this.si_higiene_turistica,
+                          enabled: this.senialeticas_atarctivo && this.si_higiene_turistica
+                              && this.senialeticas_atarctivo,
                           controller: obs_observaciones_senialetica,
                           maxLines: 3,
                           style: TextStyle(
@@ -6880,7 +6988,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.atractivo_hospital,
+                          enabled: this.atractivo_hospital && this.salud_cercana
+                              && this.salud_atractivo && this.si_higiene_turistica,
                           keyboardType: TextInputType.number,
                           controller: obs_atractivo_hospital,
                           maxLines: 1,
@@ -6934,7 +7043,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.atractivo_centro,
+                          enabled: this.atractivo_centro && this.salud_cercana
+                              && this.salud_atractivo && this.si_higiene_turistica,
                           keyboardType: TextInputType.number,
                           controller: obs_atractivo_centro,
                           maxLines: 1,
@@ -6988,7 +7098,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.atractivo_dispensario,
+                          enabled: this.atractivo_dispensario && this.salud_cercana
+                              && this.salud_atractivo && this.si_higiene_turistica,
                           keyboardType: TextInputType.number,
                           controller: obs_atractivo_dispensario,
                           maxLines: 1,
@@ -7043,7 +7154,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.atractivo_botiquin,
+                          enabled: this.atractivo_botiquin && this.salud_cercana
+                              && this.salud_atractivo && this.si_higiene_turistica,
                           controller: obs_atractivo_botiquin,
                           maxLines: 1,
                           style: TextStyle(
@@ -7097,7 +7209,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.atractivo_otros,
+                          enabled: this.atractivo_otros && this.salud_cercana
+                              && this.salud_atractivo && this.si_higiene_turistica,
                           controller: obs_atractivo_otros,
                           maxLines: 1,
                           style: TextStyle(
@@ -7181,7 +7294,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.ciudad_hospital,
+                          enabled: this.ciudad_hospital && this.salud_cercana
+                              && this.salud_ciudad && this.si_higiene_turistica,
                           controller: obs_ciudad_hospital,
                           maxLines: 1,
                           style: TextStyle(
@@ -7235,7 +7349,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.ciudad_centro,
+                          enabled: this.ciudad_centro && this.salud_cercana
+                              && this.salud_ciudad && this.si_higiene_turistica,
                           controller: obs_ciudad_centro,
                           maxLines: 1,
                           style: TextStyle(
@@ -7289,7 +7404,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.ciudad_dispensario,
+                          enabled: this.ciudad_dispensario && this.salud_cercana
+                              && this.salud_ciudad && this.si_higiene_turistica,
                           controller: obs_ciudad_dispensario,
                           maxLines: 1,
                           style: TextStyle(
@@ -7343,7 +7459,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.ciudad_botiquin,
+                          enabled: this.ciudad_botiquin && this.salud_cercana
+                              && this.salud_ciudad && this.si_higiene_turistica,
                           controller: obs_ciudad_botiqui,
                           maxLines: 1,
                           style: TextStyle(
@@ -7397,7 +7514,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                         ),
                         TextFormField(
                           keyboardType: TextInputType.number,
-                          enabled: this.ciudad_otros,
+                          enabled: this.ciudad_otros && this.salud_cercana
+                              && this.salud_ciudad && this.si_higiene_turistica,
                           controller: obs_ciudad_otro,
                           maxLines: 1,
                           style: TextStyle(
@@ -7527,7 +7645,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.seguridad_privada,
+                          enabled: this.seguridad_privada && this.si_higiene_turistica
+                          && this.seguridad_M,
                           controller: obs_seguridad_privada,
                           maxLines: 4,
                           style: TextStyle(
@@ -7580,7 +7699,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.seguridad_policia_nacional,
+                          enabled: this.seguridad_policia_nacional && this.si_higiene_turistica
+                              && this.seguridad_M,
                           controller: obs_seguridad_policia_nacional,
                           maxLines: 4,
                           style: TextStyle(
@@ -7633,7 +7753,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.seguridad_policia_municipal,
+                          enabled: this.seguridad_policia_municipal && this.si_higiene_turistica
+                              && this.seguridad_M,
                           controller: obs_seguridad_policia_municipal,
                           maxLines: 4,
                           style: TextStyle(
@@ -7686,7 +7807,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.seguridad_otra,
+                          enabled: this.seguridad_otra && this.si_higiene_turistica
+                              && this.seguridad_M,
                           controller: obs_seguridad_otra,
                           maxLines: 4,
                           style: TextStyle(
@@ -8695,7 +8817,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.multiamenaza_plan_contin && this.si_higiene_turistica,
+                          enabled: this.multiamenaza_plan_contin && this.si_higiene_turistica
+                          && this.multiamenaza_M,
                           controller: obs_multiamenaza_institucion_doc,
                           maxLines: 3,
                           style: TextStyle(
@@ -8741,7 +8864,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                           height: 5,
                         ),
                         TextFormField(
-                          enabled: this.multiamenaza_plan_contin && this.si_higiene_turistica,
+                          enabled: this.multiamenaza_plan_contin && this.si_higiene_turistica
+                              && this.multiamenaza_M,
                           controller: obs_multiamenaza_nombre_doc,
                           maxLines: 3,
                           style: TextStyle(
