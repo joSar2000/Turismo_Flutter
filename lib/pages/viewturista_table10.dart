@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/dropdown.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TurismTable10 extends StatefulWidget {
   @override
@@ -88,12 +89,28 @@ class FormWidgetState10 extends State<TurismTable10> {
   bool atractivo_oferta_si = false;
   bool atractivo_oferta_no = false;
 
-  String _chosenValue = "";
+  String _chosenValueWeb = "";
+  String _chosenValueSocial = "";
+  String _chosenValueRevista = "";
+  String _chosenValuepop = "";
+  String _chosenValueOficina = "";
+  String _chosenValueComunicacion = "";
+  String _chosenValueFerias = "";
+  String _chosenValueOtro = "";
 
   int optionGroup = 0;
   int optionGroupSecond = 0;
   int optionGroupThird = 0;
+  int optionGroupFourth = 0;
   late int selectedOption;
+
+  _changedValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      promocion_si = this.promocion_si;
+      prefs.setBool("key_promocion_si", promocion_si);
+    });
+  }
 
   void initState() {
     super.initState();
@@ -101,6 +118,15 @@ class FormWidgetState10 extends State<TurismTable10> {
     selectedOption = 0;
     optionGroupSecond = 0;
     optionGroupThird = 0;
+    optionGroupFourth = 0;
+    _loadValue();
+  }
+
+  _loadValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      promocion_si = prefs.getBool("key_promocion_si")!;
+    });
   }
 
   setSelectedRadio(int val) {
@@ -148,6 +174,18 @@ class FormWidgetState10 extends State<TurismTable10> {
       } else if (optionGroupThird == 2) {
         this.promocion_plan_include_si = false;
         this.promocion_plan_include_no = true;
+      }
+    });
+  }
+  setSelectedRadioFourth (int val) {
+    setState(() {
+      optionGroupFourth = val;
+      if (optionGroupFourth == 1) {
+        this.atractivo_oferta_si = true;
+        this.atractivo_oferta_no = false;
+      } else if (optionGroupThird == 2) {
+        this.atractivo_oferta_si = false;
+        this.atractivo_oferta_no = true;
       }
     });
   }
@@ -235,6 +273,7 @@ class FormWidgetState10 extends State<TurismTable10> {
                   color: Colors.white,
                 ),
                 onPressed: () {
+                  _changedValue();
                   Navigator.pop(context);
                 },
               ),
@@ -540,9 +579,167 @@ class FormWidgetState10 extends State<TurismTable10> {
                                 height: 1,
                               ),
                               TextField(
-                                enabled: this.promocion_si && this.medio_web,
+                                enabled: this.promocion_si && this.medio_web && this.promocion_plan_include_si,
                                 maxLength: 300,
                                 controller: obs_direccion_medio_web,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique URL",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueWeb = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                          padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueWeb,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "b. Red Social",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_social,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_social = value!;
+                    if (this.medio_social == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_social && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_social,
                                 maxLines: 3,
                                 style: GoogleFonts.dmSans(
                                   fontWeight: FontWeight.normal,
@@ -587,13 +784,13 @@ class FormWidgetState10 extends State<TurismTable10> {
                             onChanged: (value) {
                               print(value);
                               setState(() {
-                                _chosenValue = value as String;
+                                _chosenValueSocial = value as String;
                               });
                             },
                           ),
                         ),
                         new Container(
-                          padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(5.0),
                             child: Form(
                               child: Column(
                                 children: <Widget>[
@@ -608,7 +805,7 @@ class FormWidgetState10 extends State<TurismTable10> {
                                       color: HexColor("#0D0D0D"),
                                     ),
                                     decoration: InputDecoration(
-                                      hintText: this._chosenValue,
+                                      hintText: this._chosenValueSocial,
                                       contentPadding: EdgeInsets.all(15.0),
                                       border: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(
@@ -625,7 +822,1099 @@ class FormWidgetState10 extends State<TurismTable10> {
                 ],
               ),
             ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "c. Revistas Especializadas",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_revista,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_revista = value!;
+                    if (this.medio_revista == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_revista && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_revista,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
 
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueRevista = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueRevista,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "d. Material POP",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_pop,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_pop = value!;
+                    if (this.medio_pop == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_pop && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_pop,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValuepop = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValuepop,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "e. Oficina de Información Turística",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_oficina,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_oficina = value!;
+                    if (this.medio_oficina == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_oficina && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_oficina,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueOficina = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueOficina,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "f. Medios de comunicación (radio, TV, prensa)",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_comunicacion,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_comunicacion = value!;
+                    if (this.medio_comunicacion == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_comunicacion && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_comunicacion,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueComunicacion = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueComunicacion,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "g. Asistencia a ferias turísticas",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_ferias,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_ferias = value!;
+                    if (this.medio_ferias == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_ferias && this.promocion_plan_include_si,
+                                maxLength: 300,
+                                controller: obs_direccion_medio_ferias,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueFerias = value as String;
+                              });
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueFerias,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              child: CheckboxListTile(
+                title: Text(
+                  "h. Otro",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.medio_otro,
+                onChanged: (value) {
+                  setState(() {
+                    this.medio_otro = value!;
+                    if (this.medio_otro == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Container(
+              margin: EdgeInsets.all(15.0),
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(110.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid, width: 2),
+                children: [
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        Text(
+                          "Dirección y nombre de los medios promocionales",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "Periodicidad de la promoción",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.dmSans(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 16,
+                            color: HexColor("#364C59"),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: [
+                        new Form(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 1,
+                              ),
+                              TextField(
+                                enabled: this.promocion_si && this.medio_otro,
+                                maxLength: 300,
+                                controller: obs_direccion_medios_otro,
+                                maxLines: 3,
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+
+                                ),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20.0),
+                                  hintText: "Especifique",
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        new Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: DropdownButton(
+                            items: <String>[
+                              'Ninguna',
+                              'Mensual',
+                              'Trimestral',
+                              'Semanal',
+                              'Anual',
+                              'Todas',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: Text(
+                              "Escoja una opción",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                _chosenValueOtro = value as String;
+                              });
+                              //print("este:"+this._chosenValueOtro);
+                            },
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.all(5.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 1,
+                                  ),
+                                  TextFormField(
+                                    enabled: false,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: HexColor("#0D0D0D"),
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: this._chosenValueOtro,
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.elliptical(10, 10))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                        )
+                      ],
+                    )
+                  ]),
+                ],
+              ),
+            ),
+            new Container(
+              padding: EdgeInsets.all(15.0),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      enabled: this.promocion_si && this.promocion_plan_include_si,
+                      controller: obs_medios_promocion_observaciones,
+                      maxLines: 5,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.input_outlined),
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
+                        "Ingrese sus observaciones en caso de ser necesarias",
+                        labelText: ("Observaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.elliptical(10, 10))),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget> [
+                Flexible(
+                  child: Container(
+                    child: Text(
+                      "10.2. El atractivo forma parte de una oferta establecida (paquete turístico)",
+                      textAlign: TextAlign.justify,
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: HexColor("#364C59"),
+                      ),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                      child: RadioListTile(
+                        value: 1,
+                        groupValue: optionGroupFourth,
+                        title: Text("SI"),
+                        onChanged: (val) {
+                          setSelectedRadioFourth(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: optionGroupFourth,
+                        title: Text("NO"),
+                        onChanged: (val) {
+                          setSelectedRadioFourth(val as int);
+                        },
+                        activeColor: Colors.indigo,
+                        selected: false,
+                      )
+                  ),
+                )
+              ],
+            ),
+            new Container(
+              padding: EdgeInsets.all(15.0),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      enabled: this.promocion_si && this.atractivo_oferta_si,
+                      controller: obs_atractivo_oferta_especifique,
+                      maxLines: 5,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
+                        "Ingrese sus especificaciones en caso de ser necesarias",
+                        labelText: ("Especificaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.elliptical(10, 10))),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            new Container(
+              padding: EdgeInsets.all(15.0),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      enabled: this.promocion_si,
+                      controller: obs_atractivo_oferta_observaciones,
+                      maxLines: 5,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.input_outlined),
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
+                        "Ingrese sus observaciones en caso de ser necesarias",
+                        labelText: ("Observaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.elliptical(10, 10))),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
