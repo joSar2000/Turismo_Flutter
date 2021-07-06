@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:turismo_flutter/pages/viewturista_table11.dart';
 
 class TurismTable10 extends StatefulWidget {
   @override
@@ -284,12 +285,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  /*
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TableTurism8()));
 
-                   */
-                  print("luego");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TurismTable11()));
                 },
               ),
             ],
