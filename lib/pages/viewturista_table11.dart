@@ -536,7 +536,7 @@ class FormWidgetState11 extends State<TurismTable11> {
               ],
             ),
             new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget> [
                 Flexible(
                   child: Container(
@@ -556,7 +556,7 @@ class FormWidgetState11 extends State<TurismTable11> {
                       child: RadioListTile(
                         value: 1,
                         groupValue: optionGroup_sistema_registro_tipo,
-                        title: Text("Digital", style: TextStyle(fontSize: 15),),
+                        title: Text("Digital", style: TextStyle(fontSize: 13),),
                         onChanged: (val) {
                           setSelectedRadio_sistema_registro_tipo(val as int);
                         },
@@ -570,7 +570,7 @@ class FormWidgetState11 extends State<TurismTable11> {
                       child: RadioListTile(
                         value: 2,
                         groupValue: optionGroup_sistema_registro_tipo,
-                        title: Text("Papel"),
+                        title: Text("Papel", style: TextStyle(fontSize: 13),),
                         onChanged: (val) {
                           setSelectedRadio_sistema_registro_tipo(val as int);
                         },
@@ -895,7 +895,847 @@ class FormWidgetState11 extends State<TurismTable11> {
                   )
                 ],
               ),
-            )
+            ),
+            new Container(
+              padding: EdgeInsets.all(10.0),
+              child: Text("Llegada de turistas",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20,
+                    color: HexColor("#364C59"),
+                  )),
+            ),
+            new CheckboxListTile(
+              tristate: false,
+              title: Text(
+                "Turista nacional",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              subtitle: Text(
+                "Marque en caso de ser necesario",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 15,
+                  color: HexColor("#99AD8F"),
+                ),
+              ),
+              value: this.turista_nacional,
+              onChanged: (value) {
+                setState(() {
+                  this.turista_nacional = value!;
+                  if (this.turista_nacional == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+            new Column(
+              children: <Widget> [
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Ciudades de origen",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_nacional,
+                                  controller: obs_turista_nacional_ciudad,
+                                  maxLines: 5,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique cuidades de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Llegadas mensuales",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_nacional,
+                                  controller: obs_turista_nacional_mensual,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique cuidades de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Total anual",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_nacional,
+                                  controller: obs_turista_nacional_anual,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique cuidades de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            new Container(
+              child: CheckboxListTile(
+                tristate: false,
+                title: Text(
+                  "Turista extranjero",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18,
+                    color: HexColor("#364C59"),
+                  ),
+                ),
+                subtitle: Text(
+                  "Marque en caso de ser necesario",
+                  style: GoogleFonts.dmSans(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                    color: HexColor("#99AD8F"),
+                  ),
+                ),
+                value: this.turista_extranjero,
+                onChanged: (value) {
+                  setState(() {
+                    this.turista_extranjero = value!;
+                    if (this.turista_extranjero == true) {
+                      _showAlertDialogSi(context);
+                    }
+                  });
+                },
+              ),
+            ),
+            new Column(
+              children: <Widget> [
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Paises de origen",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_extranjero,
+                                  controller: obs_turista_extranjero_ciudad,
+                                  maxLines: 5,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique paises de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Llegadas mensuales",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_extranjero,
+                                  controller: obs_turista_extranjero_mensual,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique cuidades de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Total anual",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frecuencia_visita_si &&
+                                      this.turista_extranjero,
+                                  controller: obs_turista_extranjero_anual,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique cuidades de origen",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            new Container(
+              padding: EdgeInsets.all(15.0),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      enabled: this.registro_visitantes_si && this.frecuencia_visita_si,
+                      controller: obs_frecuencia_visita,
+                      maxLines: 5,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.input_outlined),
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
+                        "Ingrese sus observaciones en caso de ser necesarias",
+                        labelText: ("Observaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                                Radius.elliptical(10, 10))),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            new CheckboxListTile(
+              secondary: const Icon(Icons.fact_check_sharp),
+              tristate: false,
+              title: Text(
+                "11.2. FRECUENCIA DE VISITA SEGÚN INFORMANTES CLAVE",
+                style: GoogleFonts.dmSans(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  color: HexColor("#364C59"),
+                ),
+              ),
+              value: this.frencuencia_visita_clave_si,
+              onChanged: (value) {
+                setState(() {
+                  this.frencuencia_visita_clave_si = value!;
+                  if (this.frencuencia_visita_clave_si == true) {
+                    _showAlertDialogSi(context);
+                  }
+                });
+              },
+            ),
+            new Column(
+              children: <Widget> [
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Nombre del informante clave",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  enabled: this.registro_visitantes_si && this.frencuencia_visita_clave_si,
+                                  controller: obs_nombre_informante,
+                                  maxLines: 5,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique nombre informante clave",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Contactos",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.phone,
+                                  enabled: this.registro_visitantes_si && this.frencuencia_visita_clave_si,
+                                  controller: obs_contactos,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique contactos",
+                                    labelText: ("+593"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            new Container(
+              child: Container(
+                child: RadioListTile(
+                  value: 1,
+                  groupValue: optionGroup_demanda,
+                  title: Text("Demanda según días de visita",
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: HexColor("#364C59"),
+                      )
+                  ),
+                  onChanged: (val) {
+                    setSelectedRadio_demanda(val as int);
+                  },
+                  activeColor: Colors.indigo,
+                  selected: false,
+                ),
+              )
+            ),
+            new Column(
+              children: <Widget> [
+
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Lunes a Viernes",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frencuencia_visita_clave_si
+                                  && this.demanda_dias_si,
+                                  controller: obs_demanda_dias_lun_vie,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique días de demanda",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Fines de Semana",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frencuencia_visita_clave_si
+                                  && this.demanda_dias_si,
+                                  controller: obs_demanda_dias_fines,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique fines de semana",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                            child: Text(
+                                "Días feriados",
+                                style: GoogleFonts.dmSans(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: HexColor("#364C59"),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        child: Container(
+                          child: Form(
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.number,
+                                  enabled: this.registro_visitantes_si && this.frencuencia_visita_clave_si
+                                      && this.demanda_dias_si,
+                                  controller: obs_demanda_dias_feriados,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: HexColor("#0D0D0D"),
+                                  ),
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(20.0),
+                                    hintText:
+                                    "Especifique feriados",
+                                    labelText: ("Especifique"),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(10, 10))),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            new Column(
+              children: <Widget> [
+                new Container(
+                  child: RadioListTile(
+                    value: 2,
+                    groupValue: optionGroup_demanda,
+                    title: Text("Demanda según frecuencia de visita",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        )
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadio_demanda(val as int);
+                    },
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  ),
+                ),
+                new Container(
+                  child: RadioListTile(
+                    value: 1,
+                    groupValue: optionGroup_demanda_frecuencia,
+                    title: Text("Permanente",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        )
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadio_demanda_frecuencia(val as int);
+                    },
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  ),
+                ),
+                new Container(
+                  child: RadioListTile(
+                    value: 2,
+                    groupValue: optionGroup_demanda_frecuencia,
+                    title: Text("Estacional",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        )
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadio_demanda_frecuencia(val as int);
+                    },
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  ),
+                ),
+                new Container(
+                  child: RadioListTile(
+                    value: 3,
+                    groupValue: optionGroup_demanda_frecuencia,
+                    title: Text("Esporádica",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        )
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadio_demanda_frecuencia(val as int);
+                    },
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  ),
+                ),
+                new Container(
+                  child: RadioListTile(
+                    value: 4,
+                    groupValue: optionGroup_demanda_frecuencia,
+                    title: Text("Inexistente",
+                        style: GoogleFonts.dmSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: HexColor("#364C59"),
+                        )
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadio_demanda_frecuencia(val as int);
+                    },
+                    activeColor: Colors.indigo,
+                    selected: false,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
