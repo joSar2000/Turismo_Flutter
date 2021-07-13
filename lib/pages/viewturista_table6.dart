@@ -130,15 +130,12 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   bool desarrollo_industrial_M_fac = false;
   bool vandalismo_M_fac = false;
   bool otro_M_fac = false;
-  //String especifique_M_fac = obsOtro_M_fac.toString();
-  //String observaciones_M_fac = obs_M_fac.toString();
   //
   bool entorno_U = false;
   bool conservado_entorno_U = false;
   bool alterado_entorno_U = false;
   bool deterioro_entorno_U = false;
   bool deteriorado_entorno_U = false;
-  //String observaciones_entorno_U = obsEntorno.toString();
   bool erosion_M_ent = false;
   bool humedad_M_ent = false;
   bool desastres_naturales_M_ent = false;
@@ -160,15 +157,9 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   bool desarrollo_industrial_M_ent = false;
   bool vandalismo_M_ent = false;
   bool otro_M_ent = false;
-  //String especifique_M_ent = obsOtro_M_ent.toString();
-  //String observaciones_M_ent = obs_M_ent.toString();
   //
   bool declaratoria_espacio = false;
-  //String declarante_espacio = obsDeclarante.toString();
-  //String denominacion_espacio = obsDenominacion.toString();
   final fecha_declaracion_espacio = new DateTime.now();
-  //String alcance_espacio = obsAlcance.toString();
-  //String observaciones_espacio = obsDeclaratoria.toString();
 
   void _showAlertDialogNo(BuildContext context) {
     showDialog <String> (
@@ -242,8 +233,6 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
         )
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -2283,13 +2272,86 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
 
   void _sendData(BuildContext context) {
     String observaciones_atractivo_U = obs.text;
+    String especifique_M_fac = obsOtro_M_fac.text;
+    String observaciones_M_fac = obs_M_fac.text;
+    String observaciones_entorno_U = obsEntorno.text;
+    String especifique_M_ent = obsOtro_M_ent.text;
+    String observaciones_M_ent = obs_M_ent.text;
+    String declarante_espacio = obsDeclarante.text;
+    String denominacion_espacio = obsDenominacion.text;
+    String alcance_espacio = obsAlcance.text;
+    String observaciones_espacio = obsDeclaratoria.text;
     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => FormSaveWidget(
-            si_estado_conservacion: si_estado_conservacion,
-            observaciones_atractivo_U: observaciones_atractivo_U,
-          ),
+              si_estado_conservacion: si_estado_conservacion,
+              observaciones_atractivo_U: observaciones_atractivo_U,
+              atractivo_U: atractivo_U,
+              no_estado_conservacion: no_estado_conservacion,
+              s_i_estado_conservacion: s_i_estado_conservacion,
+              conservado_atractivo_U: conservado_atractivo_U,
+              alterado_atractivo_U: alterado_atractivo_U,
+              deterioro_atractivo_U: deterioro_atractivo_U,
+              deteriorado_atractivo_U: deteriorado_atractivo_U,
+              erosion_M_fac: erosion_M_fac,
+              humedad_M_fac: humedad_M_fac,
+              desastres_naturales_M_fac: desastres_naturales_M_fac,
+              flora_fauna_M_fac: flora_fauna_M_fac,
+              clima_M_fac: clima_M_fac,
+              actividades_agricolas_M_fac: actividades_agricolas_M_fac,
+              actividades_forestales_M_fac: actividades_forestales_M_fac,
+              actividades_minera_M_fac: actividades_minera_M_fac,
+              actividades_industriales_M_fac: actividades_industriales_M_fac,
+              neglicencia_M_fac: neglicencia_M_fac,
+              huaqueria_M_fac: huaqueria_M_fac,
+              conflictos_tenencia_M_fac: conflictos_tenencia_M_fac,
+              condiciones_uso_M_fac: condiciones_uso_M_fac,
+              falta_mantenimiento_M_fac: falta_mantenimiento_M_fac,
+              contaminacion_ambiente_M_fac: contaminacion_ambiente_M_fac,
+              generacion_residuos_M_fac: generacion_residuos_M_fac,
+              expansion_urbana_M_fac: expansion_urbana_M_fac,
+              conflicto_poliico_social_M_fac: conflicto_poliico_social_M_fac,
+              desarrollo_industrial_M_fac: desarrollo_industrial_M_fac,
+              vandalismo_M_fac: vandalismo_M_fac,
+              otro_M_fac: otro_M_fac,
+              especifique_M_fac: especifique_M_fac,
+              observaciones_M_fac: observaciones_M_fac,
+              entorno_U: entorno_U,
+              conservado_entorno_U: conservado_entorno_U,
+              alterado_entorno_U: alterado_entorno_U,
+              deterioro_entorno_U: deterioro_entorno_U,
+              deteriorado_entorno_U: deteriorado_entorno_U,
+              observaciones_entorno_U: observaciones_entorno_U,
+              erosion_M_ent: erosion_M_ent,
+              humedad_M_ent: humedad_M_ent,
+              desastres_naturales_M_ent: desastres_naturales_M_ent,
+              flora_fauna_M_ent: flora_fauna_M_ent,
+              clima_M_ent: clima_M_ent,
+              actividades_agricolas_M_ent: actividades_agricolas_M_ent,
+              actividades_forestales_M_ent: actividades_forestales_M_ent,
+              actividades_minera_M_ent: actividades_minera_M_ent,
+              actividades_industriales_M_ent: actividades_industriales_M_ent,
+              neglicencia_M_ent: neglicencia_M_ent,
+              huaqueria_M_ent: huaqueria_M_ent,
+              conflictos_tenencia_M_ent: conflictos_tenencia_M_ent,
+              condiciones_uso_M_ent: condiciones_uso_M_ent,
+              falta_mantenimiento_M_ent: falta_mantenimiento_M_ent,
+              contaminacion_ambiente_M_ent: contaminacion_ambiente_M_ent,
+              generacion_residuos_M_ent: generacion_residuos_M_ent,
+              expansion_urbana_M_ent: expansion_urbana_M_ent,
+              conflicto_poliico_social_M_ent: conflicto_poliico_social_M_ent,
+              desarrollo_industrial_M_ent: desarrollo_industrial_M_ent,
+              vandalismo_M_ent: vandalismo_M_ent,
+              otro_M_ent: otro_M_ent,
+              especifique_M_ent: especifique_M_ent,
+              observaciones_M_ent: observaciones_M_ent,
+              declaratoria_espacio: declaratoria_espacio,
+              declarante_espacio: declarante_espacio,
+              denominacion_espacio: denominacion_espacio,
+              fecha_declaracion_espacio: fecha_declaracion_espacio,
+              alcance_espacio: alcance_espacio,
+              observaciones_espacio: observaciones_espacio)
         ));
   }
 }

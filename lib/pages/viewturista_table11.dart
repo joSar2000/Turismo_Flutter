@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/dropdown.dart';
+import 'package:turismo_flutter/pages/viewturista_table12.dart';
 
 class TurismTable11 extends StatefulWidget {
   @override
@@ -27,27 +28,7 @@ class FormWidgetState11 extends State<TurismTable11> {
   static TextEditingController obs_demanda_dias_fines = TextEditingController();
   static TextEditingController obs_demanda_dias_feriados = TextEditingController();
   static TextEditingController obs_frecuencia_visita_clave = TextEditingController();
-  static TextEditingController obs_personas_administracion = TextEditingController();
-  static TextEditingController obs_personas_especializadas = TextEditingController();
-  static TextEditingController obs_personas_primaria = TextEditingController();
-  static TextEditingController obs_personas_secundaria = TextEditingController();
-  static TextEditingController obs_personas_tercer_nivel = TextEditingController();
-  static TextEditingController obs_personas_cuarto_nivel = TextEditingController();
-  static TextEditingController obs_personas_primeros_auxilios = TextEditingController();
-  static TextEditingController obs_personas_hospitalidad = TextEditingController();
-  static TextEditingController obs_personas_atencion_cliente = TextEditingController();
-  static TextEditingController obs_personas_guianza = TextEditingController();
-  static TextEditingController obs_personas_discapacidades = TextEditingController();
-  static TextEditingController obs_personas_capacitadas_otros = TextEditingController();
-  static TextEditingController obs_personas_ingles = TextEditingController();
-  static TextEditingController obs_personas_aleman = TextEditingController();
-  static TextEditingController obs_personas_frances = TextEditingController();
-  static TextEditingController obs_personas_italiano = TextEditingController();
-  static TextEditingController obs_personas_chino = TextEditingController();
-  static TextEditingController obs_personas_idioma_otro = TextEditingController();
-  static TextEditingController obs_personas_nivel_otro = TextEditingController();
-  static TextEditingController obs_recurso_humano = TextEditingController();
-  static TextEditingController obs_descripcion_atractivo = TextEditingController();
+
   static TextEditingController obs_anexos_fuente = TextEditingController();
   static TextEditingController obs_ubicacion_fuente = TextEditingController();
 
@@ -91,35 +72,8 @@ class FormWidgetState11 extends State<TurismTable11> {
   String demanda_dias_fines = obs_demanda_dias_fines.text;
   String demanda_dias_feriados = obs_demanda_dias_feriados.text;
   String frecuencia_visita_clave = obs_frecuencia_visita_clave.text;
-  bool recurso_humano_si = false;
-  bool recurso_humano_no = false;
-  bool recurso_humano_s_i = false;
-  bool personas_administracion_si = false;
-  bool personas_especializadas_si = false;
-  bool personas_nivel_instruccion = false;
-  bool personas_capacitadas = false;
-  bool personas_idiomas = false;
-  String personas_administracion = obs_personas_administracion.text;
-  String personas_especializadas = obs_personas_especializadas.text;
-  String personas_primaria = obs_personas_primaria.text;
-  String personas_secundaria = obs_personas_secundaria.text;
-  String personas_tercer_nivel = obs_personas_tercer_nivel.text;
-  String personas_cuarto_nivel = obs_personas_cuarto_nivel.text;
-  String personas_primeros_auxilios = obs_personas_primeros_auxilios.text;
-  String personas_hospitalidad = obs_personas_hospitalidad.text;
-  String personas_atencion_cliente = obs_personas_atencion_cliente.text;
-  String personas_guianza = obs_personas_guianza.text;
-  String personas_discapacidades = obs_personas_discapacidades.text;
-  String personas_capacitadas_otros = obs_personas_capacitadas_otros.text;
-  String personas_ingles = obs_personas_ingles.text;
-  String personas_aleman = obs_personas_aleman.text;
-  String personas_frances = obs_personas_frances.text;
-  String personas_italiano = obs_personas_italiano.text;
-  String personas_chino = obs_personas_chino.text;
-  String personas_idioma_otro = obs_personas_idioma_otro.text;
-  String personas_nivel_otro = obs_personas_nivel_otro.text;
-  String recurso_humano = obs_recurso_humano.text;
-  String descripcion_atractivo = obs_descripcion_atractivo.text;
+
+
   String anexos_fuente = obs_anexos_fuente.text;
   String ubicacion_fuente = obs_ubicacion_fuente.text;
 
@@ -131,7 +85,7 @@ class FormWidgetState11 extends State<TurismTable11> {
   int optionGroup_reporte_estadisticas = 0;
   int optionGroup_demanda = 0;
   int optionGroup_demanda_frecuencia = 0;
-  int optionGroup_recurso_humano = 0;
+
   int optionGroup_temporalidad = 0;
 
   @override
@@ -143,7 +97,6 @@ class FormWidgetState11 extends State<TurismTable11> {
     optionGroup_reporte_estadisticas = 0;
     optionGroup_demanda = 0;
     optionGroup_demanda_frecuencia = 0;
-    optionGroup_recurso_humano = 0;
     optionGroup_temporalidad = 0;
   }
 
@@ -275,30 +228,7 @@ class FormWidgetState11 extends State<TurismTable11> {
       }
     });
   }
-  setSelectedRadio_recurso_humano(int val) {
-    setState(() {
-      optionGroup_recurso_humano = val;
-      if (optionGroup_recurso_humano == 1) {
-        this.recurso_humano_si = true;
-        this.recurso_humano_no = false;
-        this.recurso_humano_s_i = false;
-        if (this.recurso_humano_si == true) {
-          _showAlertDialogSi(context);
-        }
-      } else if (optionGroup_recurso_humano == 2) {
-        this.recurso_humano_si = false;
-        this.recurso_humano_no = true;
-        this.recurso_humano_s_i = false;
-        if (this.recurso_humano_no == true) {
-          _showAlertDialogNo(context);
-        }
-      } else if (optionGroup_recurso_humano == 3) {
-        this.recurso_humano_si = false;
-        this.recurso_humano_no = false;
-        this.recurso_humano_s_i = true;
-      }
-    });
-  }
+
 
   void _showAlertDialogSi(BuildContext context) {
     showDialog<String>(
@@ -392,8 +322,7 @@ class FormWidgetState11 extends State<TurismTable11> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TurismTable11()));
-                  print("luego");
+                      MaterialPageRoute(builder: (context) => TurismTable12()));
                 },
               ),
             ],

@@ -1,108 +1,87 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// Copyright 2013 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
-void main() => runApp(MyApp());
+// ignore_for_file: public_member_api_docs
+
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("Flutter Radio Button Group Example"),
-          ),
-          body: SafeArea(
-              child : Center(
+      title: 'SharedPreferences Demo',
+      home: SharedPreferencesDemo(),
+    );
+  }
+}
 
-                child:RadioGroup(),
+class SharedPreferencesDemo extends StatefulWidget {
+  SharedPreferencesDemo({Key? key}) : super(key: key);
 
-              )
-          )
+  @override
+  SharedPreferencesDemoState createState() => SharedPreferencesDemoState();
+}
+
+class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late Future<int> _counter;
+
+  Future<void> _incrementCounter() async {
+    final SharedPreferences prefs = await _prefs;
+    final int counter = (prefs.getInt('counter') ?? 0) + 1;
+
+    setState(() {
+      _counter = prefs.setInt("counter", counter).then((bool success) {
+        return counter;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _counter = _prefs.then((SharedPreferences prefs) {
+      return (prefs.getInt('counter') ?? 0);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("SharedPreferences Demo"),
+      ),
+      body: Center(
+          child: FutureBuilder<int>(
+              future: _counter,
+              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return const CircularProgressIndicator();
+                  default:
+                    if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return Text(
+                        'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
+                            'This should persist across restarts.',
+                      );
+                    }
+                }
+              })),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
-}
-
-class RadioGroup extends StatefulWidget {
-  @override
-  RadioGroupWidget createState() => RadioGroupWidget();
-}
-
-class FruitsList {
-  String name;
-  bool index;
-  FruitsList({required this.name, required this.index});
-}
-
-class RadioGroupWidget extends State {
-
-  // Default Radio Button Item
-  String radioItem = 'Mango';
-
-  // Group Value for Radio Button.
-  //int id = 1;
-  bool id = false;
-
-  List<FruitsList> fList = [
-    FruitsList(
-      index: false,
-      name: "Mang",
-    ),
-    FruitsList(
-      index: false,
-      name: "Apple",
-    ),
-    FruitsList(
-      index: false,
-      name: "Banana",
-    ),
-    FruitsList(
-      index: false,
-      name: "Cherry",
-    ),
-  ];
-
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-            padding : EdgeInsets.all(14.0),
-            child: Text('$radioItem', style: TextStyle(fontSize: 23))
-        ),
-
-        Expanded(
-            child: Container(
-              height: 350.0,
-              child: Column(
-                children:
-                fList.map((data) => RadioListTile(
-                  title: Text("${data.name}"),
-                  groupValue: id,
-                  value: data.index,
-                  onChanged: (val) {
-                    setState(() {
-                      radioItem = data.name ;
-                      id = data.index;
-                      print(id);
-                    });
-                  },
-                )).toList(),
-              ),
-            )),
-
-      ],
-    );
-  }
-}
-
-class Values {
-  bool si_estado_conservacion = false;
-  String observaciones_atractivo_U = "";
-
-  setValues(bool si_estado_conservacion, String observaciones_atractivo_U){
-    this.si_estado_conservacion = si_estado_conservacion;
-    this.observaciones_atractivo_U = observaciones_atractivo_U;
-    print(observaciones_atractivo_U);
-  }
-
 }
