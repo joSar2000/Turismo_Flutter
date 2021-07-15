@@ -152,41 +152,6 @@ class FormWidgetState12 extends State <TurismTable12> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          //bottom navigation bar on scaffold
-          color: HexColor("#364C59"),
-          shape: CircularNotchedRectangle(), //shape of notch
-          notchMargin:
-          10, //notche margin between floating button and bottom appbar
-          child: Row(
-            //children inside bottom appbar
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TurismTable13()));
-                },
-              ),
-            ],
-          ),
-        ),
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,
@@ -199,6 +164,24 @@ class FormWidgetState12 extends State <TurismTable12> {
                 fontSize: 20,
                 color: HexColor("#A65005"),
               )),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded,
+              size: 35.0,
+              color: HexColor("#A65005"),),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                _sendData(context);
+              },
+            ),
+          ],
         ),
         body: ListView(
           padding: EdgeInsets.all(5.0),
@@ -1399,6 +1382,12 @@ class FormWidgetState12 extends State <TurismTable12> {
           ],
         ),
       ),
+    );
+  }
+
+  void _sendData(BuildContext context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => TurismTable13())
     );
   }
 

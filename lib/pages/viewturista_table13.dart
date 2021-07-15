@@ -18,41 +18,7 @@ class FormWidgetState13 extends State<TurismTable13> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          //bottom navigation bar on scaffold
-          color: HexColor("#364C59"),
-          shape: CircularNotchedRectangle(), //shape of notch
-          notchMargin:
-          10, //notche margin between floating button and bottom appbar
-          child: Row(
-            //children inside bottom appbar
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TurismTable14()));
-                },
-              ),
-            ],
-          ),
-        ),
+
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,
@@ -65,6 +31,24 @@ class FormWidgetState13 extends State<TurismTable13> {
                 fontSize: 20,
                 color: HexColor("#A65005"),
               )),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded,
+              size: 35.0,
+              color: HexColor("#A65005"),),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                _sendData(context);
+              },
+            ),
+          ],
         ),
         body: Center(
           child: Container(
@@ -78,7 +62,7 @@ class FormWidgetState13 extends State<TurismTable13> {
                   TextFormField(
                     controller: obs_descripcion_atractivo,
                     maxLength: 500,
-                    maxLines: 15,
+                    maxLines: 10,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: HexColor("#0D0D0D"),
@@ -99,6 +83,12 @@ class FormWidgetState13 extends State<TurismTable13> {
           ),
         ),
       ),
+    );
+  }
+
+  void _sendData(BuildContext context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => TurismTable14())
     );
   }
 

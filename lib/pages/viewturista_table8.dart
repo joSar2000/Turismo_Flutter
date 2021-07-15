@@ -905,42 +905,6 @@ class CheckboxWidgetState extends State<TableTurism8> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          //bottom navigation bar on scaffold
-          color: HexColor("#364C59"),
-          shape: CircularNotchedRectangle(), //shape of notch
-          notchMargin:
-              10, //notche margin between floating button and bottom appbar
-          child: Row(
-            //children inside bottom appbar
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                  guardarPreferencias();
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  _sendData(context);
-                  guardarPreferencias();
-                },
-              ),
-            ],
-          ),
-        ),
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,
@@ -953,6 +917,24 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 fontSize: 20,
                 color: HexColor("#A65005"),
               )),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded,
+              size: 35.0,
+              color: HexColor("#A65005"),),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                _sendData(context);
+              },
+            ),
+          ],
         ),
         body: ListView(
           padding: EdgeInsets.all(5.0),
