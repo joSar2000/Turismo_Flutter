@@ -4,6 +4,12 @@
     "project_id": "turismobd-60712",
     "storage_bucket": "turismobd-60712.appspot.com"
   },
+  "rules": {
+    "foo": {
+      ".read": true,
+      ".write": true
+    }
+  },
   "client": [
     {
       "client_info": {
