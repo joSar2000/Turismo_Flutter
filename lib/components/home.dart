@@ -15,8 +15,8 @@ class _Home extends State<Home> {
   int _currentIndex = 2;
   final tabs = [
     Center(child: Text("Buscar")),
-    listRecursos(),
-    turismTable6(),
+    ListRecursos(),
+    TurismTable6(),
     Center(child: Text("Mapas")),
     Center(child: Text("Ajustes de aplicación")),
   ];

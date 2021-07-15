@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: turismTable6.ROUTE,
+      initialRoute: TurismTable6.ROUTE,
       routes: {
-        turismTable6.ROUTE : (_) => Home(),
+        TurismTable6.ROUTE : (_) => Home(),
 
         //turismTable6_1.ROUTE : (_) => turismTable6_1(),
         //turismTable6_2.ROUTE: (_) => turismTable6_2(),

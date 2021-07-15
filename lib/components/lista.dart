@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/components/sitio.dart';
 
-class listRecursos extends StatefulWidget {
+class ListRecursos extends StatefulWidget {
   @override
-  _listRecursosState createState() => _listRecursosState();
+  _ListRecursosState createState() => _ListRecursosState();
 }
 
-class _listRecursosState extends State<listRecursos> {
+class _ListRecursosState extends State<ListRecursos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

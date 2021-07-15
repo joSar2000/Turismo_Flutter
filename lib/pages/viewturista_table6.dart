@@ -7,7 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/pages/prueba.dart';
 
-class turismTable6 extends StatelessWidget {
+class TurismTable6 extends StatelessWidget {
   static const String ROUTE = "/table6";
   @override
   Widget build(BuildContext context) {
