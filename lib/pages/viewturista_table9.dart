@@ -940,6 +940,24 @@ class FormWidgetState9 extends State<turismTable9> {
                 fontSize: 20,
                 color: HexColor("#A65005"),
               )),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded,
+              size: 35.0,
+              color: HexColor("#A65005"),),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                _sendData(context);
+              },
+            ),
+          ],
         ),
         body: ListView(
           padding: EdgeInsets.all(5.0),
@@ -2708,6 +2726,11 @@ class FormWidgetState9 extends State<turismTable9> {
     );
   }
 
+  void _sendData (BuildContext context) {
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context) => TurismTable10())
+    );
+  }
 }
 
 

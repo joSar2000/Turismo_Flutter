@@ -761,41 +761,7 @@ class FormWidgetState extends State<FormSaveWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          bottomNavigationBar: BottomAppBar(
-            //bottom navigation bar on scaffold
-            color: HexColor("#364C59"),
-            shape: CircularNotchedRectangle(), //shape of notch
-            notchMargin:
-            10, //notche margin between floating button and bottom appbar
-            child: Row(
-              //children inside bottom appbar
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    size: 35.0,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 35.0,
-                    color: Colors.white,
-                  ),
-                  onPressed: () async {
-                    _sendData(context);
-                    guardarPreferencias();
-                  },
-                ),
-              ],
-            ),
-          ),
+
           backgroundColor: HexColor("#F0F2F2"),
           appBar: AppBar(
             elevation: 0,
@@ -808,6 +774,25 @@ class FormWidgetState extends State<FormSaveWidget> {
                   fontSize: 20,
                   color: HexColor("#A65005"),
                 )),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            actions: <Widget> [
+              IconButton(
+                icon: Icon(Icons.arrow_forward_ios_rounded,
+                  size: 35.0,
+                  color: HexColor("#A65005"),),
+                onPressed: () async {
+                  _sendData(context);
+                  guardarPreferencias();
+                },
+              ),
+            ],
           ),
           body: ListView(padding: EdgeInsets.all(5.0), children: <Widget>[
             new Row(

@@ -7,7 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/pages/prueba.dart';
 
-class turismTable6 extends StatelessWidget {
+class TurismTable6 extends StatelessWidget {
   static const String ROUTE = "/table6";
   @override
   Widget build(BuildContext context) {
@@ -238,65 +238,40 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          elevation: 10.0,
-          //bottom navigation bar on scaffold
-          color: HexColor("#364C59"),
-          shape: CircularNotchedRectangle(), //shape of notch
-          notchMargin:
-              10, //notche margin between floating button and bottom appbar
-          child: Row(
-            //children inside bottom appbar
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  print("Agregamos luego");
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  _sendData(context);
-                },
-              ),
-            ],
-          ),
-        ),
-        /*
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.arrow_forward_ios),
-          onPressed: () {
-            //Navigator.pushNamed(context, turismTable6_1.ROUTE);
-            _sendData(context);
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
-         */
+
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          title:
+          Text('6. ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
+              textAlign: TextAlign.center,
+              maxLines: 6,
+              style: GoogleFonts.dmSans(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: HexColor("#A65005"),
+              )),
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
-          title:
-              Text('6. ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
-                  textAlign: TextAlign.center,
-                  maxLines: 5,
-                  style: GoogleFonts.dmSans(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: HexColor("#A65005"),
-                  )),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded,
+              size: 35.0,
+              color: HexColor("#A65005"),),
+            onPressed: () {
+              print("Agregamos luego");
+            },
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios_rounded,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () {
+                _sendData(context);
+              },
+            ),
+          ],
+
         ),
         body: ListView(
           padding: EdgeInsets.all(10.0),
@@ -2269,6 +2244,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
       ),
     );
   }
+
 
   void _sendData(BuildContext context) {
     String observaciones_atractivo_U = obs.text;
