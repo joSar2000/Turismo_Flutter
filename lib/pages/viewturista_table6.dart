@@ -2,28 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:turismo_flutter/pages/viewturista_table7.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:turismo_flutter/pages/prueba.dart';
 
-class TurismTable6 extends StatelessWidget {
-  static const String ROUTE = "/table6";
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-            child: Center(
-          child: TableTurism_6(),
-        )),
-      ),
-    );
-  }
-}
-//enum optionsRadioButton {javatpoint, w3schools, tutorialandexample}
-class TableTurism_6 extends StatefulWidget {
-  static const String ROUTE = "/entorno_conservacion";
+class TableTurism6 extends StatefulWidget {
   /*
   OJO, DESDE LA PRIMERA PANTALLA SE DEBEN IR INGRESANDO LOS DATOS
   Preparar valores de las pantallas anteiores y poner en constructor
@@ -33,10 +15,10 @@ class TableTurism_6 extends StatefulWidget {
   }) : super(key: key);
    */
   @override
-  State<StatefulWidget> createState() => new CheckboxWidgetState1();
+  State<StatefulWidget> createState() => new FormWidgetState6();
 }
-enum optionsRadioButton {SI, NO, SY}
-class CheckboxWidgetState1 extends State<TableTurism_6> {
+
+class FormWidgetState6 extends State<TableTurism6>{
   DateTime currentDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -167,7 +149,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
         builder: (BuildContext context) => AlertDialog(
           title: const Text('AVISO', textAlign: TextAlign.center,),
           content: const Text(
-              'Debe navegar hasta la siguiente pantalla con el botón de la parte inferior',
+            'Debe navegar hasta la siguiente pantalla con el botón de la parte inferior',
             textAlign: TextAlign.center,
           ),
           actions: <Widget>[
@@ -238,8 +220,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
-
+        resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           title:
@@ -258,7 +239,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
               size: 35.0,
               color: HexColor("#A65005"),),
             onPressed: () {
-              print("Agregamos luego");
+              Navigator.pop(context);
             },
           ),
           actions: <Widget> [
@@ -495,11 +476,11 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                     icon: Icon(Icons.input_outlined),
                     contentPadding: EdgeInsets.all(20.0),
                     hintText:
-                        "Ingrese sus observaciones en caso de ser necesarias",
+                    "Ingrese sus observaciones en caso de ser necesarias",
                     labelText: ("Observaciones"),
                     border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.all(Radius.elliptical(10, 10))),
+                        BorderRadius.all(Radius.elliptical(10, 10))),
                   ),
                 ),
                 SizedBox(
@@ -1179,38 +1160,38 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
             ),
             new Form(
                 child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  enabled: this.si_estado_conservacion,
-                  controller: obs_M_fac,
-                  maxLines: 3,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "correcto";
-                    } else {
-                      return "ingrese valores!";
-                    }
-                  },
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: HexColor("#0D0D0D"),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.input_outlined),
-                    contentPadding: EdgeInsets.all(20.0),
-                    hintText:
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      enabled: this.si_estado_conservacion,
+                      controller: obs_M_fac,
+                      maxLines: 3,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "correcto";
+                        } else {
+                          return "ingrese valores!";
+                        }
+                      },
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.input_outlined),
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
                         "Ingrese sus observaciones en caso de ser necesarias",
-                    labelText: ("Observaciones"),
-                    border: OutlineInputBorder(
-                        borderRadius:
+                        labelText: ("Observaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius:
                             BorderRadius.all(Radius.elliptical(10, 10))),
-                  ),
-                )
-              ],
-            )),
+                      ),
+                    )
+                  ],
+                )),
             new Container(
               padding: EdgeInsets.all(20.0),
               child: Text("ENTORNO (U)",
@@ -2029,37 +2010,37 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
             ),
             new Form(
                 child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  controller: obs_M_ent,
-                  maxLines: 3,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "correcto";
-                    } else {
-                      return "ingrese valores!";
-                    }
-                  },
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: HexColor("#0D0D0D"),
-                  ),
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.input_outlined),
-                    contentPadding: EdgeInsets.all(20.0),
-                    hintText:
+                  children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextFormField(
+                      controller: obs_M_ent,
+                      maxLines: 3,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "correcto";
+                        } else {
+                          return "ingrese valores!";
+                        }
+                      },
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: HexColor("#0D0D0D"),
+                      ),
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.input_outlined),
+                        contentPadding: EdgeInsets.all(20.0),
+                        hintText:
                         "Ingrese sus observaciones en caso de ser necesarias",
-                    labelText: ("Observaciones"),
-                    border: OutlineInputBorder(
-                        borderRadius:
+                        labelText: ("Observaciones"),
+                        border: OutlineInputBorder(
+                            borderRadius:
                             BorderRadius.all(Radius.elliptical(10, 10))),
-                  ),
-                )
-              ],
-            )),
+                      ),
+                    )
+                  ],
+                )),
             new Column(
               children: <Widget>[
                 new Container(
@@ -2131,7 +2112,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           labelText: ("Declarante"),
                           border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
@@ -2156,7 +2137,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           labelText: ("Denominación"),
                           border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
@@ -2181,7 +2162,7 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           labelText: ("Alcance"),
                           border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
@@ -2203,11 +2184,11 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
                           hintText:
-                              "Ingrese sus observaciones en caso de ser necesarias",
+                          "Ingrese sus observaciones en caso de ser necesarias",
                           labelText: ("Observaciones"),
                           border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       TextFormField(
@@ -2216,13 +2197,13 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
                         decoration: InputDecoration(
                           icon: Icon(Icons.input_outlined),
                           contentPadding: EdgeInsets.all(20.0),
-                          hintText: currentDate.toString(),
-                          labelText: ("[AAAA-MM-DD]\n[" +
-                              currentDate.toString() +
+                          //hintText: currentDate.toString(),
+                          labelText: ("[DD-MM-AAAA]\n[" +
+                              currentDate.day.toString() + " - " + currentDate.month.toString() + " - " + currentDate.year.toString() +
                               "]"),
                           border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.elliptical(10, 10))),
+                              BorderRadius.all(Radius.elliptical(10, 10))),
                         ),
                       ),
                       //Text(currentDate.toString()),
@@ -2260,74 +2241,74 @@ class CheckboxWidgetState1 extends State<TableTurism_6> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FormSaveWidget(
-              si_estado_conservacion: si_estado_conservacion,
-              observaciones_atractivo_U: observaciones_atractivo_U,
-              atractivo_U: atractivo_U,
-              no_estado_conservacion: no_estado_conservacion,
-              s_i_estado_conservacion: s_i_estado_conservacion,
-              conservado_atractivo_U: conservado_atractivo_U,
-              alterado_atractivo_U: alterado_atractivo_U,
-              deterioro_atractivo_U: deterioro_atractivo_U,
-              deteriorado_atractivo_U: deteriorado_atractivo_U,
-              erosion_M_fac: erosion_M_fac,
-              humedad_M_fac: humedad_M_fac,
-              desastres_naturales_M_fac: desastres_naturales_M_fac,
-              flora_fauna_M_fac: flora_fauna_M_fac,
-              clima_M_fac: clima_M_fac,
-              actividades_agricolas_M_fac: actividades_agricolas_M_fac,
-              actividades_forestales_M_fac: actividades_forestales_M_fac,
-              actividades_minera_M_fac: actividades_minera_M_fac,
-              actividades_industriales_M_fac: actividades_industriales_M_fac,
-              neglicencia_M_fac: neglicencia_M_fac,
-              huaqueria_M_fac: huaqueria_M_fac,
-              conflictos_tenencia_M_fac: conflictos_tenencia_M_fac,
-              condiciones_uso_M_fac: condiciones_uso_M_fac,
-              falta_mantenimiento_M_fac: falta_mantenimiento_M_fac,
-              contaminacion_ambiente_M_fac: contaminacion_ambiente_M_fac,
-              generacion_residuos_M_fac: generacion_residuos_M_fac,
-              expansion_urbana_M_fac: expansion_urbana_M_fac,
-              conflicto_poliico_social_M_fac: conflicto_poliico_social_M_fac,
-              desarrollo_industrial_M_fac: desarrollo_industrial_M_fac,
-              vandalismo_M_fac: vandalismo_M_fac,
-              otro_M_fac: otro_M_fac,
-              especifique_M_fac: especifique_M_fac,
-              observaciones_M_fac: observaciones_M_fac,
-              entorno_U: entorno_U,
-              conservado_entorno_U: conservado_entorno_U,
-              alterado_entorno_U: alterado_entorno_U,
-              deterioro_entorno_U: deterioro_entorno_U,
-              deteriorado_entorno_U: deteriorado_entorno_U,
-              observaciones_entorno_U: observaciones_entorno_U,
-              erosion_M_ent: erosion_M_ent,
-              humedad_M_ent: humedad_M_ent,
-              desastres_naturales_M_ent: desastres_naturales_M_ent,
-              flora_fauna_M_ent: flora_fauna_M_ent,
-              clima_M_ent: clima_M_ent,
-              actividades_agricolas_M_ent: actividades_agricolas_M_ent,
-              actividades_forestales_M_ent: actividades_forestales_M_ent,
-              actividades_minera_M_ent: actividades_minera_M_ent,
-              actividades_industriales_M_ent: actividades_industriales_M_ent,
-              neglicencia_M_ent: neglicencia_M_ent,
-              huaqueria_M_ent: huaqueria_M_ent,
-              conflictos_tenencia_M_ent: conflictos_tenencia_M_ent,
-              condiciones_uso_M_ent: condiciones_uso_M_ent,
-              falta_mantenimiento_M_ent: falta_mantenimiento_M_ent,
-              contaminacion_ambiente_M_ent: contaminacion_ambiente_M_ent,
-              generacion_residuos_M_ent: generacion_residuos_M_ent,
-              expansion_urbana_M_ent: expansion_urbana_M_ent,
-              conflicto_poliico_social_M_ent: conflicto_poliico_social_M_ent,
-              desarrollo_industrial_M_ent: desarrollo_industrial_M_ent,
-              vandalismo_M_ent: vandalismo_M_ent,
-              otro_M_ent: otro_M_ent,
-              especifique_M_ent: especifique_M_ent,
-              observaciones_M_ent: observaciones_M_ent,
-              declaratoria_espacio: declaratoria_espacio,
-              declarante_espacio: declarante_espacio,
-              denominacion_espacio: denominacion_espacio,
-              fecha_declaracion_espacio: fecha_declaracion_espacio,
-              alcance_espacio: alcance_espacio,
-              observaciones_espacio: observaciones_espacio)
+            builder: (context) => FormSaveWidget(
+                si_estado_conservacion: si_estado_conservacion,
+                observaciones_atractivo_U: observaciones_atractivo_U,
+                atractivo_U: atractivo_U,
+                no_estado_conservacion: no_estado_conservacion,
+                s_i_estado_conservacion: s_i_estado_conservacion,
+                conservado_atractivo_U: conservado_atractivo_U,
+                alterado_atractivo_U: alterado_atractivo_U,
+                deterioro_atractivo_U: deterioro_atractivo_U,
+                deteriorado_atractivo_U: deteriorado_atractivo_U,
+                erosion_M_fac: erosion_M_fac,
+                humedad_M_fac: humedad_M_fac,
+                desastres_naturales_M_fac: desastres_naturales_M_fac,
+                flora_fauna_M_fac: flora_fauna_M_fac,
+                clima_M_fac: clima_M_fac,
+                actividades_agricolas_M_fac: actividades_agricolas_M_fac,
+                actividades_forestales_M_fac: actividades_forestales_M_fac,
+                actividades_minera_M_fac: actividades_minera_M_fac,
+                actividades_industriales_M_fac: actividades_industriales_M_fac,
+                neglicencia_M_fac: neglicencia_M_fac,
+                huaqueria_M_fac: huaqueria_M_fac,
+                conflictos_tenencia_M_fac: conflictos_tenencia_M_fac,
+                condiciones_uso_M_fac: condiciones_uso_M_fac,
+                falta_mantenimiento_M_fac: falta_mantenimiento_M_fac,
+                contaminacion_ambiente_M_fac: contaminacion_ambiente_M_fac,
+                generacion_residuos_M_fac: generacion_residuos_M_fac,
+                expansion_urbana_M_fac: expansion_urbana_M_fac,
+                conflicto_poliico_social_M_fac: conflicto_poliico_social_M_fac,
+                desarrollo_industrial_M_fac: desarrollo_industrial_M_fac,
+                vandalismo_M_fac: vandalismo_M_fac,
+                otro_M_fac: otro_M_fac,
+                especifique_M_fac: especifique_M_fac,
+                observaciones_M_fac: observaciones_M_fac,
+                entorno_U: entorno_U,
+                conservado_entorno_U: conservado_entorno_U,
+                alterado_entorno_U: alterado_entorno_U,
+                deterioro_entorno_U: deterioro_entorno_U,
+                deteriorado_entorno_U: deteriorado_entorno_U,
+                observaciones_entorno_U: observaciones_entorno_U,
+                erosion_M_ent: erosion_M_ent,
+                humedad_M_ent: humedad_M_ent,
+                desastres_naturales_M_ent: desastres_naturales_M_ent,
+                flora_fauna_M_ent: flora_fauna_M_ent,
+                clima_M_ent: clima_M_ent,
+                actividades_agricolas_M_ent: actividades_agricolas_M_ent,
+                actividades_forestales_M_ent: actividades_forestales_M_ent,
+                actividades_minera_M_ent: actividades_minera_M_ent,
+                actividades_industriales_M_ent: actividades_industriales_M_ent,
+                neglicencia_M_ent: neglicencia_M_ent,
+                huaqueria_M_ent: huaqueria_M_ent,
+                conflictos_tenencia_M_ent: conflictos_tenencia_M_ent,
+                condiciones_uso_M_ent: condiciones_uso_M_ent,
+                falta_mantenimiento_M_ent: falta_mantenimiento_M_ent,
+                contaminacion_ambiente_M_ent: contaminacion_ambiente_M_ent,
+                generacion_residuos_M_ent: generacion_residuos_M_ent,
+                expansion_urbana_M_ent: expansion_urbana_M_ent,
+                conflicto_poliico_social_M_ent: conflicto_poliico_social_M_ent,
+                desarrollo_industrial_M_ent: desarrollo_industrial_M_ent,
+                vandalismo_M_ent: vandalismo_M_ent,
+                otro_M_ent: otro_M_ent,
+                especifique_M_ent: especifique_M_ent,
+                observaciones_M_ent: observaciones_M_ent,
+                declaratoria_espacio: declaratoria_espacio,
+                declarante_espacio: declarante_espacio,
+                denominacion_espacio: denominacion_espacio,
+                fecha_declaracion_espacio: fecha_declaracion_espacio,
+                alcance_espacio: alcance_espacio,
+                observaciones_espacio: observaciones_espacio)
         ));
   }
 }

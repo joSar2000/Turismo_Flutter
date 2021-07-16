@@ -293,6 +293,7 @@ class FormWidgetState11 extends State<TurismTable11> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,

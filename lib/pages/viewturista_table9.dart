@@ -891,6 +891,7 @@ class FormWidgetState9 extends State<turismTable9> {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomAppBar(
           //bottom navigation bar on scaffold
           color: HexColor("#364C59"),
