@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:turismo_flutter/pages/viewturista_table6.dart';
 import 'package:turismo_flutter/pages/viewturista_table8.dart';
 
 class FormSaveWidget extends StatefulWidget {
@@ -761,7 +760,7 @@ class FormWidgetState extends State<FormSaveWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-
+          resizeToAvoidBottomInset: false,
           backgroundColor: HexColor("#F0F2F2"),
           appBar: AppBar(
             elevation: 0,
@@ -838,12 +837,6 @@ class FormWidgetState extends State<FormSaveWidget> {
                       )),
                 ),
               ],
-            ),
-            new RaisedButton(
-              child: Text("enviar"),
-              onPressed: () {
-                _sendBDD();
-              },
             ),
             new CheckboxListTile(
               tristate: false,
@@ -9168,18 +9161,13 @@ class FormWidgetState extends State<FormSaveWidget> {
                             height: 5,
                           ),
                           TextFormField(
-                            enabled: false,
-                            controller: obs_multiamenaza_nombre_doc,
                             maxLines: 3,
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              color: HexColor("#0D0D0D"),
-                            ),
+                            enabled: false,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(20.0),
-                              hintText: currentDate.toString(),
-                              labelText: ("[AAAA-MM-DD]\n[" +
-                                  currentDate.toString() +
+                              //hintText: currentDate.toString(),
+                              labelText: ("[DD-MM-AAAA]\n[" +
+                                  currentDate.day.toString() + " - " + currentDate.month.toString() + " - " + currentDate.year.toString() +
                                   "]"),
                               border: OutlineInputBorder(
                                   borderRadius:
@@ -9193,9 +9181,13 @@ class FormWidgetState extends State<FormSaveWidget> {
                 ),
               ],
             ),
-            new RaisedButton(
-              child: Text("Obtener Fecha"),
-              onPressed: () => _selectDate(context),
+            new Container(
+              padding: EdgeInsets.all(10.0),
+              child: FloatingActionButton(
+                elevation: 20.0,
+                child: Icon(Icons.calendar_today),
+                onPressed: () => _selectDate(context),
+              ),
             ),
             new Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -9243,6 +9235,14 @@ class FormWidgetState extends State<FormSaveWidget> {
                   ),
                 ),
               ],
+            ),
+            new RaisedButton(
+                child: Text(
+                  "Enviar"
+                ),
+                onPressed: () {
+                  _sendBDD();
+                },
             ),
           ]),
         ));

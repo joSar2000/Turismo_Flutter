@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:turismo_flutter/pages/final_page.dart';
 
 class TurismTable14 extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class FormWidgetState14 extends State<TurismTable14>  {
                   size: 35.0,
                   color: HexColor("#A65005"),),
                 onPressed: () {
-                  print("Enviamos a pantalla final!!");
+                  _setData(context);
                 },
               ),
             ],
@@ -94,6 +95,12 @@ class FormWidgetState14 extends State<TurismTable14>  {
           ),
 
         )
+    );
+  }
+
+  void _setData(BuildContext context) {
+    Navigator.push(context,
+      MaterialPageRoute(builder: (context) => final_page())
     );
   }
 //

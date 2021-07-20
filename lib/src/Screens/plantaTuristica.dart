@@ -11,6 +11,22 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
   String _seleccion1 = "Hotel";
   String _seleccion2 = "Restaurantes";
   String _seleccion3 = "Mayoristas";
+  int estableci_registrados = 0;
+  int numero_mesas = 0;
+  int numero_plazas = 0;
+  String observaciones = "";
+  int estableci_registrados_alimentos = 0;
+  int numero_mesas_alimentos = 0;
+  int numero_plazas_alimentos = 0;
+  String observaciones_alimentos = "";
+  int estableci_registrados_agencias = 0;
+  String observaciones_agencias = "";
+  int local = 0;
+  int nacional = 0;
+  int nacional_especializado = 0;
+  int cultura = 0;
+  int aventura = 0;
+  String observaciones_guia = "";
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +34,11 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
       appBar: AppBar(
         backgroundColor: Color(0xff885566),
         title: Text("Planta Turística/Complementarios",
-          style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70,
-              )
-        ),
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white70,
+            )),
       ),
       body: ListView(
         padding: EdgeInsets.all(5.0),
@@ -31,42 +46,39 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
           _crearComboBox("Planta Turística"),
           _crearComboBox1("Alojamiento"),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration:
-                InputDecoration(labelText: "Establecimientos Registrados:"),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration:
+                  InputDecoration(labelText: "Establecimientos Registrados:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Número de Mesas:"),
-            style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Número de Mesas:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Número de Plazas:"),
-            style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Número de Plazas:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
               decoration: InputDecoration(labelText: "Observaciones:"),
               style: TextStyle(
@@ -78,43 +90,39 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
               )),
           _crearComboBox2("Alimentos y bebidas"),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration:
-                InputDecoration(labelText: "Establecimientos Registrados:"),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration:
+                  InputDecoration(labelText: "Establecimientos Registrados:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration:
-                InputDecoration(labelText: "Numero de Mesas:"),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Numero de Mesas:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Número de Plazas:"),
-            style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Número de Plazas:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
               decoration: InputDecoration(labelText: "Observaciones:"),
               style: TextStyle(
@@ -126,18 +134,17 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
               )),
           _crearComboBox3("Agencias de Viaje"),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration:
-                InputDecoration(labelText: "Establecimientos Registrados:"),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.brown.shade800,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration:
+                  InputDecoration(labelText: "Establecimientos Registrados:"),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.brown.shade800,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                decorationStyle: TextDecorationStyle.solid,
+              )),
           TextField(
               decoration: InputDecoration(labelText: "Observaciones:"),
               style: TextStyle(
@@ -148,20 +155,17 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
                 decorationStyle: TextDecorationStyle.solid,
               )),
           Center(
-              child: Text(
-              "GUÍA",
-              style: TextStyle(
+              child: Text("GUÍA",
+                  style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.blueGrey,
-              )
-            )
-          ),
+                  ))),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Local:"),
-            style: TextStyle(
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Local:"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
@@ -169,74 +173,68 @@ class _PlantaTuristicaState extends State<PlantaTuristica> {
                 decorationStyle: TextDecorationStyle.solid,
               )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Nacional:"),
-            style: TextStyle(
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Nacional:"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Nacional Especializado:"),
-            style: TextStyle(
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Nacional Especializado:"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Cultura:"),
-            style: TextStyle(
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Cultura:"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              )),
           TextField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: "Aventura:"),
-            style: TextStyle(
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(labelText: "Aventura:"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              )),
           TextField(
-            decoration: InputDecoration(labelText: "Observaciones"),
-            style: TextStyle(
+              decoration: InputDecoration(labelText: "Observaciones"),
+              style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.brown.shade800,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 decorationStyle: TextDecorationStyle.solid,
-              )
-          ),
+              )),
           SizedBox(
             height: 30,
           ),
           ElevatedButton(
-              onPressed: () => _mostrarAlerta(context), 
+              onPressed: () => _mostrarAlerta(context),
               style: ElevatedButton.styleFrom(
                   primary: Colors.brown,
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  textStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
+                  textStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               child: Text("Siguiente"))
         ],
       ),

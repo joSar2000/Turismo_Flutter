@@ -11,6 +11,8 @@ class _CaracteristicasClimaticasState extends State<CaracteristicasClimaticas> {
   String _seleccion = "Frío";
   String _seleccion1 = "Cultura";
   String _seleccion2 = "Pristino";
+  int temperatura = 0;
+  int precipitacion = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,11 @@ class _CaracteristicasClimaticasState extends State<CaracteristicasClimaticas> {
         appBar: AppBar(
           backgroundColor: Color(0xff885566),
           title: Text("Características del Atractivo",
-            style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white70,
-              )
-          ),
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white70,
+              )),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -31,31 +32,30 @@ class _CaracteristicasClimaticasState extends State<CaracteristicasClimaticas> {
             children: [
               _crearComboBox("Características Climáticas"),
               TextField(
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: InputDecoration(labelText: "Temperatura"),
-                style: TextStyle(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(labelText: "Temperatura"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               TextField(
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: InputDecoration(labelText: "Precipitación"),
-                style: TextStyle(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(labelText: "Precipitación"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               _crearComboBox1("Linea a la que pertenece"),
-              _crearComboBox2("Escenario donde se localiza el atractivo turístico"),
+              _crearComboBox2(
+                  "Escenario donde se localiza el atractivo turístico"),
               SizedBox(
                 height: 30,
               ),
@@ -64,11 +64,11 @@ class _CaracteristicasClimaticasState extends State<CaracteristicasClimaticas> {
                     Navigator.pushNamed(context, 'ingreso');
                   },
                   style: ElevatedButton.styleFrom(
-                  primary: Colors.brown,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  textStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
+                      primary: Colors.brown,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   child: Text("Siguiente"))
             ],
           ),

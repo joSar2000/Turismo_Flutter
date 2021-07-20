@@ -11,6 +11,23 @@ class _AccsConecState extends State<AccsConec> {
   String _seleccion1 = "Maritimo";
   String _seleccion2 = "Nacional";
   String _seleccion3 = "Bus";
+  String ciudad_cercana = "";
+  int distancia_ciudad = 0;
+  int tiempo_auto = 0;
+  int latitud = 0;
+  int longitud = 0;
+  String observaciones_accs = "";
+  int coor_inicio = 0;
+  int coor_fin = 0;
+  int distancia = 0;
+  String tipo_material = "";
+  String estado = "";
+  String observaciones_terrestre = "";
+  String puerto = "";
+  String observaciones_acuatico = "";
+  String observaciones_aereo = "";
+  String especifique_servicio = "";
+  String observaciones_servicio = "";
 
   @override
   Widget build(BuildContext context) {

@@ -11,11 +11,8 @@ class _IngresoState extends State<Ingreso> {
   String _seleccion1 = "Todos los dias";
   String _seleccion2 = "Seleccione...";
   String _seleccion3 = "Efectivo";
-  
-  var _currentSelectedTime = DateTime.now();
-  var _currentTime = TimeOfDay.now();
-
-  
+  String especificar = "";
+  int precio = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,49 +33,46 @@ class _IngresoState extends State<Ingreso> {
               _crearComboBox("Tipo de Ingreso"),
               _crearComboBox1("Atención"),
               TextField(
-                decoration: InputDecoration(labelText: "Especificar"),
-                style: TextStyle(
+                  decoration: InputDecoration(labelText: "Especificar"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               _crearComboBox2("Maneja un sistema de reservas"),
               TextField(
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: InputDecoration(labelText: "Precio"),
-                style: TextStyle(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(labelText: "Precio"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               _crearComboBox3("Forma de Pago"),
               TextField(
-                decoration: InputDecoration(labelText: "Meses recomendables de visita"),
-                style: TextStyle(
+                  decoration: InputDecoration(
+                      labelText: "Meses recomendables de visita"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               TextField(
-                decoration: InputDecoration(labelText: "Observaciones"),
-                style: TextStyle(
+                  decoration: InputDecoration(labelText: "Observaciones"),
+                  style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.brown.shade800,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.normal,
                     decorationStyle: TextDecorationStyle.solid,
-              )
-              ),
+                  )),
               SizedBox(
                 height: 30,
               ),
@@ -144,8 +138,12 @@ class _IngresoState extends State<Ingreso> {
               _seleccion1 = value.toString();
             });
           },
-          items: <String>['Todos los dias', 'Fines de semana y feriados', 'Solo dias habiles', 'Otro']
-              .map<DropdownMenuItem<String>>((String value) {
+          items: <String>[
+            'Todos los dias',
+            'Fines de semana y feriados',
+            'Solo dias habiles',
+            'Otro'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -202,9 +200,15 @@ class _IngresoState extends State<Ingreso> {
               _seleccion3 = value.toString();
             });
           },
-          items: <String>['Efectivo', 'Tarjeta de Crédito', 'Dinero Electronico', 'Transferencia Bancaria',
-          'Deposito Bancario', 'Tarjeta de Debito', 'Cheque']
-              .map<DropdownMenuItem<String>>((String value) {
+          items: <String>[
+            'Efectivo',
+            'Tarjeta de Crédito',
+            'Dinero Electronico',
+            'Transferencia Bancaria',
+            'Deposito Bancario',
+            'Tarjeta de Debito',
+            'Cheque'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),

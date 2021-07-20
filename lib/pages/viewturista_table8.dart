@@ -905,6 +905,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,
@@ -983,13 +984,6 @@ class CheckboxWidgetState extends State<TableTurism8> {
                 ),
               ],
             ),
-            new RaisedButton(
-              child: Text("presionar"),
-              onPressed: () {
-                print("Traigo de la tabla 6: " + widget.observaciones_espacio);
-                print(widget.si_higiene_turistica);
-              },
-            ),
             new Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -1057,22 +1051,17 @@ class CheckboxWidgetState extends State<TableTurism8> {
                             height: 5,
                           ),
                           TextFormField(
-                            enabled: false,
                             maxLines: 3,
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              color: HexColor("#0D0D0D"),
-                            ),
+                            enabled: false,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(20.0),
                               //hintText: currentDate.toString(),
-                              hintText: "${currentDate.year.toString()}",
-                              labelText: ("[AAAA-MM-DD]\n[" +
-                                  currentDate.toString() +
+                              labelText: ("[DD-MM-AAAA]\n[" +
+                                  currentDate.day.toString() + " - " + currentDate.month.toString() + " - " + currentDate.year.toString() +
                                   "]"),
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.elliptical(10, 10))),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.elliptical(10, 10))),
                             ),
                           ),
                         ],

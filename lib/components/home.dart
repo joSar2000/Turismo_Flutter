@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/components/lista.dart';
-import 'package:turismo_flutter/pages/viewturista_table6.dart';
+import 'package:turismo_flutter/pages/viewturista_table1.dart';
 
 class Home extends StatefulWidget {
   // This widget is the root of your application.
@@ -16,7 +16,7 @@ class _Home extends State<Home> {
   final tabs = [
     Center(child: Text("Buscar")),
     ListRecursos(),
-    TurismTable6(),
+    TurismTable1(),
     Center(child: Text("Mapas")),
     Center(child: Text("Ajustes de aplicación")),
   ];
