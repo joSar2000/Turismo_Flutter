@@ -9236,6 +9236,14 @@ class FormWidgetState extends State<FormSaveWidget> {
                 ),
               ],
             ),
+            new RaisedButton(
+                child: Text(
+                  "Enviar"
+                ),
+                onPressed: () {
+                  _sendBDD();
+                },
+            ),
           ]),
         ));
   }

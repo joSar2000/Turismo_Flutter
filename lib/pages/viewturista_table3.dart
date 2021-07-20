@@ -5,12 +5,43 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turismo_flutter/pages/viewturista_table4.dart';
 
 class TableTurism3 extends StatefulWidget {
+
+  //Tabla1
+  final String categoria;
+  final String tipo;
+  final String subtipo;
+  //Tabla2
+  final String calle_prin;
+  final String num_lugar ;
+  final String transversal ;
+  final String latitud ;
+  final String longitud ;
+  final String altura ;
+  final String _seleccion = "Loja";
+  final String _seleccion1 = "Catamayo";
+  final String _seleccion2 = "San Pedro";
+  final String _seleccion3 = "San Antonio";
+
+  TableTurism3(
+  {Key? key,
+    required this.categoria,
+    required this.tipo,
+    required this.subtipo,
+    required this.calle_prin,
+    required this.num_lugar,
+    required this.transversal,
+    required this.latitud,
+    required this.longitud,
+    required this.altura,
+  }
+      )
+      : super(key: key);
+
   @override
   State<StatefulWidget> createState() => new FormWidgetState3();
 }
 
 class FormWidgetState3 extends State<TableTurism3> {
-
   String _seleccion = "Frío";
   String _seleccion1 = "Cultura";
   String _seleccion2 = "Pristino";
@@ -19,8 +50,13 @@ class FormWidgetState3 extends State<TableTurism3> {
   String _seleccion5 = "Seleccione...";
   String _seleccion6 = "Efectivo";
 
-  var _currentSelectedTime = DateTime.now();
-  var _currentTime = TimeOfDay.now();
+  TextEditingController carac_clima = TextEditingController();
+  TextEditingController carac_temperatura = TextEditingController();
+  TextEditingController carac_precipitacion = TextEditingController();
+  TextEditingController carac_espec_escena = TextEditingController();
+  TextEditingController carac_precio = TextEditingController();
+  TextEditingController carac_meses_recomen = TextEditingController();
+  TextEditingController carac_observa = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +76,22 @@ class FormWidgetState3 extends State<TableTurism3> {
                 color: HexColor("#A65005"),
               )),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_rounded,
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
               size: 35.0,
-              color: HexColor("#A65005"),),
+              color: HexColor("#A65005"),
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
-          actions: <Widget> [
+          actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.arrow_forward_ios_rounded,
+              icon: Icon(
+                Icons.arrow_forward_ios_rounded,
                 size: 35.0,
-                color: HexColor("#A65005"),),
+                color: HexColor("#A65005"),
+              ),
               onPressed: () async {
                 _sendData(context);
                 //guardarPreferencias();
@@ -61,21 +101,21 @@ class FormWidgetState3 extends State<TableTurism3> {
         ),
         body: ListView(
           padding: EdgeInsets.all(5.0),
-          children: <Widget> [
+          children: <Widget>[
             new Column(
-              children: <Widget> [
+              children: <Widget>[
                 new Container(
                   child: Column(
-                    children: <Widget> [
+                    children: <Widget>[
                       _crearComboBox("Características Climáticas"),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_clima,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -92,13 +132,13 @@ class FormWidgetState3 extends State<TableTurism3> {
                       ),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
                               keyboardType: TextInputType.number,
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_temperatura,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -115,13 +155,13 @@ class FormWidgetState3 extends State<TableTurism3> {
                       ),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
                               keyboardType: TextInputType.number,
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_precipitacion,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -139,7 +179,7 @@ class FormWidgetState3 extends State<TableTurism3> {
                       _crearComboBox1("Linea a la que pertenece"),
                       new Container(
                         child: Text(
-                            "Escenario donde se localiza el atractivo turístico",
+                          "Escenario donde se localiza el atractivo turístico",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.dmSans(
                             fontWeight: FontWeight.w900,
@@ -164,12 +204,12 @@ class FormWidgetState3 extends State<TableTurism3> {
                       _crearComboBox4("Atención"),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_espec_escena,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -184,16 +224,24 @@ class FormWidgetState3 extends State<TableTurism3> {
                           ],
                         ),
                       ),
-                      _crearComboBox5("Maneja un sistema de reservas"),
+                      new Container(
+                        padding: EdgeInsets.all(15.0),
+                        child: Text(
+                          "Maneja un sistema de reserva",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      _crearComboBox5(),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
                               keyboardType: TextInputType.number,
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_precio,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -211,12 +259,12 @@ class FormWidgetState3 extends State<TableTurism3> {
                       _crearComboBox6("Forma de Pago"),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_meses_recomen,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -225,7 +273,8 @@ class FormWidgetState3 extends State<TableTurism3> {
                               decoration: InputDecoration(
                                 icon: Icon(Icons.input),
                                 contentPadding: EdgeInsets.all(10.0),
-                                hintText: "Especifique Meses recomendables de visita",
+                                hintText:
+                                "Especifique Meses recomendables de visita",
                               ),
                             )
                           ],
@@ -233,12 +282,12 @@ class FormWidgetState3 extends State<TableTurism3> {
                       ),
                       new Form(
                         child: Column(
-                          children: <Widget> [
+                          children: <Widget>[
                             SizedBox(
                               height: 1,
                             ),
                             TextField(
-                              //controller: , -> Debes agregar la variable
+                              controller: carac_observa,
                               maxLines: 3,
                               style: GoogleFonts.dmSans(
                                 fontWeight: FontWeight.normal,
@@ -263,6 +312,7 @@ class FormWidgetState3 extends State<TableTurism3> {
       ),
     );
   }
+
   _crearComboBox(String texto) {
     return Row(
       children: [
@@ -332,8 +382,13 @@ class FormWidgetState3 extends State<TableTurism3> {
                 _seleccion2 = value.toString();
               });
             },
-            items: <String>['Pristino', 'Primitivo', 'Rustico', 'Rural', 'Urbano']
-                .map<DropdownMenuItem<String>>((String value) {
+            items: <String>[
+              'Pristino',
+              'Primitivo',
+              'Rustico',
+              'Rural',
+              'Urbano'
+            ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
@@ -391,8 +446,12 @@ class FormWidgetState3 extends State<TableTurism3> {
               _seleccion4 = value.toString();
             });
           },
-          items: <String>['Todos los dias', 'Fines de semana y feriados', 'Solo dias habiles', 'Otro']
-              .map<DropdownMenuItem<String>>((String value) {
+          items: <String>[
+            'Todos los dias',
+            'Fines de semana y feriados',
+            'Solo dias habiles',
+            'Otro'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -403,15 +462,12 @@ class FormWidgetState3 extends State<TableTurism3> {
     );
   }
 
-  _crearComboBox5(String texto) {
+  _crearComboBox5() {
     return Row(
       children: [
         Container(
           margin: EdgeInsets.only(right: 20),
-          child: Text(
-            texto,
-            style: TextStyle(fontSize: 18),
-          ),
+
         ),
         DropdownButton(
           value: _seleccion5,
@@ -449,9 +505,15 @@ class FormWidgetState3 extends State<TableTurism3> {
               _seleccion6 = value.toString();
             });
           },
-          items: <String>['Efectivo', 'Tarjeta de Crédito', 'Dinero Electronico', 'Transferencia Bancaria',
-            'Deposito Bancario', 'Tarjeta de Debito', 'Cheque']
-              .map<DropdownMenuItem<String>>((String value) {
+          items: <String>[
+            'Efectivo',
+            'Tarjeta de Crédito',
+            'Dinero Electronico',
+            'Transferencia Bancaria',
+            'Deposito Bancario',
+            'Tarjeta de Debito',
+            'Cheque'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -463,9 +525,31 @@ class FormWidgetState3 extends State<TableTurism3> {
   }
 
   void _sendData(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TableTurism4())
-    );
-  }
+    String temperatura = carac_temperatura.text;
+    String precipitacion = carac_precipitacion.text;
+    String especificar = carac_espec_escena.text;
+    String precio = carac_precio.text;
+    String meses_recomen = carac_meses_recomen.text;
+    String observaciones = carac_observa.text;
 
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TableTurism4(
+      especificar: especificar,
+      precipitacion: precipitacion,
+      precio: precio,
+      observaciones: observaciones,
+      transversal: widget.transversal,
+      longitud: widget.longitud,
+      altura: widget.altura,
+      temperatura: temperatura,
+      meses_recomen: meses_recomen,
+      num_lugar: widget.num_lugar,
+      calle_prin: widget.calle_prin,
+      latitud: widget.latitud,
+      tipo: widget.tipo,
+      categoria: widget.categoria,
+      subtipo: widget.subtipo,
+
+    )));
+  }
 }

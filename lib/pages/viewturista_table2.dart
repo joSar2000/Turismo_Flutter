@@ -5,6 +5,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turismo_flutter/pages/viewturista_table3.dart';
 
 class TableTurism2 extends StatefulWidget {
+
+//Tabla1
+  final String categoria;
+  final String tipo;
+  final String subtipo;
+
+  TableTurism2({Key? key,
+    required this.categoria,
+    required this.tipo,
+    required this.subtipo,
+  }): super(key: key);
+
+
   @override
   State<StatefulWidget> createState() => new FormWidgetState2();
 }
@@ -15,6 +28,12 @@ class FormWidgetState2 extends State<TableTurism2> {
   String _seleccion1 = "Catamayo";
   String _seleccion2 = "San Pedro";
   String _seleccion3 = "San Antonio";
+  TextEditingController ubi_calle_prin = TextEditingController();
+  TextEditingController ubi_num_lugar = TextEditingController();
+  TextEditingController ubi_transversal = TextEditingController();
+  TextEditingController ubi_latitud = TextEditingController();
+  TextEditingController ubi_longitud = TextEditingController();
+  TextEditingController ubi_altura = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +89,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_calle_prin,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -92,7 +111,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_num_lugar,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -114,7 +133,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_transversal,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -137,7 +156,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_latitud,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -160,7 +179,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_longitud,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -183,7 +202,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: ubi_altura,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -319,8 +338,30 @@ class FormWidgetState2 extends State<TableTurism2> {
   }
 
   void _sendData(BuildContext context) {
+
+    String calle_prin = ubi_calle_prin.text;
+    String num_lugar = ubi_num_lugar.text;
+    String transversal = ubi_transversal.text;
+    String latitud = ubi_latitud.text;
+    String longitud = ubi_longitud.text;
+    String altura = ubi_altura.text;
+    String _seleccion = "Loja";
+    String _seleccion1 = "Catamayo";
+    String _seleccion2 = "San Pedro";
+    String _seleccion3 = "San Antonio";
+
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TableTurism3())
+        MaterialPageRoute(builder: (context) => TableTurism3(
+          num_lugar: num_lugar,
+          calle_prin: calle_prin,
+          latitud: latitud,
+          longitud: longitud,
+          transversal: transversal,
+          altura: altura,
+          subtipo: widget.subtipo,
+          tipo: widget.tipo,
+          categoria: widget.tipo,
+        ))
     );
   }
 }

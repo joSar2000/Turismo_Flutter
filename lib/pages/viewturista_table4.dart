@@ -5,6 +5,50 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turismo_flutter/pages/viewturista_table5.dart';
 
 class TableTurism4 extends StatefulWidget {
+
+  //Tabla1
+  final String categoria;
+  final String tipo;
+  final String subtipo;
+  //Tabla2
+  final String calle_prin;
+  final String num_lugar ;
+  final String transversal ;
+  final String latitud ;
+  final String longitud ;
+  final String altura ;
+  final String _seleccion = "Loja";
+  final String _seleccion1 = "Catamayo";
+  final String _seleccion2 = "San Pedro";
+  final String _seleccion3 = "San Antonio";
+  //Tabla3
+  final String temperatura;
+  final String precipitacion;
+  final String especificar;
+  final String precio;
+  final String meses_recomen;
+  final String observaciones;
+  //Tabla3
+
+  TableTurism4({Key? key,
+    required this.categoria,
+    required this.tipo,
+    required this.subtipo,
+    required this.calle_prin,
+    required this.num_lugar,
+    required this.transversal,
+    required this.latitud,
+    required this.longitud,
+    required this.altura,
+    required this.temperatura,
+    required this.precipitacion,
+    required this.especificar,
+    required this.precio,
+    required this.meses_recomen,
+    required this.observaciones,
+
+  }): super(key: key);
+
   @override
   State<StatefulWidget> createState() => new FormWidgetState4();
 }
@@ -15,6 +59,23 @@ class FormWidgetState4 extends State<TableTurism4> {
   String _seleccion1 = "Maritimo";
   String _seleccion2 = "Nacional";
   String _seleccion3 = "Bus";
+  TextEditingController accs_ciudad_cercana = TextEditingController();
+  TextEditingController accs_distancia_ciudad = TextEditingController();
+  TextEditingController accs_tiempo_auto = TextEditingController();
+  TextEditingController accs_latitud = TextEditingController();
+  TextEditingController accs_longitud = TextEditingController();
+  TextEditingController accs_obser = TextEditingController();
+  TextEditingController accs_coor_inicio = TextEditingController();
+  TextEditingController accs_coor_fin = TextEditingController();
+  TextEditingController accs_distancia = TextEditingController();
+  TextEditingController accs_tipo_material = TextEditingController();
+  TextEditingController accs_estado = TextEditingController();
+  TextEditingController accs_obs_terrestre = TextEditingController();
+  TextEditingController accs_puerto = TextEditingController();
+  TextEditingController accs_obs_acuatico = TextEditingController();
+  TextEditingController accs_obs_aereo = TextEditingController();
+  TextEditingController accs_especifique_servicio = TextEditingController();
+  TextEditingController accs_obs_servicio = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +126,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_ciudad_cercana,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -88,7 +149,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_distancia_ciudad,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -111,7 +172,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_tiempo_auto,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -134,7 +195,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_latitud,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -157,7 +218,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_longitud,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -179,7 +240,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_obser,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -224,7 +285,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_coor_inicio,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -247,7 +308,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_coor_fin,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -270,7 +331,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                       ),
                       TextField(
                         keyboardType: TextInputType.number,
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_distancia,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -292,7 +353,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_tipo_material,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -314,7 +375,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_estado,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -336,7 +397,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_obs_terrestre,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -370,7 +431,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_puerto,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -392,7 +453,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_obs_acuatico,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -426,7 +487,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_obs_aereo,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -460,7 +521,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_especifique_servicio,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -482,7 +543,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                         height: 1,
                       ),
                       TextField(
-                        //controller: , -> Debes agregar la variable
+                        controller: accs_obs_servicio,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -635,8 +696,60 @@ class FormWidgetState4 extends State<TableTurism4> {
   }
 
   void _sendData(BuildContext context) {
+
+    String ciudad_cercana = accs_ciudad_cercana.text;
+    String distancia_ciudad = accs_distancia_ciudad.text;
+    String tiempo_auto = accs_tiempo_auto.text;
+    String latitudTab4 = accs_latitud.text;
+    String longitudTab4 = accs_longitud.text;
+    String observaciones_accs = accs_obser.text;
+    String coor_inicio = accs_coor_inicio.text;
+    String coor_fin = accs_coor_fin.text;
+    String distancia = accs_distancia.text;
+    String tipo_material = accs_tipo_material.text;
+    String estado = accs_estado.text;
+    String observaciones_terrestre = accs_obs_terrestre.text;
+    String puerto = accs_puerto.text;
+    String observaciones_acuatico = accs_obs_acuatico.text;
+    String observaciones_aereo = accs_obs_aereo.text;
+    String especifique_servicio = accs_especifique_servicio.text;
+    String observaciones_servicio = accs_obs_servicio.text;
+
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TableTurism5())
+        MaterialPageRoute(builder: (context) => TableTurism5(
+          especificar: widget.especificar,
+          precipitacion: widget.precipitacion,
+          precio: widget.precio,
+          observaciones: widget.observaciones,
+          transversal: widget.transversal,
+          longitud: widget.longitud,
+          altura: widget.altura,
+          temperatura: widget.temperatura,
+          meses_recomen: widget.meses_recomen,
+          num_lugar: widget.num_lugar,
+          calle_prin: widget.calle_prin,
+          latitud: widget.latitud,
+          distancia: distancia,
+          especifique_servicio: especifique_servicio,
+          puerto: puerto,
+          observaciones_servicio: observaciones_servicio,
+          coor_inicio: coor_inicio,
+          tipo_material: tipo_material,
+          tiempo_auto: tiempo_auto,
+          coor_fin: coor_fin,
+          observaciones_terrestre: observaciones_terrestre,
+          observaciones_accs: observaciones_accs,
+          estado: estado,
+          ciudad_cercana: ciudad_cercana,
+          distancia_ciudad: distancia_ciudad,
+          observaciones_acuatico: observaciones_acuatico,
+          observaciones_aereo: observaciones_aereo,
+          latitudTab4: latitudTab4,
+          longitudTab4: longitudTab4,
+          subtipo: widget.subtipo,
+          tipo: widget.tipo,
+          categoria: widget.categoria,
+        ))
     );
   }
 }
