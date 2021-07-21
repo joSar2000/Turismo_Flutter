@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:turismo_flutter/components/home.dart';
-import 'package:turismo_flutter/pages/viewturista_table1.dart';
+import 'package:turismo_flutter/pages/initial_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: TurismTable1.ROUTE,
+      initialRoute: initial_page.ROUTE,
       routes: {
-          TurismTable1.ROUTE: (_) => Home(),
+          initial_page.ROUTE: (_) => Home(),
       },
     );
   }

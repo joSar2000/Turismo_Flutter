@@ -8,6 +8,64 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class turismTable9 extends StatefulWidget {
+
+  //Tabla1
+  final String categoria;
+  final String tipo;
+  final String subtipo;
+  //Tabla2
+  final String calle_prin;
+  final String num_lugar ;
+  final String transversal ;
+  final String latitud ;
+  final String longitud ;
+  final String altura ;
+  final String seleccion;
+  final String seleccion1;
+  final String seleccion2;
+  final String seleccion3;
+  //Tabla3
+  final String temperatura;
+  final String precipitacion;
+  final String especificar;
+  final String precio;
+  final String meses_recomen;
+  final String observaciones;
+  //Tabla4
+  final String ciudad_cercana;
+  final String distancia_ciudad;
+  final String tiempo_auto;
+  final String latitudTab4;
+  final String longitudTab4;
+  final String observaciones_accs;
+  final String coor_inicio;
+  final String coor_fin;
+  final String distancia;
+  final String tipo_material;
+  final String estado ;
+  final String observaciones_terrestre ;
+  final String puerto ;
+  final String observaciones_acuatico;
+  final String observaciones_aereo;
+  final String especifique_servicio ;
+  final String observaciones_servicio ;
+  //Tabla5
+  final String estableci_registrados;
+  final String numero_mesas;
+  final String numero_plazas;
+  final String observacionesTab5 ;
+  final String estableci_registrados_alimentos;
+  final String numero_mesas_alimentos ;
+  final String numero_plazas_alimentos ;
+  final String observaciones_alimentos;
+  final String estableci_registrados_agencias;
+  final String observaciones_agencias ;
+  final String local;
+  final String nacional ;
+  final String nacional_especializado;
+  final String cultura ;
+  final String aventura ;
+  final String observaciones_guia;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -358,6 +416,58 @@ class turismTable9 extends StatefulWidget {
 
   turismTable9(
       {Key? key,
+        required this.categoria,
+        required this.tipo,
+        required this.subtipo,
+        required this.calle_prin,
+        required this.num_lugar,
+        required this.transversal,
+        required this.latitud,
+        required this.longitud,
+        required this.altura,
+        required this.seleccion,
+        required this.seleccion1,
+        required this.seleccion2,
+        required this.seleccion3,
+        required this.temperatura,
+        required this.precipitacion,
+        required this.especificar,
+        required this.precio,
+        required this.meses_recomen,
+        required this.observaciones,
+        required this.ciudad_cercana,
+        required this.distancia_ciudad,
+        required this.tiempo_auto,
+        required this.latitudTab4,
+        required this.longitudTab4,
+        required this.observaciones_accs,
+        required this.coor_inicio,
+        required this.coor_fin,
+        required this.distancia,
+        required this.tipo_material,
+        required this.estado,
+        required this.observaciones_terrestre,
+        required this.puerto,
+        required this.observaciones_acuatico,
+        required this.observaciones_aereo,
+        required this.especifique_servicio,
+        required this.observaciones_servicio,
+        required this.estableci_registrados,
+        required this.numero_mesas,
+        required this.numero_plazas,
+        required this.observacionesTab5,
+        required this.estableci_registrados_alimentos,
+        required this.numero_mesas_alimentos,
+        required this.numero_plazas_alimentos,
+        required this.observaciones_alimentos,
+        required this.estableci_registrados_agencias,
+        required this.observaciones_agencias,
+        required this.local,
+        required this.nacional,
+        required this.nacional_especializado,
+        required this.cultura,
+        required this.aventura,
+        required this.observaciones_guia,
       required this.si_estado_conservacion,
       required this.observaciones_atractivo_U,
       required this.atractivo_U,
@@ -905,40 +1015,6 @@ class FormWidgetState9 extends State<turismTable9> {
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        bottomNavigationBar: BottomAppBar(
-          //bottom navigation bar on scaffold
-          color: HexColor("#364C59"),
-          shape: CircularNotchedRectangle(), //shape of notch
-          notchMargin:
-              10, //notche margin between floating button and bottom appbar
-          child: Row(
-            //children inside bottom appbar
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  _sendData(context);
-                },
-              ),
-            ],
-          ),
-        ),
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
           elevation: 0,
@@ -3190,6 +3266,59 @@ class FormWidgetState9 extends State<turismTable9> {
                 atractivo_cultural_otro: atractivo_cultural_otro,
                 atractivo_cultural_otro_txt: atractivo_cultural_otro_txt,
                 atractivo_cultural_observaciones:
-                    atractivo_cultural_observaciones)));
+                    atractivo_cultural_observaciones,
+              especificar: widget.especificar,
+              precipitacion: widget.precipitacion,
+              precio: widget.precio,
+              observaciones: widget.observaciones,
+              transversal: widget.transversal,
+              longitud: widget.longitud,
+              altura: widget.altura,
+              temperatura: widget.temperatura,
+              meses_recomen: widget.meses_recomen,
+              num_lugar: widget.num_lugar,
+              calle_prin: widget.calle_prin,
+              latitud: widget.latitud,
+              distancia: widget.distancia,
+              especifique_servicio: widget.especifique_servicio,
+              puerto: widget.puerto,
+              observaciones_servicio: widget.observaciones_servicio,
+              coor_inicio: widget.coor_inicio,
+              tipo_material: widget.tipo_material,
+              tiempo_auto: widget.tiempo_auto,
+              coor_fin: widget.coor_fin,
+              observaciones_terrestre: widget.observaciones_terrestre,
+              observaciones_accs: widget.observaciones_accs,
+              estado: widget.estado,
+              ciudad_cercana: widget.ciudad_cercana,
+              distancia_ciudad: widget.distancia_ciudad,
+              observaciones_acuatico: widget.observaciones_acuatico,
+              observaciones_aereo: widget.observaciones_aereo,
+              latitudTab4: widget.latitudTab4,
+              longitudTab4: widget.longitudTab4,
+              subtipo: widget.subtipo,
+              tipo: widget.tipo,
+              categoria: widget.categoria,
+              numero_mesas_alimentos: widget.numero_mesas_alimentos,
+              observaciones_agencias: widget.observaciones_agencias,
+              estableci_registrados_agencias: widget.estableci_registrados_agencias,
+              estableci_registrados_alimentos: widget.estableci_registrados_alimentos,
+              numero_mesas: widget.numero_mesas,
+              aventura: widget.aventura,
+              estableci_registrados: widget.estableci_registrados,
+              observaciones_guia: widget.observaciones_guia,
+              observacionesTab5: widget.observacionesTab5,
+              cultura: widget.cultura,
+              local: widget.local,
+              numero_plazas: widget.numero_plazas,
+              nacional_especializado: widget.nacional_especializado,
+              observaciones_alimentos: widget.observaciones_alimentos,
+              numero_plazas_alimentos: widget.numero_plazas_alimentos,
+              nacional: widget.nacional,
+              seleccion2: widget.seleccion2,
+              seleccion1: widget.seleccion1,
+              seleccion: widget.seleccion,
+              seleccion3: widget.seleccion3,
+            )));
   }
 }

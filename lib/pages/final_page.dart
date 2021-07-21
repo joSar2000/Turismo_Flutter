@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:turismo_flutter/pages/initial_page.dart';
 
 class final_page extends StatefulWidget {
 
@@ -38,11 +39,11 @@ class FinalPage extends State<final_page>{
           ),
           actions: <Widget> [
             IconButton(
-              icon: Icon(Icons.arrow_forward_ios_rounded,
+              icon: Icon(Icons.home_filled,
                 size: 35.0,
                 color: HexColor("#A65005"),),
               onPressed: () {
-                _sendData(context);
+                //Navigator.push(context, MaterialPageRoute(builder: (context) => initial_page() ));
               },
             ),
           ],

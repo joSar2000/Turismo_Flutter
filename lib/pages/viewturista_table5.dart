@@ -18,10 +18,10 @@ class TableTurism5 extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String _seleccion = "Loja";
-  final String _seleccion1 = "Catamayo";
-  final String _seleccion2 = "San Pedro";
-  final String _seleccion3 = "San Antonio";
+  final String seleccion ;
+  final String seleccion1;
+  final String seleccion2 ;
+  final String seleccion3 ;
   //Tabla3
   final String temperatura;
   final String precipitacion;
@@ -29,6 +29,13 @@ class TableTurism5 extends StatefulWidget {
   final String precio;
   final String meses_recomen;
   final String observaciones;
+  final String seleccionTab3;
+  final String seleccion1Tab3 ;
+  final String seleccion2Tab3 ;
+  final String seleccion3Tab3 ;
+  final String seleccion4Tab3 ;
+  final String seleccion5Tab3 ;
+  final String seleccion6Tab3 ;
   //Tabla4
   final String ciudad_cercana;
   final String distancia_ciudad;
@@ -47,6 +54,10 @@ class TableTurism5 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final String seleccionTab4;
+  final String seleccion1Tab4;
+  final String seleccion2Tab4 ;
+  final String seleccion3Tab4;
 
   TableTurism5({Key? key,
     required this.categoria,
@@ -81,6 +92,21 @@ class TableTurism5 extends StatefulWidget {
     required this.observaciones_servicio,
     required this.latitudTab4,
     required this.longitudTab4,
+    required this.seleccion,
+    required this.seleccion1,
+    required this.seleccion2,
+    required this.seleccion3,
+    required this.seleccionTab3,
+    required this.seleccion1Tab3,
+    required this.seleccion2Tab3,
+    required this.seleccion3Tab3,
+    required this.seleccion4Tab3,
+    required this.seleccion5Tab3,
+    required this.seleccion6Tab3,
+    required this.seleccionTab4,
+    required this.seleccion1Tab4,
+    required this.seleccion2Tab4,
+    required this.seleccion3Tab4,
   }): super(key: key);
 
   @override
@@ -757,6 +783,10 @@ class FormWidgetState5 extends State<TableTurism5> {
       observaciones_alimentos: observaciones_alimentos,
       numero_plazas_alimentos: numero_plazas_alimentos,
       nacional: nacional,
+      seleccion2: widget.seleccion2,
+      seleccion1: widget.seleccion1,
+      seleccion: widget.seleccion,
+      seleccion3: widget.seleccion3,
     )));
   }
 

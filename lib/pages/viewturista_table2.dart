@@ -24,10 +24,10 @@ class TableTurism2 extends StatefulWidget {
 
 class FormWidgetState2 extends State<TableTurism2> {
 
-  String _seleccion = "Loja";
-  String _seleccion1 = "Catamayo";
-  String _seleccion2 = "San Pedro";
-  String _seleccion3 = "San Antonio";
+  String seleccion = "Loja";
+  String seleccion1 = "Catamayo";
+  String seleccion2 = "San Pedro";
+  String seleccion3 = "San Antonio";
   TextEditingController ubi_calle_prin = TextEditingController();
   TextEditingController ubi_num_lugar = TextEditingController();
   TextEditingController ubi_transversal = TextEditingController();
@@ -235,10 +235,10 @@ class FormWidgetState2 extends State<TableTurism2> {
           ),
         ),
         DropdownButton(
-          value: _seleccion,
+          value: seleccion,
           onChanged: (value) {
             setState(() {
-              _seleccion = value.toString();
+              seleccion = value.toString();
             });
           },
           items: <String>['Loja', 'Imbabura', 'Azuay', 'Pichincha','Guayas']
@@ -263,10 +263,10 @@ class FormWidgetState2 extends State<TableTurism2> {
           ),
         ),
         DropdownButton(
-          value: _seleccion1,
+          value: seleccion1,
           onChanged: (value) {
             setState(() {
-              _seleccion1 = value.toString();
+              seleccion1 = value.toString();
             });
           },
           items: <String>['Catamayo', 'Ibarra', 'Cuenca', 'Guayaquil','Quito']
@@ -291,10 +291,10 @@ class FormWidgetState2 extends State<TableTurism2> {
           ),
         ),
         DropdownButton(
-          value: _seleccion2,
+          value: seleccion2,
           onChanged: (value) {
             setState(() {
-              _seleccion2 = value.toString();
+              seleccion2 = value.toString();
             });
           },
           items: <String>['San Pedro', 'Alpachaca', 'El Salvador', 'Ayacucho','Carcelen']
@@ -319,10 +319,10 @@ class FormWidgetState2 extends State<TableTurism2> {
           ),
         ),
         DropdownButton(
-          value: _seleccion3,
+          value: seleccion3,
           onChanged: (value) {
             setState(() {
-              _seleccion3 = value.toString();
+              seleccion3 = value.toString();
             });
           },
           items: <String>['San Antonio', 'Azaya', 'El Valdo', 'Chillogallo','Samborondon']
@@ -345,10 +345,6 @@ class FormWidgetState2 extends State<TableTurism2> {
     String latitud = ubi_latitud.text;
     String longitud = ubi_longitud.text;
     String altura = ubi_altura.text;
-    String _seleccion = "Loja";
-    String _seleccion1 = "Catamayo";
-    String _seleccion2 = "San Pedro";
-    String _seleccion3 = "San Antonio";
 
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => TableTurism3(
@@ -361,6 +357,10 @@ class FormWidgetState2 extends State<TableTurism2> {
           subtipo: widget.subtipo,
           tipo: widget.tipo,
           categoria: widget.tipo,
+          seleccion1: seleccion1,
+          seleccion2: seleccion2,
+          seleccion: seleccion,
+          seleccion3: seleccion3,
         ))
     );
   }
