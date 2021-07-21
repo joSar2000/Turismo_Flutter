@@ -3,9 +3,67 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:turismo_flutter/pages/viewturista_table14.dart';
+import 'package:turismo_flutter/pages/viewturista_table16.dart';
 
 class TurismTable13 extends StatefulWidget {
 
+  //Tabla1
+  final String categoria;
+  final String tipo;
+  final String subtipo;
+  //Tabla2
+  final String calle_prin;
+  final String num_lugar ;
+  final String transversal ;
+  final String latitud ;
+  final String longitud ;
+  final String altura ;
+  final String seleccion;
+  final String seleccion1;
+  final String seleccion2;
+  final String seleccion3;
+  //Tabla3
+  final String temperatura;
+  final String precipitacion;
+  final String especificar;
+  final String precio;
+  final String meses_recomen;
+  final String observaciones;
+  //Tabla4
+  final String ciudad_cercana;
+  final String distancia_ciudad;
+  final String tiempo_auto;
+  final String latitudTab4;
+  final String longitudTab4;
+  final String observaciones_accs;
+  final String coor_inicio;
+  final String coor_fin;
+  final String distancia;
+  final String tipo_material;
+  final String estado ;
+  final String observaciones_terrestre ;
+  final String puerto ;
+  final String observaciones_acuatico;
+  final String observaciones_aereo;
+  final String especifique_servicio ;
+  final String observaciones_servicio ;
+  //Tabla5
+  final String estableci_registrados;
+  final String numero_mesas;
+  final String numero_plazas;
+  final String observacionesTab5 ;
+  final String estableci_registrados_alimentos;
+  final String numero_mesas_alimentos ;
+  final String numero_plazas_alimentos ;
+  final String observaciones_alimentos;
+  final String estableci_registrados_agencias;
+  final String observaciones_agencias ;
+  final String local;
+  final String nacional ;
+  final String nacional_especializado;
+  final String cultura ;
+  final String aventura ;
+  final String observaciones_guia;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -427,114 +485,175 @@ class TurismTable13 extends StatefulWidget {
   final String atractivo_cultural_otro_txt;
   final String atractivo_cultural_observaciones;
   //Table10
-  final bool promocion_si ;
-  final bool promocion_no ;
-  final bool promocion_s_i ;
-  final bool promocion_plan_si ;
-  final bool promocion_plan_no ;
-  final String promocion_plan_especificacion ;
-  final bool promocion_plan_include_si ;
-  final bool promocion_plan_include_no ;
-  final bool medio_web ;
-  final bool medio_social ;
-  final bool medio_revista ;
-  final bool medio_pop ;
-  final bool medio_oficina ;
-  final bool medio_comunicacion ;
-  final bool medio_ferias ;
-  final bool medio_otro ;
-  final String direccion_medio_web ;
-  final String direccion_medio_social ;
-  final String direccion_medio_revista ;
-  final String direccion_medio_pop ;
-  final String direccion_medio_oficina ;
-  final String direccion_medio_comunicacion ;
-  final String direccion_medio_ferias ;
-  final String direccion_medios_otro ;
-  final String periodicidad_web ;
-  final String periodicidad_social ;
-  final String periodicidad_revista ;
-  final String periodicidad_pop ;
-  final String periodicidad_oficina ;
-  final String periodicidad_comunicacion ;
-  final String periodicidad_ferias ;
-  final String periodicidad_otro ;
-  final String medios_promocion_observaciones ;
-  final String atractivo_oferta_especifique ;
-  final String atractivo_oferta_observaciones ;
-  final bool atractivo_oferta_si ;
-  final bool atractivo_oferta_no ;
+  final bool promocion_si;
+  final bool promocion_no;
+  final bool promocion_s_i;
+  final bool promocion_plan_si;
+  final bool promocion_plan_no;
+  final String promocion_plan_especificacion;
+  final bool promocion_plan_include_si;
+  final bool promocion_plan_include_no;
+  final bool medio_web;
+  final bool medio_social;
+  final bool medio_revista;
+  final bool medio_pop;
+  final bool medio_oficina;
+  final bool medio_comunicacion;
+  final bool medio_ferias;
+  final bool medio_otro;
+  final String direccion_medio_web;
+  final String direccion_medio_social;
+  final String direccion_medio_revista;
+  final String direccion_medio_pop;
+  final String direccion_medio_oficina;
+  final String direccion_medio_comunicacion;
+  final String direccion_medio_ferias;
+  final String direccion_medios_otro;
+  final String periodicidad_web;
+  final String periodicidad_social;
+  final String periodicidad_revista;
+  final String periodicidad_pop;
+  final String periodicidad_oficina;
+  final String periodicidad_comunicacion;
+  final String periodicidad_ferias;
+  final String periodicidad_otro;
+  final String medios_promocion_observaciones;
+  final String atractivo_oferta_especifique;
+  final String atractivo_oferta_observaciones;
+  final bool atractivo_oferta_si;
+  final bool atractivo_oferta_no;
+  final String chosenValueWeb;
+  final String chosenValueSocial;
+  final String chosenValueRevista;
+  final String chosenValuepop;
+  final String chosenValueOficina;
+  final String chosenValueComunicacion;
+  final String chosenValueFerias;
+  final String chosenValueOtro;
   //Tabla11
-  final bool registro_visitantes_si ;
-  final bool registro_visitantes_no ;
-  final bool registro_visitantes_s_i ;
-  final bool frecuencia_visita_si ;
-  final bool sistema_registro_si ;
-  final bool sistema_registro_no ;
-  final bool sistema_registro_digital ;
-  final bool sistema_registro_papel ;
-  final String sistema_registro_anio ;
-  final bool reporte_estadisticas_si ;
-  final bool reporte_estadisticas_no ;
-  final bool temporalidad_alta ;
-  final bool temporalidad_baja ;
-  final String espec_temporalidad_alta ;
-  final String espec_temporalidad_baja ;
-  final String espec_temporalidad_alta_visitantes ;
-  final String espec_temporalidad_baja_visitantes ;
-  final bool turista_nacional ;
-  final bool turista_extranjero ;
-  final String turista_nacional_ciudad ;
-  final String turista_nacional_mensual ;
-  final String turista_nacional_anual ;
-  final String turista_extranjero_ciudad ;
-  final String turista_extranjero_mensual ;
-  final String turista_extranjero_anual ;
-  final String frecuencia_visita ;
-  final bool frencuencia_visita_clave_si ;
-  final String nombre_informante ;
-  final String contactos ;
-  final bool demanda_dias_si ;
-  final bool demanda_frecuencia_si ;
-  final bool demanda_frecuencia_permanente ;
-  final bool demanda_frecuencia_estacional ;
-  final bool demanda_frecuencia_esporadica ;
-  final bool demanda_frecuencia_inexistente ;
-  final String demanda_dias_lun_vie ;
-  final String demanda_dias_fines ;
-  final String demanda_dias_feriados ;
-  final String frecuencia_visita_clave ;
+  final bool registro_visitantes_si;
+  final bool registro_visitantes_no;
+  final bool registro_visitantes_s_i;
+  final bool frecuencia_visita_si;
+  final bool sistema_registro_si;
+  final bool sistema_registro_no;
+  final bool sistema_registro_digital;
+  final bool sistema_registro_papel;
+  final String sistema_registro_anio;
+  final bool reporte_estadisticas_si;
+  final bool reporte_estadisticas_no;
+  final bool temporalidad_alta;
+  final bool temporalidad_baja;
+  final String espec_temporalidad_alta;
+  final String espec_temporalidad_baja;
+  final String espec_temporalidad_alta_visitantes;
+  final String espec_temporalidad_baja_visitantes;
+  final bool turista_nacional;
+  final bool turista_extranjero;
+  final String turista_nacional_ciudad;
+  final String turista_nacional_mensual;
+  final String turista_nacional_anual;
+  final String turista_extranjero_ciudad;
+  final String turista_extranjero_mensual;
+  final String turista_extranjero_anual;
+  final String frecuencia_visita;
+  final bool frencuencia_visita_clave_si;
+  final String nombre_informante;
+  final String contactos;
+  final bool demanda_dias_si;
+  final bool demanda_frecuencia_si;
+  final bool demanda_frecuencia_permanente;
+  final bool demanda_frecuencia_estacional;
+  final bool demanda_frecuencia_esporadica;
+  final bool demanda_frecuencia_inexistente;
+  final String demanda_dias_lun_vie;
+  final String demanda_dias_fines;
+  final String demanda_dias_feriados;
+  final String frecuencia_visita_clave;
+  final String chosenValue_reporte_estadisticas;
   //Tabla12
-  final bool recurso_humano_si ;
-  final bool recurso_humano_no ;
-  final bool recurso_humano_s_i ;
-  final bool personas_administracion_si ;
-  final bool personas_especializadas_si ;
-  final bool personas_nivel_instruccion ;
-  final bool personas_capacitadas;
-  final bool personas_idiomas ;
-  final String personas_administracion ;
-  final String personas_especializadas ;
-  final String personas_primaria ;
-  final String personas_secundaria ;
-  final String personas_tercer_nivel ;
-  final String personas_cuarto_nivel ;
-  final String personas_primeros_auxilios ;
-  final String personas_hospitalidad ;
-  final String personas_atencion_cliente ;
-  final String personas_guianza ;
-  final String personas_discapacidades ;
-  final String personas_capacitadas_otros ;
-  final String personas_ingles ;
-  final String personas_aleman ;
-  final String personas_frances ;
-  final String personas_italiano ;
-  final String personas_chino ;
-  final String personas_idioma_otro ;
-  final String personas_nivel_otro ;
-  final String recurso_humano ;
+  bool recurso_humano_si;
+  bool recurso_humano_no ;
+  bool recurso_humano_s_i ;
+  bool personas_administracion_si;
+  bool personas_especializadas_si ;
+  bool personas_nivel_instruccion;
+  bool personas_capacitadas ;
+  bool personas_idiomas ;
+  String personas_administracion;
+  String personas_especializadas ;
+  String personas_primaria ;
+  String personas_secundaria ;
+  String personas_tercer_nivel ;
+  String personas_cuarto_nivel ;
+  String personas_primeros_auxilios ;
+  String personas_hospitalidad;
+  String personas_atencion_cliente ;
+  String personas_guianza ;
+  String personas_discapacidades ;
+  String personas_capacitadas_otros ;
+  String personas_ingles ;
+  String personas_aleman ;
+  String personas_frances ;
+  String personas_italiano ;
+  String personas_chino ;
+  String personas_idioma_otro ;
+  String personas_nivel_otro ;
+  String recurso_humano ;
 
   TurismTable13({Key? key,
+    required this.categoria,
+    required this.tipo,
+    required this.subtipo,
+    required this.calle_prin,
+    required this.num_lugar,
+    required this.transversal,
+    required this.latitud,
+    required this.longitud,
+    required this.altura,
+    required this.seleccion,
+    required this.seleccion1,
+    required this.seleccion2,
+    required this.seleccion3,
+    required this.temperatura,
+    required this.precipitacion,
+    required this.especificar,
+    required this.precio,
+    required this.meses_recomen,
+    required this.observaciones,
+    required this.ciudad_cercana,
+    required this.distancia_ciudad,
+    required this.tiempo_auto,
+    required this.latitudTab4,
+    required this.longitudTab4,
+    required this.observaciones_accs,
+    required this.coor_inicio,
+    required this.coor_fin,
+    required this.distancia,
+    required this.tipo_material,
+    required this.estado,
+    required this.observaciones_terrestre,
+    required this.puerto,
+    required this.observaciones_acuatico,
+    required this.observaciones_aereo,
+    required this.especifique_servicio,
+    required this.observaciones_servicio,
+    required this.estableci_registrados,
+    required this.numero_mesas,
+    required this.numero_plazas,
+    required this.observacionesTab5,
+    required this.estableci_registrados_alimentos,
+    required this.numero_mesas_alimentos,
+    required this.numero_plazas_alimentos,
+    required this.observaciones_alimentos,
+    required this.estableci_registrados_agencias,
+    required this.observaciones_agencias,
+    required this.local,
+    required this.nacional,
+    required this.nacional_especializado,
+    required this.cultura,
+    required this.aventura,
+    required this.observaciones_guia,
     required this.si_estado_conservacion,
     required this.observaciones_atractivo_U,
     required this.atractivo_U,
@@ -1061,6 +1180,15 @@ class TurismTable13 extends StatefulWidget {
     required this.personas_idioma_otro,
     required this.personas_nivel_otro,
     required this.recurso_humano,
+    required this.chosenValueWeb,
+    required this.chosenValueSocial,
+    required this.chosenValueRevista,
+    required this.chosenValuepop,
+    required this.chosenValueOficina,
+    required this.chosenValueComunicacion,
+    required this.chosenValueFerias,
+    required this.chosenValueOtro,
+    required this.chosenValue_reporte_estadisticas,
 
   });
 
@@ -1147,7 +1275,8 @@ class FormWidgetState13 extends State<TurismTable13> {
 
   void _sendData(BuildContext context) {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TurismTable14())
+        //MaterialPageRoute(builder: (context) => TurismTable14())
+        MaterialPageRoute(builder: (context) => TurismTable16())
     );
   }
 

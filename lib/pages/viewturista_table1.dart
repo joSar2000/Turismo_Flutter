@@ -6,7 +6,6 @@ import 'package:turismo_flutter/pages/viewturista_table12.dart';
 import 'package:turismo_flutter/pages/viewturista_table2.dart';
 
 class TurismTable1 extends StatefulWidget {
-  static const String ROUTE = '/';
   @override
   State<StatefulWidget> createState() => new FormWidgetState1();
 }
@@ -41,8 +40,7 @@ class FormWidgetState1 extends State<TurismTable1> {
                 color: HexColor("#A65005"),
               ),
               onPressed: () {
-                //Navigator.pop(context);
-                print("Colocar página principal");
+                Navigator.pop(context);
               },
             ),
             actions: <Widget>[

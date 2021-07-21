@@ -3,6 +3,7 @@
    <application
         android:label="turismo_flutter"
         android:icon="@mipmap/ic_launcher">
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -37,5 +38,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <!-- TODO: Add your API key here -->
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyCGShAceyIm1LHL2mLja0eKCKDjoZV2Rzy"/>
     </application>
 </manifest>

@@ -17,10 +17,10 @@ class TableTurism4 extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String _seleccion = "Loja";
-  final String _seleccion1 = "Catamayo";
-  final String _seleccion2 = "San Pedro";
-  final String _seleccion3 = "San Antonio";
+  final String seleccion ;
+  final String seleccion1;
+  final String seleccion2 ;
+  final String seleccion3 ;
   //Tabla3
   final String temperatura;
   final String precipitacion;
@@ -28,6 +28,13 @@ class TableTurism4 extends StatefulWidget {
   final String precio;
   final String meses_recomen;
   final String observaciones;
+  final String seleccionTab3;
+  final String seleccion1Tab3 ;
+  final String seleccion2Tab3 ;
+  final String seleccion3Tab3 ;
+  final String seleccion4Tab3 ;
+  final String seleccion5Tab3 ;
+  final String seleccion6Tab3 ;
   //Tabla3
 
   TableTurism4({Key? key,
@@ -40,12 +47,23 @@ class TableTurism4 extends StatefulWidget {
     required this.latitud,
     required this.longitud,
     required this.altura,
+    required this.seleccion,
+    required this.seleccion1,
+    required this.seleccion2,
+    required this.seleccion3,
     required this.temperatura,
     required this.precipitacion,
     required this.especificar,
     required this.precio,
     required this.meses_recomen,
     required this.observaciones,
+    required this.seleccionTab3,
+    required this.seleccion1Tab3,
+    required this.seleccion2Tab3,
+    required this.seleccion3Tab3,
+    required this.seleccion4Tab3,
+    required this.seleccion5Tab3,
+    required this.seleccion6Tab3,
 
   }): super(key: key);
 
@@ -55,10 +73,10 @@ class TableTurism4 extends StatefulWidget {
 
 class FormWidgetState4 extends State<TableTurism4> {
 
-  String _seleccion = "Primer Orden";
-  String _seleccion1 = "Maritimo";
-  String _seleccion2 = "Nacional";
-  String _seleccion3 = "Bus";
+  String seleccionTab4 = "Primer Orden";
+  String seleccion1Tab4 = "Maritimo";
+  String seleccion2Tab4 = "Nacional";
+  String seleccion3Tab4 = "Bus";
   TextEditingController accs_ciudad_cercana = TextEditingController();
   TextEditingController accs_distancia_ciudad = TextEditingController();
   TextEditingController accs_tiempo_auto = TextEditingController();
@@ -576,10 +594,10 @@ class FormWidgetState4 extends State<TableTurism4> {
           ),
         ),
         DropdownButton(
-          value: _seleccion,
+          value: seleccionTab4,
           onChanged: (value) {
             setState(() {
-              _seleccion = value.toString();
+              seleccionTab4 = value.toString();
             });
           },
           items: <String>['Primer Orden', 'Segundo Orden', 'Tercer Orden']
@@ -605,10 +623,10 @@ class FormWidgetState4 extends State<TableTurism4> {
           ),
         ),
         DropdownButton(
-          value: _seleccion1,
+          value: seleccion1Tab4,
           onChanged: (value) {
             setState(() {
-              _seleccion1 = value.toString();
+              seleccion1Tab4 = value.toString();
             });
           },
           items: <String>['Maritimo', 'Lacustre', 'Fluvial']
@@ -634,10 +652,10 @@ class FormWidgetState4 extends State<TableTurism4> {
           ),
         ),
         DropdownButton(
-          value: _seleccion2,
+          value: seleccion2Tab4,
           onChanged: (value) {
             setState(() {
-              _seleccion2 = value.toString();
+              seleccion2Tab4 = value.toString();
             });
           },
           items: <String>['Nacional', 'Internacional']
@@ -663,10 +681,10 @@ class FormWidgetState4 extends State<TableTurism4> {
           ),
         ),
         DropdownButton(
-          value: _seleccion3,
+          value: seleccion3Tab4,
           onChanged: (value) {
             setState(() {
-              _seleccion3 = value.toString();
+              seleccion3Tab4 = value.toString();
             });
           },
           items: <String>[
@@ -749,6 +767,21 @@ class FormWidgetState4 extends State<TableTurism4> {
           subtipo: widget.subtipo,
           tipo: widget.tipo,
           categoria: widget.categoria,
+          seleccion1: widget.seleccion1,
+          seleccionTab4: seleccionTab4,
+          seleccion3: widget.seleccion3,
+          seleccion2: widget.seleccion2,
+          seleccion4Tab3: widget.seleccion4Tab3,
+          seleccion3Tab4: seleccion3Tab4,
+          seleccion: widget.seleccion,
+          seleccion3Tab3: widget.seleccion3Tab3,
+          seleccion6Tab3: widget.seleccion6Tab3,
+          seleccionTab3: widget.seleccionTab3,
+          seleccion1Tab3: widget.seleccion1Tab3,
+          seleccion2Tab4: seleccion2Tab4,
+          seleccion5Tab3: widget.seleccion5Tab3,
+          seleccion2Tab3: widget.seleccion2Tab3,
+          seleccion1Tab4: seleccion1Tab4,
         ))
     );
   }

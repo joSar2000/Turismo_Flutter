@@ -19,10 +19,10 @@ class TableTurism6 extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String _seleccion = "Loja";
-  final String _seleccion1 = "Catamayo";
-  final String _seleccion2 = "San Pedro";
-  final String _seleccion3 = "San Antonio";
+  final String seleccion;
+  final String seleccion1;
+  final String seleccion2;
+  final String seleccion3;
   //Tabla3
   final String temperatura;
   final String precipitacion;
@@ -49,22 +49,22 @@ class TableTurism6 extends StatefulWidget {
   final String especifique_servicio ;
   final String observaciones_servicio ;
   //Tabla5
-  String estableci_registrados;
-  String numero_mesas;
-  String numero_plazas;
-  String observacionesTab5 ;
-  String estableci_registrados_alimentos;
-  String numero_mesas_alimentos ;
-  String numero_plazas_alimentos ;
-  String observaciones_alimentos;
-  String estableci_registrados_agencias;
-  String observaciones_agencias ;
-  String local;
-  String nacional ;
-  String nacional_especializado;
-  String cultura ;
-  String aventura ;
-  String observaciones_guia;
+  final String estableci_registrados;
+  final String numero_mesas;
+  final String numero_plazas;
+  final String observacionesTab5 ;
+  final String estableci_registrados_alimentos;
+  final String numero_mesas_alimentos ;
+  final String numero_plazas_alimentos ;
+  final String observaciones_alimentos;
+  final String estableci_registrados_agencias;
+  final String observaciones_agencias ;
+  final String local;
+  final String nacional ;
+  final String nacional_especializado;
+  final String cultura ;
+  final String aventura ;
+  final String observaciones_guia;
 
   TableTurism6({Key? key,
     required this.categoria,
@@ -114,7 +114,11 @@ class TableTurism6 extends StatefulWidget {
     required this.nacional_especializado,
     required this.cultura,
     required this.aventura,
-    required this.observaciones_guia
+    required this.observaciones_guia,
+    required this.seleccion,
+    required this.seleccion1,
+    required this.seleccion2,
+    required this.seleccion3
 
   }) : super(key: key);
 
@@ -154,11 +158,13 @@ class FormWidgetState6 extends State<TableTurism6>{
   late DateTime _dateTime;
   int optionGroup = 0;
   late int selectedOption;
+  double ponderacion = 14;
 
   void initState() {
     super.initState();
     optionGroup = 0;
     selectedOption = 0;
+    ponderacion = 14;
   }
 
   setSelectedRadio (int val) {
@@ -246,6 +252,8 @@ class FormWidgetState6 extends State<TableTurism6>{
   //
   bool declaratoria_espacio = false;
   final fecha_declaracion_espacio = new DateTime.now();
+  //Ponderacion
+
 
   void _showAlertDialogNo(BuildContext context) {
     showDialog <String> (
@@ -318,6 +326,27 @@ class FormWidgetState6 extends State<TableTurism6>{
           ],
         )
     );
+  }
+
+  getPonderacionTable6() {
+    int resultado = 0;
+    if (this.conservado_atractivo_U == true && this.alterado_atractivo_U == true) {
+      ponderacion = 0.18 * 2;
+      resultado = ponderacion as int;
+    }
+    return resultado;
+  }
+
+  _increment() {
+    setState(() {
+      ponderacion ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacion --;
+    });
   }
 
   @override
@@ -469,6 +498,7 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.conservado_atractivo_U = value!;
                       });
+                      //print(ponderacion);
                     },
                   ),
                 ),
@@ -499,6 +529,7 @@ class FormWidgetState6 extends State<TableTurism6>{
                     },
                   ),
                 ),
+                new RaisedButton(onPressed: () {print(ponderacion);}),
                 new Container(
                   child: CheckboxListTile(
                     secondary: const Icon(Icons.fact_check_sharp),
@@ -522,6 +553,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.deterioro_atractivo_U = value!;
+                        if (this.deterioro_atractivo_U) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -549,6 +585,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.deteriorado_atractivo_U = value!;
+                        if (this.deteriorado_atractivo_U) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -641,6 +682,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.erosion_M_fac = value!;
+                        if (this.erosion_M_fac) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -668,6 +714,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.humedad_M_fac = value!;
+                        if (this.humedad_M_fac) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -695,6 +746,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.desastres_naturales_M_fac = value!;
+                        if (this.desastres_naturales_M_fac) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -722,6 +778,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.flora_fauna_M_fac = value!;
+                        if (this.flora_fauna_M_fac) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -749,6 +810,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.clima_M_fac = value!;
+                        if (this.clima_M_fac) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1413,6 +1479,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.deterioro_entorno_U = value!;
+                        if (this.deteriorado_entorno_U) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1440,6 +1511,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.deteriorado_entorno_U = value!;
+                        if (this.deteriorado_entorno_U) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1491,6 +1567,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.erosion_M_ent = value!;
+                        if (this.erosion_M_ent) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1518,6 +1599,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.humedad_M_ent = value!;
+                        if (this.humedad_M_ent) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1545,6 +1631,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.desastres_naturales_M_ent = value!;
+                        if (this.desastres_naturales_M_ent) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1572,6 +1663,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.flora_fauna_M_ent = value!;
+                        if (this.flora_fauna_M_ent) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -1599,6 +1695,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                     onChanged: (value) {
                       setState(() {
                         this.clima_M_ent = value!;
+                        if (this.clima_M_ent) {
+                          _decrement();
+                        } else {
+                          _increment();
+                        }
                       });
                     },
                   ),
@@ -2195,7 +2296,7 @@ class FormWidgetState6 extends State<TableTurism6>{
                         height: 10,
                       ),
                       TextFormField(
-                        enabled: this.declaratoria_espacio,
+                        enabled: this.declaratoria_espacio && this.si_estado_conservacion,
                         controller: obsDeclarante,
                         maxLines: 3,
                         validator: (value) {
@@ -2220,7 +2321,7 @@ class FormWidgetState6 extends State<TableTurism6>{
                         ),
                       ),
                       TextFormField(
-                        enabled: this.declaratoria_espacio,
+                        enabled: this.declaratoria_espacio && this.si_estado_conservacion,
                         controller: obsDenominacion,
                         maxLines: 3,
                         validator: (value) {
@@ -2245,11 +2346,11 @@ class FormWidgetState6 extends State<TableTurism6>{
                         ),
                       ),
                       TextFormField(
-                        enabled: this.declaratoria_espacio,
+                        enabled: this.declaratoria_espacio && this.si_estado_conservacion,
                         controller: obsAlcance,
                         maxLines: 3,
-                        validator: (value) {
-                          if (value!.isEmpty) {
+                        validator: (obsAlcance) {
+                          if (obsAlcance!.isEmpty) {
                             return "correcto";
                           } else {
                             return "ingrese valores!";
@@ -2270,7 +2371,7 @@ class FormWidgetState6 extends State<TableTurism6>{
                         ),
                       ),
                       TextFormField(
-                        enabled: this.declaratoria_espacio,
+                        enabled: this.declaratoria_espacio && this.si_estado_conservacion,
                         controller: obsDeclaratoria,
                         maxLines: 3,
                         validator: (value) {
@@ -2412,7 +2513,60 @@ class FormWidgetState6 extends State<TableTurism6>{
                 denominacion_espacio: denominacion_espacio,
                 fecha_declaracion_espacio: fecha_declaracion_espacio,
                 alcance_espacio: alcance_espacio,
-                observaciones_espacio: observaciones_espacio)
+              especificar: widget.especificar,
+              precipitacion: widget.precipitacion,
+              precio: widget.precio,
+              observaciones: widget.observaciones,
+              transversal: widget.transversal,
+              longitud: widget.longitud,
+              altura: widget.altura,
+              temperatura: widget.temperatura,
+              meses_recomen: widget.meses_recomen,
+              num_lugar: widget.num_lugar,
+              calle_prin: widget.calle_prin,
+              latitud: widget.latitud,
+              distancia: widget.distancia,
+              especifique_servicio: widget.especifique_servicio,
+              puerto: widget.puerto,
+              observaciones_servicio: widget.observaciones_servicio,
+              coor_inicio: widget.coor_inicio,
+              tipo_material: widget.tipo_material,
+              tiempo_auto: widget.tiempo_auto,
+              coor_fin: widget.coor_fin,
+              observaciones_terrestre: widget.observaciones_terrestre,
+              observaciones_accs: widget.observaciones_accs,
+              estado: widget.estado,
+              ciudad_cercana: widget.ciudad_cercana,
+              distancia_ciudad: widget.distancia_ciudad,
+              observaciones_acuatico: widget.observaciones_acuatico,
+              observaciones_aereo: widget.observaciones_aereo,
+              latitudTab4: widget.latitudTab4,
+              longitudTab4: widget.longitudTab4,
+              subtipo: widget.subtipo,
+              tipo: widget.tipo,
+              categoria: widget.categoria,
+              numero_mesas_alimentos: widget.numero_mesas_alimentos,
+              observaciones_agencias: widget.observaciones_agencias,
+              estableci_registrados_agencias: widget.estableci_registrados_agencias,
+              estableci_registrados_alimentos: widget.estableci_registrados_alimentos,
+              numero_mesas: widget.numero_mesas,
+              aventura: widget.aventura,
+              estableci_registrados: widget.estableci_registrados,
+              observaciones_guia: widget.observaciones_guia,
+              observacionesTab5: widget.observacionesTab5,
+              cultura: widget.cultura,
+              local: widget.local,
+              numero_plazas: widget.numero_plazas,
+              nacional_especializado: widget.nacional_especializado,
+              observaciones_alimentos: widget.observaciones_alimentos,
+              numero_plazas_alimentos: widget.numero_plazas_alimentos,
+              nacional: widget.nacional,
+              seleccion2: widget.seleccion2,
+              seleccion1: widget.seleccion1,
+              seleccion: widget.seleccion,
+              seleccion3: widget.seleccion3,
+              observaciones_espacio: observaciones_espacio,
+            )
         ));
   }
 }

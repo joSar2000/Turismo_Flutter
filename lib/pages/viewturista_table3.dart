@@ -17,10 +17,10 @@ class TableTurism3 extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String _seleccion = "Loja";
-  final String _seleccion1 = "Catamayo";
-  final String _seleccion2 = "San Pedro";
-  final String _seleccion3 = "San Antonio";
+  final String seleccion ;
+  final String seleccion1;
+  final String seleccion2 ;
+  final String seleccion3 ;
 
   TableTurism3(
   {Key? key,
@@ -33,6 +33,10 @@ class TableTurism3 extends StatefulWidget {
     required this.latitud,
     required this.longitud,
     required this.altura,
+    required this.seleccion,
+    required this.seleccion1,
+    required this.seleccion2,
+    required this.seleccion3,
   }
       )
       : super(key: key);
@@ -42,13 +46,13 @@ class TableTurism3 extends StatefulWidget {
 }
 
 class FormWidgetState3 extends State<TableTurism3> {
-  String _seleccion = "Frío";
-  String _seleccion1 = "Cultura";
-  String _seleccion2 = "Pristino";
-  String _seleccion3 = "Libre";
-  String _seleccion4 = "Todos los dias";
-  String _seleccion5 = "Seleccione...";
-  String _seleccion6 = "Efectivo";
+  String seleccionTab3 = "Frío";
+  String seleccion1Tab3 = "Cultura";
+  String seleccion2Tab3 = "Pristino";
+  String seleccion3Tab3 = "Libre";
+  String seleccion4Tab3 = "Todos los dias";
+  String seleccion5Tab3 = "Seleccione...";
+  String seleccion6Tab3 = "Efectivo";
 
   TextEditingController carac_clima = TextEditingController();
   TextEditingController carac_temperatura = TextEditingController();
@@ -324,10 +328,10 @@ class FormWidgetState3 extends State<TableTurism3> {
           ),
         ),
         DropdownButton(
-          value: _seleccion,
+          value: seleccionTab3,
           onChanged: (value) {
             setState(() {
-              _seleccion = value.toString();
+              seleccionTab3 = value.toString();
             });
           },
           items: <String>['Frío', 'Templado', 'Calor']
@@ -353,10 +357,10 @@ class FormWidgetState3 extends State<TableTurism3> {
           ),
         ),
         DropdownButton(
-          value: _seleccion1,
+          value: seleccion1Tab3,
           onChanged: (value) {
             setState(() {
-              _seleccion1 = value.toString();
+              seleccion1Tab3 = value.toString();
             });
           },
           items: <String>['Cultura', 'Naturaleza', 'Aventura']
@@ -376,10 +380,10 @@ class FormWidgetState3 extends State<TableTurism3> {
       child: Row(
         children: [
           DropdownButton(
-            value: _seleccion2,
+            value: seleccion2Tab3,
             onChanged: (value) {
               setState(() {
-                _seleccion2 = value.toString();
+                seleccion2Tab3 = value.toString();
               });
             },
             items: <String>[
@@ -411,10 +415,10 @@ class FormWidgetState3 extends State<TableTurism3> {
           ),
         ),
         DropdownButton(
-          value: _seleccion3,
+          value: seleccion3Tab3,
           onChanged: (value) {
             setState(() {
-              _seleccion3 = value.toString();
+              seleccion3Tab3 = value.toString();
             });
           },
           items: <String>['Libre', 'Restringido', 'Pagado']
@@ -440,10 +444,10 @@ class FormWidgetState3 extends State<TableTurism3> {
           ),
         ),
         DropdownButton(
-          value: _seleccion4,
+          value: seleccion4Tab3,
           onChanged: (value) {
             setState(() {
-              _seleccion4 = value.toString();
+              seleccion4Tab3 = value.toString();
             });
           },
           items: <String>[
@@ -470,10 +474,10 @@ class FormWidgetState3 extends State<TableTurism3> {
 
         ),
         DropdownButton(
-          value: _seleccion5,
+          value: seleccion5Tab3,
           onChanged: (value) {
             setState(() {
-              _seleccion5 = value.toString();
+              seleccion5Tab3 = value.toString();
             });
           },
           items: <String>['Seleccione...', 'SI', 'NO']
@@ -499,10 +503,10 @@ class FormWidgetState3 extends State<TableTurism3> {
           ),
         ),
         DropdownButton(
-          value: _seleccion6,
+          value: seleccion6Tab3,
           onChanged: (value) {
             setState(() {
-              _seleccion6 = value.toString();
+              seleccion6Tab3 = value.toString();
             });
           },
           items: <String>[
@@ -549,6 +553,17 @@ class FormWidgetState3 extends State<TableTurism3> {
       tipo: widget.tipo,
       categoria: widget.categoria,
       subtipo: widget.subtipo,
+      seleccion2: widget.seleccion2,
+      seleccion1: widget.seleccion1,
+      seleccion3: widget.seleccion3,
+      seleccion: widget.seleccion,
+      seleccion2Tab3: seleccion2Tab3,
+      seleccion3Tab3: seleccion3Tab3,
+      seleccion6Tab3: seleccion6Tab3,
+      seleccion5Tab3: seleccion5Tab3,
+      seleccionTab3: seleccionTab3,
+      seleccion4Tab3: seleccion4Tab3,
+      seleccion1Tab3: seleccion1Tab3,
 
     )));
   }
