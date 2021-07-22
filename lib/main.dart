@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: initial_page.ROUTE,
+        debugShowCheckedModeBanner: false,
+      initialRoute: Initial_page.ROUTE,
       routes: {
-          initial_page.ROUTE: (_) => Home(),
+          Initial_page.ROUTE: (_) => Home(),
       },
     );
   }
