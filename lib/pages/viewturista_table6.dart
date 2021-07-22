@@ -529,7 +529,6 @@ class FormWidgetState6 extends State<TableTurism6>{
                     },
                   ),
                 ),
-                new RaisedButton(onPressed: () {print(ponderacion);}),
                 new Container(
                   child: CheckboxListTile(
                     secondary: const Icon(Icons.fact_check_sharp),
