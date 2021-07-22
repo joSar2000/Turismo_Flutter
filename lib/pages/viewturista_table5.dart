@@ -567,14 +567,6 @@ class FormWidgetState5 extends State<TableTurism5> {
                     ],
                   ),
                 ),
-                new RaisedButton(
-                  child: Text(
-                      "Enviar"
-                  ),
-                  onPressed: () {
-                    _sendDB();
-                  },
-                ),
               ],
             )
           ],
