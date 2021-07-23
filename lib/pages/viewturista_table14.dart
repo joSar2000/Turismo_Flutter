@@ -21,6 +21,7 @@ class FormWidgetState14 extends State<TurismTable14>  {
         home: Scaffold(
           backgroundColor: HexColor("#F0F2F2"),
           appBar: AppBar(
+            centerTitle: true,
             elevation: 0,
             backgroundColor: HexColor("#F0F2F2"),
             title: Text('14. ANEXOS',

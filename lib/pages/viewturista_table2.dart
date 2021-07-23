@@ -42,6 +42,7 @@ class FormWidgetState2 extends State<TableTurism2> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('2. UBICACIÓN DEL SITIO TURÍSTICO',
@@ -343,8 +344,11 @@ class FormWidgetState2 extends State<TableTurism2> {
     String num_lugar = ubi_num_lugar.text;
     String transversal = ubi_transversal.text;
     String latitud = ubi_latitud.text;
+    //double latitudD = latitud.toString() as double;
     String longitud = ubi_longitud.text;
+    //double longitudD = longitud as double;
     String altura = ubi_altura.text;
+    //double alturaD = altura as double;
 
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => TableTurism3(

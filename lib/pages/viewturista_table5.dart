@@ -107,6 +107,7 @@ class TableTurism5 extends StatefulWidget {
     required this.seleccion1Tab4,
     required this.seleccion2Tab4,
     required this.seleccion3Tab4,
+
   }): super(key: key);
 
   @override
@@ -147,6 +148,7 @@ class FormWidgetState5 extends State<TableTurism5> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('5. PLANTA TURÍSTICA/COMPLEMENTARIOS',
@@ -779,6 +781,19 @@ class FormWidgetState5 extends State<TableTurism5> {
       seleccion1: widget.seleccion1,
       seleccion: widget.seleccion,
       seleccion3: widget.seleccion3,
+        seleccionTab4: widget.seleccionTab4,
+        seleccion6Tab3: widget.seleccion6Tab3,
+        seleccion4Tab3: widget.seleccion4Tab3,
+        seleccion1Tab4: widget.seleccion1Tab4,
+        seleccionTab3: widget.seleccionTab3,
+        seleccion2Tab4: widget.seleccion2Tab4,
+     seleccion3Tab3: widget.seleccion3Tab3,
+      seleccion3Tab4: widget.seleccion3Tab4,
+      seleccion5Tab3: widget.seleccion5Tab3,
+      seleccion2Tab3: widget.seleccion2Tab3,
+      seleccion1Tab3: widget.seleccion1Tab3,
+
+
     )));
   }
 

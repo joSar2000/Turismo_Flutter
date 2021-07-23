@@ -132,6 +132,7 @@ class TurismTable10 extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
   //Tabla7
   final bool si_higiene_turistica;
   final bool no_higiene_turistica;
@@ -395,6 +396,7 @@ class TurismTable10 extends StatefulWidget {
   final String multiamenaza_nombre_doc;
   final String multiamenazas_observaciones;
   final DateTime currentDate;
+  final double ponderacionTab7;
   //Tabla8
   final bool politicas_si;
   final bool politicas_no;
@@ -411,6 +413,7 @@ class TurismTable10 extends StatefulWidget {
   final bool politicas_ordenanzas_no;
   final String politicas_ordenanzas_espec;
   final String politicas_observaciones;
+  final double ponderacionTab8;
   //Tabla9
   final bool actividades_si;
   final bool actividades_no;
@@ -484,6 +487,7 @@ class TurismTable10 extends StatefulWidget {
   final bool atractivo_cultural_otro;
   final String atractivo_cultural_otro_txt;
   final String atractivo_cultural_observaciones;
+  final double ponderacionTab9;
 
   TurismTable10(
       {Key? key,
@@ -606,6 +610,7 @@ class TurismTable10 extends StatefulWidget {
       required this.fecha_declaracion_espacio,
       required this.alcance_espacio,
       required this.observaciones_espacio,
+        required this.ponderacionTab6,
       //Variables tabla7
       required this.si_higiene_turistica,
       required this.no_higiene_turistica,
@@ -869,6 +874,7 @@ class TurismTable10 extends StatefulWidget {
       required this.multiamenaza_nombre_doc,
       required this.multiamenazas_observaciones,
       required this.currentDate,
+
       //Tabla8
       required this.politicas_si,
       required this.politicas_no,
@@ -957,7 +963,11 @@ class TurismTable10 extends StatefulWidget {
       required this.atractivo_cultural_medicina,
       required this.atractivo_cultural_otro,
       required this.atractivo_cultural_otro_txt,
-      required this.atractivo_cultural_observaciones})
+      required this.atractivo_cultural_observaciones,
+        required this.ponderacionTab7,
+        required this.ponderacionTab8,
+        required this.ponderacionTab9
+      })
       : super(key: key);
   @override
   State<StatefulWidget> createState() => new FormWidgetState10();
@@ -1001,6 +1011,8 @@ class FormWidgetState10 extends State<TurismTable10> {
       TextEditingController();
   static TextEditingController obs_atractivo_oferta_observaciones =
       TextEditingController();
+
+  double ponderacionTab10 = 0;
 
   //VARIABLES
   bool promocion_si = false;
@@ -1074,6 +1086,7 @@ class FormWidgetState10 extends State<TurismTable10> {
     optionGroupThird = 0;
     optionGroupFourth = 0;
     _loadValue();
+    ponderacionTab10 = 0;
   }
 
   _loadValue() async {
@@ -1168,26 +1181,6 @@ class FormWidgetState10 extends State<TurismTable10> {
             ));
   }
 
-  void _showAlertDialogObservaciones(BuildContext context) {
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              title: const Text(
-                'AVISO',
-                textAlign: TextAlign.center,
-              ),
-              content: const Text(
-                'Debe llenar este apartado con sus especificaciones',
-                textAlign: TextAlign.center,
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text('OK'),
-                ),
-              ],
-            ));
-  }
 
   void _showAlertDialogNo(BuildContext context) {
     showDialog<String>(
@@ -1210,6 +1203,18 @@ class FormWidgetState10 extends State<TurismTable10> {
             ));
   }
 
+  _increment() {
+    setState(() {
+      ponderacionTab10 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab10 --;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -1217,6 +1222,7 @@ class FormWidgetState10 extends State<TurismTable10> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('10. PROMOCIÓN Y COMERCIALIZACIÓN DEL ATRACTIVO',
@@ -1467,6 +1473,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_web = value!;
                     if (this.medio_web == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -1626,6 +1635,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_social = value!;
                     if (this.medio_social == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -1785,6 +1797,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_revista = value!;
                     if (this.medio_revista == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -1944,6 +1959,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_pop = value!;
                     if (this.medio_pop == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -2103,6 +2121,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_oficina = value!;
                     if (this.medio_oficina == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -2262,6 +2283,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_comunicacion = value!;
                     if (this.medio_comunicacion == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -2421,6 +2445,9 @@ class FormWidgetState10 extends State<TurismTable10> {
                     this.medio_ferias = value!;
                     if (this.medio_ferias == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -3395,6 +3422,11 @@ class FormWidgetState10 extends State<TurismTable10> {
               seleccion1: widget.seleccion1,
               seleccion: widget.seleccion,
               seleccion3: widget.seleccion3,
+              ponderacionTab6: widget.ponderacionTab6,
+              ponderacionTab7: widget.ponderacionTab7,
+              ponderacionTab8: widget.ponderacionTab8,
+              ponderacionTab9: widget.ponderacionTab9,
+              ponderacionTab10: ponderacionTab10,
             )));
   }
 }

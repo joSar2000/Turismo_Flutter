@@ -69,6 +69,7 @@ class FormWidgetState3 extends State<TableTurism3> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('3. CARACTERÍSTICAS CLIMATOLÓGICAS',
@@ -564,7 +565,6 @@ class FormWidgetState3 extends State<TableTurism3> {
       seleccionTab3: seleccionTab3,
       seleccion4Tab3: seleccion4Tab3,
       seleccion1Tab3: seleccion1Tab3,
-
     )));
   }
 }

@@ -134,6 +134,7 @@ class turismTable9 extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
   //Tabla7
   final bool si_higiene_turistica;
   final bool no_higiene_turistica;
@@ -397,6 +398,7 @@ class turismTable9 extends StatefulWidget {
   final String multiamenaza_nombre_doc;
   final String multiamenazas_observaciones;
   final DateTime currentDate;
+  final double ponderacionTab7;
   //Tabla8
   final bool politicas_si;
   final bool politicas_no;
@@ -413,6 +415,7 @@ class turismTable9 extends StatefulWidget {
   final bool politicas_ordenanzas_no;
   final String politicas_ordenanzas_espec;
   final String politicas_observaciones;
+  final double ponderacionTab8;
 
   turismTable9(
       {Key? key,
@@ -812,7 +815,10 @@ class turismTable9 extends StatefulWidget {
       required this.politicas_ordenanzas_si,
       required this.politicas_ordenanzas_no,
       required this.politicas_ordenanzas_espec,
-      required this.politicas_observaciones})
+      required this.politicas_observaciones,
+        required this.ponderacionTab6,
+        required this.ponderacionTab7,
+        required this.ponderacionTab8})
       : super(key: key);
   @override
   State<StatefulWidget> createState() => new FormWidgetState9();
@@ -835,6 +841,8 @@ class FormWidgetState9 extends State<turismTable9> {
       TextEditingController();
   static TextEditingController obs_atractivo_cultural_observaciones =
       TextEditingController();
+
+  double ponderacionTab9 = 2;
 
   //VARIABLES
   bool actividades_si = false;
@@ -919,6 +927,7 @@ class FormWidgetState9 extends State<turismTable9> {
     super.initState();
     optionGroup = 0;
     selectedOption = 0;
+    ponderacionTab9 = 2;
   }
 
   setSelectedRadio(int val) {
@@ -930,6 +939,7 @@ class FormWidgetState9 extends State<turismTable9> {
         this.actividades_s_i = false;
         if (this.actividades_si == true) {
           _showAlertDialogSi(context);
+          _increment();
         }
       } else if (optionGroup == 2) {
         this.actividades_si = false;
@@ -937,6 +947,7 @@ class FormWidgetState9 extends State<turismTable9> {
         this.actividades_s_i = false;
         if (this.actividades_no == true) {
           _showAlertDialogNo(context);
+          _decrement();
         }
       } else if (optionGroup == 3) {
         this.actividades_si = false;
@@ -1009,6 +1020,18 @@ class FormWidgetState9 extends State<turismTable9> {
             ));
   }
 
+  _increment() {
+    setState(() {
+      ponderacionTab9 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab9 --;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -1017,6 +1040,7 @@ class FormWidgetState9 extends State<turismTable9> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('9. ACTIVIDADES QUE SE PRACTICAN (U)',
@@ -1124,6 +1148,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_natural = value!;
                   if (this.atractivo_natural == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -1144,6 +1171,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_agua = value!;
                   if (this.atractivo_agua == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -1703,6 +1733,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_aire = value!;
                   if (this.atractivo_aire == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -1886,6 +1919,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_terrestre = value!;
                   if (this.atractivo_terrestre == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -2303,6 +2339,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_cultural = value!;
                   if (this.atractivo_cultural == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -2323,6 +2362,9 @@ class FormWidgetState9 extends State<turismTable9> {
                   this.atractivo_cultural_t_i = value!;
                   if (this.atractivo_cultural_t_i == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -3319,6 +3361,10 @@ class FormWidgetState9 extends State<turismTable9> {
               seleccion1: widget.seleccion1,
               seleccion: widget.seleccion,
               seleccion3: widget.seleccion3,
+              ponderacionTab6: widget.ponderacionTab6,
+              ponderacionTab7: widget.ponderacionTab7,
+              ponderacionTab8: widget.ponderacionTab8,
+              ponderacionTab9: ponderacionTab9,
             )));
   }
 }

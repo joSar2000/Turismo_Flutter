@@ -16,8 +16,12 @@ class Initial_pageState extends State<Initial_page> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
+      home: Container(width: 0,
+=======
       debugShowCheckedModeBanner: false,
       home: Container(width: 500,
+>>>>>>> bc40dc999a7d58a06b16ec0c399d975bf789278b
       padding: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -28,13 +32,14 @@ class Initial_pageState extends State<Initial_page> {
             repeat: ImageRepeat.repeat,
             fit: BoxFit.cover,
             alignment: Alignment.center,
-            scale: 50.0
+            scale: 100.0
           )
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           //backgroundColor: HexColor("#F0F2F2"),
-          appBar: AppBar(centerTitle: true,
+          appBar: AppBar(
+            centerTitle: true,
             elevation: 0,
             backgroundColor: HexColor("#F0F2F2"),
             //backgroundColor: Colors.transparent,
