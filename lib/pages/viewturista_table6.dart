@@ -19,10 +19,10 @@ class TableTurism6 extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String seleccion;
+  final String seleccion ;
   final String seleccion1;
-  final String seleccion2;
-  final String seleccion3;
+  final String seleccion2 ;
+  final String seleccion3 ;
   //Tabla3
   final String temperatura;
   final String precipitacion;
@@ -30,6 +30,13 @@ class TableTurism6 extends StatefulWidget {
   final String precio;
   final String meses_recomen;
   final String observaciones;
+  final String seleccionTab3;
+  final String seleccion1Tab3 ;
+  final String seleccion2Tab3 ;
+  final String seleccion3Tab3 ;
+  final String seleccion4Tab3 ;
+  final String seleccion5Tab3 ;
+  final String seleccion6Tab3 ;
   //Tabla4
   final String ciudad_cercana;
   final String distancia_ciudad;
@@ -48,6 +55,10 @@ class TableTurism6 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final String seleccionTab4;
+  final String seleccion1Tab4;
+  final String seleccion2Tab4 ;
+  final String seleccion3Tab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -118,7 +129,18 @@ class TableTurism6 extends StatefulWidget {
     required this.seleccion,
     required this.seleccion1,
     required this.seleccion2,
-    required this.seleccion3
+    required this.seleccion3,
+    required this.seleccionTab3,
+    required this.seleccion1Tab3,
+    required this.seleccion2Tab3,
+    required this.seleccion3Tab3,
+    required this.seleccion4Tab3,
+    required this.seleccion5Tab3,
+    required this.seleccion6Tab3,
+    required this.seleccionTab4,
+    required this.seleccion1Tab4,
+    required this.seleccion2Tab4,
+    required this.seleccion3Tab4,
 
   }) : super(key: key);
 
@@ -158,13 +180,13 @@ class FormWidgetState6 extends State<TableTurism6>{
   late DateTime _dateTime;
   int optionGroup = 0;
   late int selectedOption;
-  double ponderacion = 14;
+  double ponderacionTab6 = 0;
 
   void initState() {
     super.initState();
     optionGroup = 0;
     selectedOption = 0;
-    ponderacion = 14;
+    ponderacionTab6 = 0;
   }
 
   setSelectedRadio (int val) {
@@ -328,24 +350,16 @@ class FormWidgetState6 extends State<TableTurism6>{
     );
   }
 
-  getPonderacionTable6() {
-    int resultado = 0;
-    if (this.conservado_atractivo_U == true && this.alterado_atractivo_U == true) {
-      ponderacion = 0.18 * 2;
-      resultado = ponderacion as int;
-    }
-    return resultado;
-  }
 
   _increment() {
     setState(() {
-      ponderacion ++;
+      ponderacionTab6 ++;
     });
   }
 
   _decrement() {
     setState(() {
-      ponderacion --;
+      ponderacionTab6 --;
     });
   }
 
@@ -356,6 +370,7 @@ class FormWidgetState6 extends State<TableTurism6>{
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           title:
           Text('6. ESTADO DE CONSERVACIÓN E INTEGRACIÓN A ATRACTIVO/ENTORNO',
               textAlign: TextAlign.center,
@@ -553,9 +568,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.deterioro_atractivo_U = value!;
                         if (this.deterioro_atractivo_U) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -585,9 +600,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.deteriorado_atractivo_U = value!;
                         if (this.deteriorado_atractivo_U) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -682,9 +697,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.erosion_M_fac = value!;
                         if (this.erosion_M_fac) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -714,9 +729,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.humedad_M_fac = value!;
                         if (this.humedad_M_fac) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -746,9 +761,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.desastres_naturales_M_fac = value!;
                         if (this.desastres_naturales_M_fac) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -778,9 +793,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.flora_fauna_M_fac = value!;
                         if (this.flora_fauna_M_fac) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -810,9 +825,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.clima_M_fac = value!;
                         if (this.clima_M_fac) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1479,9 +1494,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.deterioro_entorno_U = value!;
                         if (this.deteriorado_entorno_U) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1511,9 +1526,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.deteriorado_entorno_U = value!;
                         if (this.deteriorado_entorno_U) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1567,9 +1582,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.erosion_M_ent = value!;
                         if (this.erosion_M_ent) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1599,9 +1614,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.humedad_M_ent = value!;
                         if (this.humedad_M_ent) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1631,9 +1646,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.desastres_naturales_M_ent = value!;
                         if (this.desastres_naturales_M_ent) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1663,9 +1678,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.flora_fauna_M_ent = value!;
                         if (this.flora_fauna_M_ent) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -1695,9 +1710,9 @@ class FormWidgetState6 extends State<TableTurism6>{
                       setState(() {
                         this.clima_M_ent = value!;
                         if (this.clima_M_ent) {
-                          _decrement();
-                        } else {
                           _increment();
+                        } else {
+                          _decrement();
                         }
                       });
                     },
@@ -2565,6 +2580,18 @@ class FormWidgetState6 extends State<TableTurism6>{
               seleccion: widget.seleccion,
               seleccion3: widget.seleccion3,
               observaciones_espacio: observaciones_espacio,
+              ponderacionTab6: ponderacionTab6,
+              seleccionTab4: widget.seleccionTab4,
+              seleccion6Tab3: widget.seleccion6Tab3,
+              seleccion4Tab3: widget.seleccion4Tab3,
+              seleccion1Tab4: widget.seleccion1Tab4,
+              seleccionTab3: widget.seleccionTab3,
+              seleccion2Tab4: widget.seleccion2Tab4,
+              seleccion3Tab3: widget.seleccion3Tab3,
+              seleccion3Tab4: widget.seleccion3Tab4,
+              seleccion5Tab3: widget.seleccion5Tab3,
+              seleccion2Tab3: widget.seleccion2Tab3,
+              seleccion1Tab3: widget.seleccion1Tab3,
             )
         ));
   }

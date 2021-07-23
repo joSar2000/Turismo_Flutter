@@ -73,10 +73,12 @@ class TableTurism4 extends StatefulWidget {
 
 class FormWidgetState4 extends State<TableTurism4> {
 
+  final _formkey = GlobalKey<FormState>();
   String seleccionTab4 = "Primer Orden";
   String seleccion1Tab4 = "Maritimo";
   String seleccion2Tab4 = "Nacional";
   String seleccion3Tab4 = "Bus";
+  double ponderacionTab4 = 0;
   TextEditingController accs_ciudad_cercana = TextEditingController();
   TextEditingController accs_distancia_ciudad = TextEditingController();
   TextEditingController accs_tiempo_auto = TextEditingController();
@@ -96,20 +98,39 @@ class FormWidgetState4 extends State<TableTurism4> {
   TextEditingController accs_obs_servicio = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  _increment() {
+    setState(() {
+      ponderacionTab4 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab4 --;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
-          title: Text('4. ACCESO Y CONEXIÓN AL ATRACTIVO',
+          title: Text('4. ACCESIBILIDAD Y CONECTIVIDAD AL ATRACTIVO',
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 5,
               style: GoogleFonts.dmSans(
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 16,
                 color: HexColor("#A65005"),
               )),
           leading: IconButton(
@@ -138,12 +159,13 @@ class FormWidgetState4 extends State<TableTurism4> {
             new Column(
               children: <Widget> [
                 new Form(
+                  key: _formkey,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
                         controller: accs_ciudad_cercana,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -155,7 +177,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Nombre de la ciudad más cercana",
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -719,10 +741,14 @@ class FormWidgetState4 extends State<TableTurism4> {
     String distancia_ciudad = accs_distancia_ciudad.text;
     String tiempo_auto = accs_tiempo_auto.text;
     String latitudTab4 = accs_latitud.text;
+    //double latitudTab4D = latitudTab4 as double;
     String longitudTab4 = accs_longitud.text;
+    //double longitudTab4D = longitudTab4 as double;
     String observaciones_accs = accs_obser.text;
     String coor_inicio = accs_coor_inicio.text;
+    //double coor_inicioD = coor_inicio as double;
     String coor_fin = accs_coor_fin.text;
+    //double coor_finD = coor_fin as double;
     String distancia = accs_distancia.text;
     String tipo_material = accs_tipo_material.text;
     String estado = accs_estado.text;

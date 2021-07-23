@@ -131,6 +131,7 @@ class TurismTable12 extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
   //Tabla7
   final bool si_higiene_turistica;
   final bool no_higiene_turistica;
@@ -394,6 +395,7 @@ class TurismTable12 extends StatefulWidget {
   final String multiamenaza_nombre_doc;
   final String multiamenazas_observaciones;
   final DateTime currentDate;
+  final double ponderacionTab7;
   //Tabla8
   final bool politicas_si;
   final bool politicas_no;
@@ -410,6 +412,7 @@ class TurismTable12 extends StatefulWidget {
   final bool politicas_ordenanzas_no;
   final String politicas_ordenanzas_espec;
   final String politicas_observaciones;
+  final ponderacionTab8;
   //Tabla9
   final bool actividades_si;
   final bool actividades_no;
@@ -483,6 +486,7 @@ class TurismTable12 extends StatefulWidget {
   final bool atractivo_cultural_otro;
   final String atractivo_cultural_otro_txt;
   final String atractivo_cultural_observaciones;
+  final double ponderacionTab9;
   //Table10
   final bool promocion_si;
   final bool promocion_no;
@@ -529,6 +533,7 @@ class TurismTable12 extends StatefulWidget {
   final String chosenValueComunicacion;
   final String chosenValueFerias;
   final String chosenValueOtro;
+  final double ponderacionTab10;
   //Tabla11
   final bool registro_visitantes_si;
   final bool registro_visitantes_no;
@@ -570,6 +575,7 @@ class TurismTable12 extends StatefulWidget {
   final String demanda_dias_feriados;
   final String frecuencia_visita_clave;
   final String chosenValue_reporte_estadisticas;
+  final double ponderacionTab11;
 
   TurismTable12(
       {Key? key,
@@ -1130,7 +1136,13 @@ class TurismTable12 extends StatefulWidget {
       required this.demanda_dias_fines,
       required this.demanda_dias_feriados,
       required this.frecuencia_visita_clave,
-        required this.chosenValue_reporte_estadisticas});
+        required this.chosenValue_reporte_estadisticas,
+        required this.ponderacionTab6,
+        required this.ponderacionTab7,
+        required this.ponderacionTab8,
+        required this.ponderacionTab9,
+        required this.ponderacionTab10,
+        required this.ponderacionTab11});
 
   @override
   State<StatefulWidget> createState() => FormWidgetState12();
@@ -1169,6 +1181,8 @@ class FormWidgetState12 extends State<TurismTable12> {
   static TextEditingController obs_personas_nivel_otro =
       TextEditingController();
   static TextEditingController obs_recurso_humano = TextEditingController();
+
+  double ponderacionTab12 = 0;
 
   //VARIABLES
   bool recurso_humano_si = false;
@@ -1269,25 +1283,16 @@ class FormWidgetState12 extends State<TurismTable12> {
             ));
   }
 
-  void _showAlertDialogTable(BuildContext context) {
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              title: const Text(
-                'AVISO',
-                textAlign: TextAlign.center,
-              ),
-              content: const Text(
-                'Debe llenar esta columna con la información correspondiente',
-                textAlign: TextAlign.center,
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text('OK'),
-                ),
-              ],
-            ));
+  _increment() {
+    setState(() {
+      ponderacionTab12 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab12 --;
+    });
   }
 
   @override
@@ -1297,6 +1302,7 @@ class FormWidgetState12 extends State<TurismTable12> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('12. RECURSO HUMANO',
@@ -1412,6 +1418,9 @@ class FormWidgetState12 extends State<TurismTable12> {
                       this.personas_administracion_si = value!;
                       if (this.personas_administracion_si == true) {
                         _showAlertDialogSi(context);
+                        _increment();
+                      } else {
+                        _decrement();
                       }
                     });
                   },
@@ -1472,6 +1481,9 @@ class FormWidgetState12 extends State<TurismTable12> {
                       this.personas_especializadas_si = value!;
                       if (this.personas_especializadas_si == true) {
                         _showAlertDialogSi(context);
+                        _increment();
+                      } else {
+                        _decrement();
                       }
                     });
                   },
@@ -1511,7 +1523,7 @@ class FormWidgetState12 extends State<TurismTable12> {
                 new CheckboxListTile(
                   tristate: false,
                   title: Text(
-                    "c.  Número de personas con nivel de instrucción (M):",
+                    "c. Número de personas con nivel de instrucción (M):",
                     style: GoogleFonts.dmSans(
                       fontWeight: FontWeight.w900,
                       fontSize: 18,
@@ -1532,6 +1544,9 @@ class FormWidgetState12 extends State<TurismTable12> {
                       this.personas_nivel_instruccion = value!;
                       if (this.personas_nivel_instruccion == true) {
                         _showAlertDialogSi(context);
+                        _increment();
+                      } else {
+                        _decrement();
                       }
                     });
                   },
@@ -1810,6 +1825,9 @@ class FormWidgetState12 extends State<TurismTable12> {
                       this.personas_capacitadas = value!;
                       if (this.personas_capacitadas == true) {
                         _showAlertDialogSi(context);
+                        _increment();
+                      } else {
+                        _decrement();
                       }
                     });
                   },
@@ -2138,6 +2156,9 @@ class FormWidgetState12 extends State<TurismTable12> {
                       this.personas_idiomas = value!;
                       if (this.personas_idiomas == true) {
                         _showAlertDialogSi(context);
+                        _increment();
+                      } else {
+                        _decrement();
                       }
                     });
                   },
@@ -3088,8 +3109,14 @@ class FormWidgetState12 extends State<TurismTable12> {
                 personas_chino: personas_chino,
                 personas_idioma_otro: personas_idioma_otro,
                 personas_nivel_otro: personas_nivel_otro,
-                recurso_humano: recurso_humano
-
+                recurso_humano: recurso_humano,
+              ponderacionTab6: widget.ponderacionTab6,
+              ponderacionTab7: widget.ponderacionTab7,
+              ponderacionTab8: widget.ponderacionTab8,
+              ponderacionTab9: widget.ponderacionTab9,
+              ponderacionTab10: widget.ponderacionTab10,
+              ponderacionTab11: widget.ponderacionTab11,
+              ponderacionTab12: ponderacionTab12,
             )));
   }
 }

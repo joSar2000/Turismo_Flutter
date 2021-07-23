@@ -131,6 +131,7 @@ class TableTurism8 extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
   //Tabla7
   final bool si_higiene_turistica;
   final bool no_higiene_turistica;
@@ -394,6 +395,7 @@ class TableTurism8 extends StatefulWidget {
   final String multiamenaza_nombre_doc;
   final String multiamenazas_observaciones;
   final DateTime currentDate;
+  final double ponderacionTab7;
 
   //Tabla7
 
@@ -780,7 +782,10 @@ class TableTurism8 extends StatefulWidget {
       required this.multiamenaza_institucion_doc,
       required this.multiamenaza_nombre_doc,
       required this.multiamenazas_observaciones,
-      required this.currentDate})
+      required this.currentDate,
+        required this.ponderacionTab6,
+        required this.ponderacionTab7
+      })
       : super(key: key);
 
   @override
@@ -814,6 +819,8 @@ class CheckboxWidgetState extends State<TableTurism8> {
   static TextEditingController obs_politicas_observaciones =
       TextEditingController();
 
+  double ponderacionTab8 = 6;
+
   bool politicas_si = false;
   bool politicas_no = false;
   bool politicas_s_i = false;
@@ -844,6 +851,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
     optionGroupFourth = 0;
     selectedOption = 0;
     optionGroupFive = 0;
+    ponderacionTab8 = 6;
   }
 
   setSelectedRadioFirst(int val) {
@@ -853,6 +861,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
         this.politicas_si = true;
         this.politicas_no = false;
         this.politicas_s_i = false;
+        _increment();
         if (this.politicas_si == true) {
           _showAlertDialogSi(context);
         }
@@ -860,6 +869,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
         this.politicas_si = false;
         this.politicas_no = true;
         this.politicas_s_i = false;
+        _decrement();
         if (this.politicas_no == true) {
           _showAlertDialogNo(context);
         }
@@ -877,9 +887,11 @@ class CheckboxWidgetState extends State<TableTurism8> {
       if (optionGroupSecond == 1) {
         this.politicas_gad_si = true;
         this.politicas_gad_no = false;
+        _increment();
       } else if (optionGroupSecond == 2) {
         this.politicas_gad_si = false;
         this.politicas_gad_no = true;
+        _decrement();
       }
     });
   }
@@ -890,9 +902,11 @@ class CheckboxWidgetState extends State<TableTurism8> {
       if (optionGroupThird == 1) {
         this.politicas_planificacion_si = true;
         this.politicas_planificacion_no = false;
+        _increment();
       } else if (optionGroupThird == 2) {
         this.politicas_planificacion_si = false;
         this.politicas_planificacion_no = true;
+        _decrement();
       }
     });
   }
@@ -903,9 +917,11 @@ class CheckboxWidgetState extends State<TableTurism8> {
       if (optionGroupFourth == 1) {
         this.politicas_normativas_si = true;
         this.politicas_normativas_no = false;
+        _increment();
       } else if (optionGroupFourth == 2) {
         this.politicas_normativas_si = false;
         this.politicas_normativas_no = true;
+        _decrement();
       }
     });
   }
@@ -916,9 +932,11 @@ class CheckboxWidgetState extends State<TableTurism8> {
       if (optionGroupFive == 1) {
         this.politicas_ordenanzas_si = true;
         this.politicas_ordenanzas_no = false;
+        _increment();
       } else if (optionGroupFive == 2) {
         this.politicas_ordenanzas_si = false;
         this.politicas_ordenanzas_no = true;
+        _decrement();
       }
     });
   }
@@ -1007,6 +1025,18 @@ class CheckboxWidgetState extends State<TableTurism8> {
             ));
   }
 
+  _increment() {
+    setState(() {
+      ponderacionTab8 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab8 --;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -1014,6 +1044,7 @@ class CheckboxWidgetState extends State<TableTurism8> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('8. POLÍTICAS Y REGULACIONES',
@@ -1908,6 +1939,9 @@ class CheckboxWidgetState extends State<TableTurism8> {
               seleccion1: widget.seleccion1,
               seleccion: widget.seleccion,
               seleccion3: widget.seleccion3,
+              ponderacionTab6: widget.ponderacionTab6,
+              ponderacionTab7: widget.ponderacionTab7,
+              ponderacionTab8: ponderacionTab8,
             )));
   }
 

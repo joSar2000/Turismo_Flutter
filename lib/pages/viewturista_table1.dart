@@ -23,6 +23,7 @@ class FormWidgetState1 extends State<TurismTable1> {
           resizeToAvoidBottomInset: false,
           backgroundColor: HexColor("#F0F2F2"),
           appBar: AppBar(
+            centerTitle: true,
             elevation: 0,
             backgroundColor: HexColor("#F0F2F2"),
             title: Text('1. DATOS GENERALES',

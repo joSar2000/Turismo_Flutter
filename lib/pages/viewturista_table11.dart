@@ -131,6 +131,7 @@ class TurismTable11 extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
   //Tabla7
   final bool si_higiene_turistica;
   final bool no_higiene_turistica;
@@ -394,6 +395,7 @@ class TurismTable11 extends StatefulWidget {
   final String multiamenaza_nombre_doc;
   final String multiamenazas_observaciones;
   final DateTime currentDate;
+  final double ponderacionTab7;
   //Tabla8
   final bool politicas_si;
   final bool politicas_no;
@@ -410,6 +412,7 @@ class TurismTable11 extends StatefulWidget {
   final bool politicas_ordenanzas_no;
   final String politicas_ordenanzas_espec;
   final String politicas_observaciones;
+  final double ponderacionTab8;
   //Tabla9
   final bool actividades_si;
   final bool actividades_no;
@@ -483,6 +486,7 @@ class TurismTable11 extends StatefulWidget {
   final bool atractivo_cultural_otro;
   final String atractivo_cultural_otro_txt;
   final String atractivo_cultural_observaciones;
+  final double ponderacionTab9;
   //Table10
   final bool promocion_si;
   final bool promocion_no;
@@ -529,6 +533,7 @@ class TurismTable11 extends StatefulWidget {
   final String chosenValueComunicacion;
   final String chosenValueFerias;
   final String chosenValueOtro;
+  final double ponderacionTab10;
 
   TurismTable11(
       {Key? key,
@@ -1003,6 +1008,7 @@ class TurismTable11 extends StatefulWidget {
       required this.atractivo_cultural_otro,
       required this.atractivo_cultural_otro_txt,
       required this.atractivo_cultural_observaciones,
+
       //Tabla10
       required this.promocion_si,
       required this.promocion_no,
@@ -1048,7 +1054,12 @@ class TurismTable11 extends StatefulWidget {
         required this.chosenValueOficina,
         required this.chosenValueComunicacion,
         required this.chosenValueFerias,
-        required this.chosenValueOtro
+        required this.chosenValueOtro,
+        required this.ponderacionTab6,
+        required this.ponderacionTab7,
+        required this.ponderacionTab8,
+        required this.ponderacionTab9,
+        required this.ponderacionTab10
       })
       : super(key: key);
 
@@ -1092,6 +1103,8 @@ class FormWidgetState11 extends State<TurismTable11> {
 
   static TextEditingController obs_anexos_fuente = TextEditingController();
   static TextEditingController obs_ubicacion_fuente = TextEditingController();
+
+  double ponderacionTab11 = 0;
 
   //VARIABLES
   bool registro_visitantes_si = false;
@@ -1339,25 +1352,16 @@ class FormWidgetState11 extends State<TurismTable11> {
             ));
   }
 
-  void _showAlertDialogTable(BuildContext context) {
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              title: const Text(
-                'AVISO',
-                textAlign: TextAlign.center,
-              ),
-              content: const Text(
-                'Debe llenar esta columna con la información correspondiente',
-                textAlign: TextAlign.center,
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text('OK'),
-                ),
-              ],
-            ));
+  _increment() {
+    setState(() {
+      ponderacionTab11 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab11 --;
+    });
   }
 
   @override
@@ -1367,6 +1371,7 @@ class FormWidgetState11 extends State<TurismTable11> {
         resizeToAvoidBottomInset: false,
         backgroundColor: HexColor("#F0F2F2"),
         appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor("#F0F2F2"),
           title: Text('11. REGISTRO DE VISITANTES Y AFLUENCIA (M)',
@@ -1473,6 +1478,9 @@ class FormWidgetState11 extends State<TurismTable11> {
                   this.frecuencia_visita_si = value!;
                   if (this.frecuencia_visita_si == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -1920,6 +1928,9 @@ class FormWidgetState11 extends State<TurismTable11> {
                   this.turista_nacional = value!;
                   if (this.turista_nacional == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -2105,6 +2116,9 @@ class FormWidgetState11 extends State<TurismTable11> {
                     this.turista_extranjero = value!;
                     if (this.turista_extranjero == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -2315,6 +2329,9 @@ class FormWidgetState11 extends State<TurismTable11> {
                   this.frencuencia_visita_clave_si = value!;
                   if (this.frencuencia_visita_clave_si == true) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -3273,6 +3290,12 @@ class FormWidgetState11 extends State<TurismTable11> {
               chosenValueWeb: widget.chosenValueWeb,
               chosenValueOficina: widget.chosenValueOficina,
               chosenValueRevista: widget.chosenValueRevista,
+              ponderacionTab6: widget.ponderacionTab6,
+              ponderacionTab7: widget.ponderacionTab7,
+              ponderacionTab8: widget.ponderacionTab8,
+              ponderacionTab9: widget.ponderacionTab9,
+              ponderacionTab10: widget.ponderacionTab10,
+              ponderacionTab11: ponderacionTab11,
             )));
   }
 }

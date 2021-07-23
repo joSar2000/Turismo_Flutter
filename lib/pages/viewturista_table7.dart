@@ -20,10 +20,10 @@ class FormSaveWidget extends StatefulWidget {
   final String latitud ;
   final String longitud ;
   final String altura ;
-  final String seleccion;
+  final String seleccion ;
   final String seleccion1;
-  final String seleccion2;
-  final String seleccion3;
+  final String seleccion2 ;
+  final String seleccion3 ;
   //Tabla3
   final String temperatura;
   final String precipitacion;
@@ -31,6 +31,13 @@ class FormSaveWidget extends StatefulWidget {
   final String precio;
   final String meses_recomen;
   final String observaciones;
+  final String seleccionTab3;
+  final String seleccion1Tab3 ;
+  final String seleccion2Tab3 ;
+  final String seleccion3Tab3 ;
+  final String seleccion4Tab3 ;
+  final String seleccion5Tab3 ;
+  final String seleccion6Tab3 ;
   //Tabla4
   final String ciudad_cercana;
   final String distancia_ciudad;
@@ -49,6 +56,10 @@ class FormSaveWidget extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final String seleccionTab4;
+  final String seleccion1Tab4;
+  final String seleccion2Tab4 ;
+  final String seleccion3Tab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -134,6 +145,7 @@ class FormSaveWidget extends StatefulWidget {
   final DateTime fecha_declaracion_espacio;
   final String alcance_espacio;
   final String observaciones_espacio;
+  final double ponderacionTab6;
 
   FormSaveWidget(
       {Key? key,
@@ -256,7 +268,18 @@ class FormSaveWidget extends StatefulWidget {
         required this.fecha_declaracion_espacio,
         required this.alcance_espacio,
         required this.observaciones_espacio,
-
+        required this.seleccionTab3,
+        required this.seleccion1Tab3,
+        required this.seleccion2Tab3,
+        required this.seleccion3Tab3,
+        required this.seleccion4Tab3,
+        required this.seleccion5Tab3,
+        required this.seleccion6Tab3,
+        required this.seleccionTab4,
+        required this.seleccion1Tab4,
+        required this.seleccion2Tab4,
+        required this.seleccion3Tab4,
+        required this.ponderacionTab6,
 
       })
       : super(key: key);
@@ -458,6 +481,7 @@ class FormWidgetState extends State<FormSaveWidget> {
   static TextEditingController obs_seguridad_policia_municipal =
   TextEditingController();
   static TextEditingController obs_seguridad_otra = TextEditingController();
+  double ponderacionTab7 = 0;
 
   //VARIABLES
   bool si_higiene_turistica = false;
@@ -752,6 +776,7 @@ class FormWidgetState extends State<FormSaveWidget> {
     optionGroup = 0;
     selectedOption = 0;
     obtenerPreferencias();
+    ponderacionTab7 = 0;
   }
 
   setSelectedRadio(int val) {
@@ -867,6 +892,18 @@ class FormWidgetState extends State<FormSaveWidget> {
             ));
   }
 
+  _increment() {
+    setState(() {
+      ponderacionTab7 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab7 --;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -874,6 +911,7 @@ class FormWidgetState extends State<FormSaveWidget> {
           resizeToAvoidBottomInset: false,
           backgroundColor: HexColor("#F0F2F2"),
           appBar: AppBar(
+            centerTitle: true,
             elevation: 0,
             backgroundColor: HexColor("#F0F2F2"),
             title: Text('7. HIGIENE Y SEGURIDAD TURÍSTICA',
@@ -963,8 +1001,11 @@ class FormWidgetState extends State<FormSaveWidget> {
               onChanged: (value) {
                 setState(() {
                   this.servicio_basico = value!;
-                  if (this.servicio_basico == true) {
+                  if (this.servicio_basico) {
                     _showAlertDialogSi(context);
+                    _increment();
+                  } else {
+                    _decrement();
                   }
                 });
               },
@@ -1509,6 +1550,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.senialeticas_atarctivo = value!;
                     if (this.senialeticas_atarctivo == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -1562,6 +1606,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.areas_urbanas = value!;
                     if (this.areas_urbanas == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -3495,6 +3542,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.areas_naturales = value!;
                     if (this.areas_naturales == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -6380,6 +6430,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.letreros_informativos = value!;
                     if (this.letreros_informativos == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -6885,6 +6938,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.senialetica_interna = value!;
                     if (this.senialetica_interna == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -7152,6 +7208,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.otros_senialetica = value!;
                     if (this.otros_senialetica == true) {
                       _showAlertDialogObservaciones(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -7264,6 +7323,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.salud_cercana = value!;
                     if (this.salud_cercana == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -7294,6 +7356,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.salud_atractivo = value!;
                     if (this.salud_atractivo == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -7609,6 +7674,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.salud_ciudad = value!;
                     if (this.salud_ciudad == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -7972,6 +8040,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.seguridad_M = value!;
                     if (this.seguridad_M == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -8223,6 +8294,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.servicio_publico = value!;
                     if (this.servicio_publico == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -8941,6 +9015,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.multiamenaza_M = value!;
                     if (this.multiamenaza_M == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -9149,6 +9226,9 @@ class FormWidgetState extends State<FormSaveWidget> {
                     this.multiamenaza_plan_contin = value!;
                     if (this.multiamenaza_plan_contin == true) {
                       _showAlertDialogSi(context);
+                      _increment();
+                    } else {
+                      _decrement();
                     }
                   });
                 },
@@ -9758,6 +9838,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   seleccion1: widget.seleccion1,
                   seleccion: widget.seleccion,
                   seleccion3: widget.seleccion3,
+                  ponderacionTab6: widget.ponderacionTab6,
+                  ponderacionTab7: ponderacionTab7,
                 )));
   }
 
