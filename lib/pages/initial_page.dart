@@ -4,22 +4,28 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:turismo_flutter/pages/viewturista_table1.dart';
 
-class initial_page extends StatefulWidget {
+class Initial_page extends StatefulWidget {
   static const String ROUTE = '/';
-  const initial_page({Key? key}) : super(key: key);
+  const Initial_page({Key? key}) : super(key: key);
 
   @override
-  initial_pageState createState() => initial_pageState();
+  Initial_pageState createState() => Initial_pageState();
 }
 
-class initial_pageState extends State<initial_page> {
+class Initial_pageState extends State<Initial_page> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       home: Container(width: 0,
+=======
+      debugShowCheckedModeBanner: false,
+      home: Container(width: 500,
+>>>>>>> bc40dc999a7d58a06b16ec0c399d975bf789278b
       padding: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           image: DecorationImage(
+            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
             image: AssetImage(
               'assets/principal.png',
             ),
@@ -35,8 +41,8 @@ class initial_pageState extends State<initial_page> {
           appBar: AppBar(
             centerTitle: true,
             elevation: 0,
-            //backgroundColor: HexColor("#F0F2F2"),
-            backgroundColor: Colors.transparent,
+            backgroundColor: HexColor("#F0F2F2"),
+            //backgroundColor: Colors.transparent,
             title: Text('BIENVENIDO',
                 textAlign: TextAlign.center,
                 maxLines: 1,
@@ -48,7 +54,8 @@ class initial_pageState extends State<initial_page> {
           ),
           body: Center(
             child: Container(
-              color: Colors.black38,
+              padding: EdgeInsets.only(top:16,bottom:16),
+              color: Color(0xfff2f2f2),
               child: Text(
                 "Bienvenido a la Ficha de Recursos Turísticos del Ecuador\n Por favor, ayúdanos llenando el siguiente formulario.",
                 textAlign: TextAlign.center,
@@ -56,12 +63,13 @@ class initial_pageState extends State<initial_page> {
                   fontWeight: FontWeight.w900,
                   fontSize: 18,
                   //color: HexColor("#364C59"),
-                  color: Colors.white
+                  color: Color(0xff0d0d0d)
                 ),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: Color(0xffA65005),
             child: Icon(Icons.arrow_forward),
             mini: true,
             onPressed: () {

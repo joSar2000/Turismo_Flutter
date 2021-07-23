@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turismo_flutter/components/lista.dart';
 import 'package:turismo_flutter/pages/initial_page.dart';
-
 
 class Home extends StatefulWidget {
   // This widget is the root of your application.
@@ -12,18 +10,18 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-
   int _currentIndex = 2;
   final tabs = [
     Center(child: Text("Buscar")),
     ListRecursos(),
-    initial_page(),
+    Initial_page(),
     Center(child: Text("Mapas")),
     Center(child: Text("Ajustes de aplicación")),
   ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Registro Atractivos Turísticos',
       home: Scaffold(
           backgroundColor: Color(0xFFF0F2F2),
