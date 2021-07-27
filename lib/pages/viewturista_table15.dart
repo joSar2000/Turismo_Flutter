@@ -1,7 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:android_intent/android_intent.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class TurismTable15 extends StatefulWidget {
   @override
@@ -9,7 +13,7 @@ class TurismTable15 extends StatefulWidget {
 }
 
 class _MapaState extends State<TurismTable15> {
-  final Stream<QuerySnapshot> _users = FirebaseFirestore.instance.collection("viewTuristas").snapshots();
+
   bool mapToggle = false;
   bool sitiosToggle = false;
   var currentLocation;
@@ -26,7 +30,10 @@ class _MapaState extends State<TurismTable15> {
     });
     populateClients();
     super.initState();
+    _set();
   }
+
+
   onMapCreated(controller) {
     setState(() {
       mapController = controller;
@@ -34,7 +41,7 @@ class _MapaState extends State<TurismTable15> {
   }
 
   populateClients() {
-    FirebaseFirestore.instance.collection('viewTuristas').get().then((docs) {
+    FirebaseFirestore.instance.collection('markers').get().then((docs) {
       if (docs.docs.isNotEmpty) {
         for (int i = 0; i < docs.docs.length; ++i) {
           initMarkers(docs.docs[i].data, docs.docs[i].id);
@@ -53,14 +60,14 @@ class _MapaState extends State<TurismTable15> {
 
     final Marker marker = Marker(
         markerId: markerId,
-        position: LatLng(-2.1542511, 12.385645),
+        position: LatLng(request['lat'], request['lng']),
         draggable: true,
         onTap: () {
           getValues(request);
         },
         infoWindow:
-        //InfoWindow(title: "Barrio: ", snippet: request['nombreBarrio']));
-        InfoWindow(title: "Barrio: ", snippet: "Prueba"));
+        InfoWindow(title: "Barrio: ", snippet: request['provincia']));
+        //InfoWindow(title: "Barrio: ", snippet: "Prueba"));
     setState(() {
       markers[markerId] = marker;
       print(markerId);
@@ -69,15 +76,42 @@ class _MapaState extends State<TurismTable15> {
 
   void getValues(request) {
     setState(() {
-      text = request['latitud'].toString();
-
+      text = request['provincia'].toString();
     });
     print(text);
+  }
+  
+  void _set () async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.deniedForever) {
+      print('denied forever');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: HexColor("#F0F2F2"),
+        title: Text('MAPA DE REFERENCIA',
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: GoogleFonts.dmSans(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: HexColor("#A65005"),
+            )),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_rounded,
+            size: 35.0,
+            color: HexColor("#A65005"),),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       backgroundColor: Color(0xFFF9F9F9),
       body: Column(
         children: <Widget>[
@@ -109,7 +143,7 @@ class _MapaState extends State<TurismTable15> {
                             ),
                             mapType: MapType.normal)
                             : Center(
-                          child: Text('Cargando...',
+                          child: Text('Cargando Mapa...',
                               style: TextStyle(
                                   fontSize: 20.0,
                                   color: Color(0xFF0E8AC9))),
@@ -154,12 +188,9 @@ class _MapaState extends State<TurismTable15> {
             ],
           )
 
-           */
-          new RaisedButton(
-            onPressed: () {
-              //getData();
-              populateClients();
-            },
+        */
+          new Text(
+            "$text"
           ),
         ],
       ),
