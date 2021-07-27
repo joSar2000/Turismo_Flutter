@@ -16,12 +16,8 @@ class Initial_pageState extends State<Initial_page> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
-      home: Container(width: 0,
-=======
       debugShowCheckedModeBanner: false,
       home: Container(width: 500,
->>>>>>> bc40dc999a7d58a06b16ec0c399d975bf789278b
       padding: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           image: DecorationImage(

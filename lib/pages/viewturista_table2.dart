@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,6 +69,7 @@ class FormWidgetState2 extends State<TableTurism2> {
                 color: HexColor("#A65005"),),
               onPressed: () async {
                 _sendData(context);
+                _sendLocation(context);
                 //guardarPreferencias();
               },
             ),
@@ -368,4 +370,14 @@ class FormWidgetState2 extends State<TableTurism2> {
         ))
     );
   }
+   void _sendLocation(BuildContext context) {
+     var lat = double.parse(ubi_latitud.text);
+     var lng = double.parse(ubi_longitud.text);
+     FirebaseFirestore.instance.collection("markers").add({
+       'lat' : lat,
+       'lng' : lng,
+       'provincia' : seleccion
+     });
+   }
+
 }

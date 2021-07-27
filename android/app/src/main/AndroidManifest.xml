@@ -1,11 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sistemasUTPL.turismo_flutter">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
    <application
         android:label="turismo_flutter"
         android:icon="@mipmap/ic_launcher">
 
         <activity
             android:name=".MainActivity"
+            android:foregroundServiceType="location"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -40,6 +45,6 @@
             android:value="2" />
        <!-- TODO: Add your API key here -->
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyCGShAceyIm1LHL2mLja0eKCKDjoZV2Rzy"/>
+           android:value="AIzaSyD6miMmtWemePOQHIiQDLHoPczTS_pn658"/>
     </application>
 </manifest>
