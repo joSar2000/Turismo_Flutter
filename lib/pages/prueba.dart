@@ -1,86 +1,97 @@
-// Copyright 2013 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// ignore_for_file: public_member_api_docs
-
-import 'dart:async';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() =>
+    runApp(new MaterialApp(
+      title: "Camara app",
+      home: LandingScreen(),
+    ));
 
-class MyApp extends StatelessWidget {
+class LandingScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SharedPreferences Demo',
-      home: SharedPreferencesDemo(),
-    );
-  }
+  _LandingScreenState createState() => _LandingScreenState();
 }
 
-class SharedPreferencesDemo extends StatefulWidget {
-  SharedPreferencesDemo({Key? key}) : super(key: key);
+class _LandingScreenState extends State<LandingScreen> {
+  final ImagePicker _picker = ImagePicker();
+  late File imageFile;
 
-  @override
-  SharedPreferencesDemoState createState() => SharedPreferencesDemoState();
-}
-
-class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late Future<int> _counter;
-
-  Future<void> _incrementCounter() async {
-    final SharedPreferences prefs = await _prefs;
-    final int counter = (prefs.getInt('counter') ?? 0) + 1;
-
-    setState(() {
-      _counter = prefs.setInt("counter", counter).then((bool success) {
-        return counter;
-      });
+  _openGallery (BuildContext context) async {
+    var  picture= await _picker.pickImage(source: ImageSource.gallery);
+    this.setState((){
+      imageFile=picture as File;
     });
+    Navigator.of(context).pop();
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _counter = _prefs.then((SharedPreferences prefs) {
-      return (prefs.getInt('counter') ?? 0);
+  _openCamera(BuildContext context) async {
+    var  picture= await _picker.pickImage(source: ImageSource.camera);
+    this.setState((){
+      imageFile=picture as File;
     });
+    Navigator.of(context).pop();
+  }
+
+  Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Seleccione"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text("Galeria"),
+                    onTap: () {
+                      _openGallery(context);
+                    },
+                  ),
+                  Padding(padding: EdgeInsets.all(8.0),),
+                  GestureDetector(
+                    child: Text("Camara"),
+                    onTap: () {
+                      _openCamera(context);
+                    },
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
+  //retorna  texto si no se ha seleccionado alguna imagen
+  Widget _decideImageView(){
+    if(imageFile==null){
+      return Text("No se ha seleccionado una imagen");
+    }
+    else{
+      return  Image.file(imageFile,width: 400, height: 400);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SharedPreferences Demo"),
+        title: Text("Demo Acceso Camara/Galeria"),
       ),
-      body: Center(
-          child: FutureBuilder<int>(
-              future: _counter,
-              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return const CircularProgressIndicator();
-                  default:
-                    if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else {
-                      return Text(
-                        'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
-                            'This should persist across restarts.',
-                      );
-                    }
-                }
-              })),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              _decideImageView(),
+              RaisedButton(
+                onPressed: () {
+                  _showChoiceDialog(context);
+                },
+                child: Text("Selecciona la Imagen"),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

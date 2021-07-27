@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:turismo_flutter/pages/initial_page.dart';
+import 'package:turismo_flutter/pages/viewturista_table15.dart';
 
 class final_page extends StatefulWidget {
   //Tabla1
@@ -1266,6 +1267,17 @@ class FinalPage extends State<final_page> {
               Navigator.pop(context);
             },
           ),
+          actions: <Widget> [
+            IconButton(
+              icon: Icon(Icons.map_outlined,
+                size: 35.0,
+                color: HexColor("#A65005"),),
+              onPressed: () async {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TurismTable15()));
+                //guardarPreferencias();
+              },
+            ),
+          ],
         ),
         body: ListView(
           children: <Widget> [
