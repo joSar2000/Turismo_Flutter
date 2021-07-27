@@ -1,6 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:photo_manager/photo_manager.dart';
+import 'package:turismo_flutter/model/viewModel.dart';
+import 'package:provider/provider.dart';
 
 void main() =>
     runApp(new MaterialApp(
@@ -8,89 +12,102 @@ void main() =>
       home: LandingScreen(),
     ));
 
-class LandingScreen extends StatefulWidget {
-  @override
-  _LandingScreenState createState() => _LandingScreenState();
-}
+class LandingScreen extends StatelessWidget {
 
-class _LandingScreenState extends State<LandingScreen> {
-  final ImagePicker _picker = ImagePicker();
-  late File imageFile;
 
-  _openGallery (BuildContext context) async {
-    var  picture= await _picker.pickImage(source: ImageSource.gallery);
-    this.setState((){
-      imageFile=picture as File;
-    });
-    Navigator.of(context).pop();
+  Future<File?> cropImage(var image)async{
+    File? croppedFile = await ImageCropper.cropImage(
+        sourcePath: image.path,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        androidUiSettings: AndroidUiSettings(
+            toolbarTitle: 'Crop My Image',
+            toolbarColor: Colors.blue,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        iosUiSettings: IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        )
+    );
+    return croppedFile;
   }
 
-  _openCamera(BuildContext context) async {
-    var  picture= await _picker.pickImage(source: ImageSource.camera);
-    this.setState((){
-      imageFile=picture as File;
-    });
-    Navigator.of(context).pop();
-  }
-
-  Future<void> _showChoiceDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Seleccione"),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  GestureDetector(
-                    child: Text("Galeria"),
-                    onTap: () {
-                      _openGallery(context);
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.all(8.0),),
-                  GestureDetector(
-                    child: Text("Camara"),
-                    onTap: () {
-                      _openCamera(context);
-                    },
-                  )
-                ],
-              ),
-            ),
-          );
-        });
-  }
-  //retorna  texto si no se ha seleccionado alguna imagen
-  Widget _decideImageView(){
-    if(imageFile==null){
-      return Text("No se ha seleccionado una imagen");
+  Future<File?> getImageFromSource(ImageSource source, bool toCrop)async{
+    var image = await ImagePicker().getImage(source: source);
+    if(image==null)
+      return null;
+    if(toCrop){
+      var croppedImage = await cropImage(File(image.path));
+      return croppedImage;
     }
-    else{
-      return  Image.file(imageFile,width: 400, height: 400);
-    }
+    return File(image.path);
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Demo Acceso Camara/Galeria"),
+        title: Text('Image Picker Demo'),
+        centerTitle: true,
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _decideImageView(),
-              RaisedButton(
-                onPressed: () {
-                  _showChoiceDialog(context);
-                },
-                child: Text("Selecciona la Imagen"),
-              )
-            ],
-          ),
+      body: ChangeNotifierProvider<HomePageViewModel>(
+        create: (context) => HomePageViewModel(),
+        child: Consumer<HomePageViewModel>(
+          builder: (context,viewModel,child){
+            return Center(
+              child: Column(
+                children: [
+                  if(viewModel.image==null)
+                    Icon(Icons.camera,size: 70),
+                  if(viewModel.image!=null)
+                    Image.file(viewModel.image,height: 200),
+                  CheckboxListTile(
+                    title: Text('Crop after picked'),
+                    value: viewModel.cropAfterPicked,
+                    onChanged: (value){
+                      viewModel.setCropAfterPicker(value!);
+                    },
+                  ),
+                  FlatButton(
+                    onPressed: ()async{
+                      var image = await getImageFromSource(ImageSource.gallery, viewModel.cropAfterPicked);
+                      if(image==null)
+                        return;
+                      viewModel.setImage(image);
+                    },
+                    child: Text('Get image from Gallery'),
+                  ),
+                  FlatButton(
+                    onPressed: ()async{
+                      var image = await getImageFromSource(ImageSource.camera, viewModel.cropAfterPicked);
+                      if(image==null)
+                        return;
+                      viewModel.setImage(image);
+                    },
+                    child: Text('Get image from Camera'),
+                  ),
+                  FlatButton(
+                    onPressed: () async{
+                      if(viewModel.image==null)
+                        return;
+                      var image = await cropImage(viewModel.image);
+                      if(image==null)
+                        return;
+                      viewModel.setImage(image);
+                    },
+                    child: Text('Crop Image'),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
