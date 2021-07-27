@@ -41,6 +41,14 @@ dependencies:
   firebase_storage: ^9.0.0
   google_maps_flutter: ^2.0.6
   geolocator: ^7.3.0
+  location_permissions: ^4.0.0
+
+  permission_handler: ^8.1.4+2
+
+  location: ^4.3.0
+
+  android_intent: ^2.0.2
+
 
 dev_dependencies:
   flutter_test:
