@@ -609,6 +609,8 @@ class final_page extends StatefulWidget {
   final double ponderacionTab12;
   //Taba13
   final String descripcion_atractivo;
+  //Tabla14
+  final String fuente_anexos;
   //Tabla16
   final String nombres;
   final String institucion;
@@ -1220,6 +1222,7 @@ class final_page extends StatefulWidget {
     required this.email,
     required this.telefono,
     required this.firma,
+    required this.fuente_anexos,
   }) : super(key: key);
 
   @override
@@ -1267,17 +1270,7 @@ class FinalPage extends State<final_page> {
               Navigator.pop(context);
             },
           ),
-          actions: <Widget> [
-            IconButton(
-              icon: Icon(Icons.map_outlined,
-                size: 35.0,
-                color: HexColor("#A65005"),),
-              onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TurismTable15()));
-                //guardarPreferencias();
-              },
-            ),
-          ],
+
         ),
         body: ListView(
           children: <Widget> [
@@ -2439,6 +2432,7 @@ class FinalPage extends State<final_page> {
       'ponderacionTab11': widget.ponderacionTab11,
       'ponderacionTab12': widget.ponderacionTab12,
       'descripcion_atractivo': widget.descripcion_atractivo,
+      'fuente_anexos': widget.fuente_anexos,
       'nombres': widget.nombres,
       'institucion': widget.institucion,
       'cargo': widget.cargo,

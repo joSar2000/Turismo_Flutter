@@ -1,6 +1,12 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 
+
 class HomePageViewModel extends ChangeNotifier{
+
+  DocumentReference viewTuristas = FirebaseFirestore.instance.collection("viewTuristas").doc();
 
   var image;
   var image2;
@@ -19,6 +25,29 @@ class HomePageViewModel extends ChangeNotifier{
   Future setImage2(var file)async{
     this.image2 = file;
     this.notifyListeners();
+  }
+
+  Future <void> saveImages (var file1, DocumentReference ref) async {
+    String image1URL = await uploadFile(image);
+    print(image1URL);
+   // ref.update({"images": FieldValue.arrayUnion([image1URL])});
+  }
+
+  Future<String> uploadFile(var file1) async {
+    firebase_storage.Reference storageReference = firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('viewTuristas/${image.path}');
+    firebase_storage.UploadTask uploadTask = storageReference.putFile(image);
+    print('File Uploaded');
+    String returnURL = "";
+    await storageReference.getDownloadURL().then((fileURL) {
+      returnURL =  fileURL;
+    });
+    return returnURL;
+  }
+
+  void Carga () {
+    uploadFile(image);
   }
 
 }

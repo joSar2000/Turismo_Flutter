@@ -1247,10 +1247,7 @@ class FormWidgetState13 extends State<TurismTable13> {
                 size: 35.0,
                 color: HexColor("#A65005"),),
               onPressed: () {
-                //_sendData(context);
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TurismTable14())
-                );
+                _sendData(context);
               },
             ),
           ],
@@ -1290,11 +1287,11 @@ class FormWidgetState13 extends State<TurismTable13> {
       ),
     );
   }
-/*
+
   void _sendData(BuildContext context) {
     Navigator.push(context,
         //MaterialPageRoute(builder: (context) => TurismTable14())
-        MaterialPageRoute(builder: (context) => TurismTable16(
+        MaterialPageRoute(builder: (context) => TurismTable14(
           si_estado_conservacion: widget.si_estado_conservacion,
           observaciones_atractivo_U: widget.observaciones_atractivo_U,
           atractivo_U: widget.atractivo_U,
@@ -1910,6 +1907,5 @@ class FormWidgetState13 extends State<TurismTable13> {
     );
   }
 
- */
 
 }
