@@ -59,6 +59,7 @@ class TableTurism6 extends StatefulWidget {
   final String seleccion1Tab4;
   final String seleccion2Tab4 ;
   final String seleccion3Tab4;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -76,6 +77,7 @@ class TableTurism6 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
 
   TableTurism6({Key? key,
     required this.categoria,
@@ -141,6 +143,8 @@ class TableTurism6 extends StatefulWidget {
     required this.seleccion1Tab4,
     required this.seleccion2Tab4,
     required this.seleccion3Tab4,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
 
   }) : super(key: key);
 
@@ -2592,6 +2596,8 @@ class FormWidgetState6 extends State<TableTurism6>{
               seleccion5Tab3: widget.seleccion5Tab3,
               seleccion2Tab3: widget.seleccion2Tab3,
               seleccion1Tab3: widget.seleccion1Tab3,
+              ponderacionTab5: widget.ponderacionTab5,
+              ponderacionTab4: widget.ponderacionTab4,
             )
         ));
   }

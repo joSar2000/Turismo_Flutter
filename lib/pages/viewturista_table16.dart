@@ -46,6 +46,7 @@ class TurismTable16 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -63,6 +64,7 @@ class TurismTable16 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -608,6 +610,8 @@ class TurismTable16 extends StatefulWidget {
   final double ponderacionTab12;
   //Taba13
   final String descripcion_atractivo;
+  //Tabla14
+  final String fuente_anexos;
 
   const TurismTable16({Key? key,
     required this.categoria,
@@ -1205,6 +1209,9 @@ class TurismTable16 extends StatefulWidget {
     required this.ponderacionTab11,
     required this.ponderacionTab12,
     required this.descripcion_atractivo,
+    required this.fuente_anexos,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
   }) : super(key: key);
 
   @override
@@ -1292,9 +1299,10 @@ class TurismTable16State extends State<TurismTable16> {
                       new Container(
                         padding: EdgeInsets.all(15.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.name,
                           enabled: true,
                           controller: obs_nombres,
-                          maxLines: 3,
+                          maxLines: 2,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "correcto";
@@ -1320,9 +1328,10 @@ class TurismTable16State extends State<TurismTable16> {
                       new Container(
                         padding: EdgeInsets.all(15.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.name,
                           enabled: true,
                           controller: obs_institucion,
-                          maxLines: 3,
+                          maxLines: 2,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "correcto";
@@ -1350,7 +1359,7 @@ class TurismTable16State extends State<TurismTable16> {
                         child: TextFormField(
                           enabled: true,
                           controller: obs_cargo,
-                          maxLines: 3,
+                          maxLines: 2,
                           validator: (obsAlcance) {
                             if (obsAlcance!.isEmpty) {
                               return "correcto";
@@ -1379,7 +1388,7 @@ class TurismTable16State extends State<TurismTable16> {
                           keyboardType: TextInputType.emailAddress,
                           enabled: true,
                           controller: obs_email,
-                          maxLines: 3,
+                          maxLines: 1,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "correcto";
@@ -1407,9 +1416,10 @@ class TurismTable16State extends State<TurismTable16> {
                         padding: EdgeInsets.all(15.0),
                         child: TextFormField(
                           keyboardType: TextInputType.phone,
+                          maxLength: 10,
                           enabled: true,
                           controller: obs_telef,
-                          maxLines: 3,
+                          maxLines: 1,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "correcto";
@@ -1435,10 +1445,11 @@ class TurismTable16State extends State<TurismTable16> {
                       new Container(
                         padding: EdgeInsets.all(15.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          maxLength: 10,
                           enabled: true,
                           controller: obs_firma,
-                          maxLines: 3,
-
+                          maxLines: 1,
                           style: TextStyle(
                             fontSize: 20.0,
                             color: HexColor("#0D0D0D"),
@@ -1446,8 +1457,8 @@ class TurismTable16State extends State<TurismTable16> {
                           decoration: InputDecoration(
                             icon: Icon(Icons.input_outlined),
                             contentPadding: EdgeInsets.all(20.0),
-                            hintText: "Ingrese su Firma",
-                            labelText: ("Firma"),
+                            hintText: "Ingrese su Firma (#CI)",
+                            labelText: ("Firma (#CI)"),
                             border: OutlineInputBorder(
                                 borderRadius:
                                 BorderRadius.all(Radius.elliptical(10, 10))),
@@ -2120,6 +2131,9 @@ class TurismTable16State extends State<TurismTable16> {
         email: email,
         telefono: telefono,
         firma: firma,
+        fuente_anexos: widget.fuente_anexos,
+        ponderacionTab5: widget.ponderacionTab5,
+        ponderacionTab4: widget.ponderacionTab4,
       ))
     );
   }

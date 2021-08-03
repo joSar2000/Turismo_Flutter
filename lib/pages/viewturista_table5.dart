@@ -58,6 +58,7 @@ class TableTurism5 extends StatefulWidget {
   final String seleccion1Tab4;
   final String seleccion2Tab4 ;
   final String seleccion3Tab4;
+  final double ponderacionTab4;
 
   TableTurism5({Key? key,
     required this.categoria,
@@ -107,6 +108,7 @@ class TableTurism5 extends StatefulWidget {
     required this.seleccion1Tab4,
     required this.seleccion2Tab4,
     required this.seleccion3Tab4,
+    required this.ponderacionTab4,
 
   }): super(key: key);
 
@@ -115,11 +117,17 @@ class TableTurism5 extends StatefulWidget {
 }
 
 class FormWidgetState5 extends State<TableTurism5> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey3 = GlobalKey<FormState>();
+
   String _seleccion = "En el Atractivo";
   String _seleccion1 = "Hotel";
   String _seleccion2 = "Restaurantes";
   String _seleccion3 = "Mayoristas";
 
+  double ponderacionTab5 = 1;
   TextEditingController planta_estableci_registrados = TextEditingController();
   TextEditingController planta_numero_mesas = TextEditingController();
   TextEditingController planta_numero_plazas = TextEditingController();
@@ -140,6 +148,46 @@ class FormWidgetState5 extends State<TableTurism5> {
   TextEditingController planta_cultura = TextEditingController();
   TextEditingController planta_aventura = TextEditingController();
   TextEditingController planta_observaciones_guia = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ponderacionTab5 = 1;
+  }
+
+  _increment() {
+    setState(() {
+      ponderacionTab5 ++;
+    });
+  }
+
+  _decrement() {
+    setState(() {
+      ponderacionTab5 --;
+    });
+  }
+
+  void validateAndSave() {
+    final FormState? form = _formKey.currentState;
+    final FormState? form2 = _formKey2.currentState;
+    final FormState? form3 = _formKey3.currentState;
+    if (form!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form2!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form3!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -178,6 +226,7 @@ class FormWidgetState5 extends State<TableTurism5> {
               ),
               onPressed: () async {
                 _sendData(context);
+                validateAndSave();
                 //guardarPreferencias();
               },
             ),
@@ -191,12 +240,16 @@ class FormWidgetState5 extends State<TableTurism5> {
                 _crearComboBox("Planta Turística"),
                 _crearComboBox1("Alojamiento"),
                 new Form(
+                  key: _formKey,
                   child: Column(
                     children: <Widget>[
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_estableci_registrados,
                         maxLines: 3,
@@ -209,17 +262,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Establecimientos Registados",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_numero_mesas,
                         maxLines: 3,
@@ -232,17 +279,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Número de Mesas",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_numero_plazas,
                         maxLines: 3,
@@ -255,110 +296,12 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Número de Plazas",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: planta_observaciones,
-                        maxLines: 3,
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                        ),
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.input),
-                          contentPadding: EdgeInsets.all(10.0),
-                          hintText: "Observaciones",
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                _crearComboBox2("Alimentos y bebidas"),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
-                      ),
-                      TextField(
-                        keyboardType: TextInputType.number,
-                        controller: planta_estableci_registrados_alimentos,
-                        maxLines: 3,
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                        ),
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.input),
-                          contentPadding: EdgeInsets.all(10.0),
-                          hintText: "Especifique Establecimientos Registrados",
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
-                      ),
-                      TextField(
-                        keyboardType: TextInputType.number,
-                        controller: planta_numero_mesas_alimentos,
-                        maxLines: 3,
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                        ),
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.input),
-                          contentPadding: EdgeInsets.all(10.0),
-                          hintText: "Especifique Número de mesas",
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
-                      ),
-                      TextField(
-                        keyboardType: TextInputType.number,
-                        controller: planta_numero_plazas_alimentos,
-                        maxLines: 3,
-                        style: GoogleFonts.dmSans(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                        ),
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.input),
-                          contentPadding: EdgeInsets.all(10.0),
-                          hintText: "Especifique Número de Plazas",
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
-                      ),
-                      TextField(
-                        controller: planta_observaciones_alimentos,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -375,14 +318,18 @@ class FormWidgetState5 extends State<TableTurism5> {
                 ),
                 _crearComboBox3("Agencias de Viaje"),
                 new Form(
+                  key: _formKey2,
                   child: Column(
                     children: <Widget>[
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
-                        controller: planta_estableci_registrados_agencias,
+                        controller: planta_estableci_registrados_alimentos,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
                           fontWeight: FontWeight.normal,
@@ -393,17 +340,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Establecimientos Registrados",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: planta_observaciones_agencias,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -433,12 +374,16 @@ class FormWidgetState5 extends State<TableTurism5> {
                       )),
                 ),
                 new Form(
+                  key: _formKey3,
                   child: Column(
                     children: <Widget>[
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_local,
                         maxLines: 3,
@@ -451,17 +396,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Local",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_nacional,
                         maxLines: 3,
@@ -474,17 +413,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Nacional",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_nacional_especializado,
                         maxLines: 3,
@@ -497,17 +430,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Nacional Especializado",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_cultura,
                         maxLines: 3,
@@ -520,17 +447,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Cultura",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: planta_aventura,
                         maxLines: 3,
@@ -543,17 +464,11 @@ class FormWidgetState5 extends State<TableTurism5> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Aventura",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: planta_observaciones_guia,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -792,6 +707,8 @@ class FormWidgetState5 extends State<TableTurism5> {
       seleccion5Tab3: widget.seleccion5Tab3,
       seleccion2Tab3: widget.seleccion2Tab3,
       seleccion1Tab3: widget.seleccion1Tab3,
+      ponderacionTab5: ponderacionTab5,
+      ponderacionTab4: widget.ponderacionTab4,
 
 
     )));

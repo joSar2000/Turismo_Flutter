@@ -46,6 +46,7 @@ class TurismTable12 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -63,6 +64,7 @@ class TurismTable12 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -1142,7 +1144,10 @@ class TurismTable12 extends StatefulWidget {
         required this.ponderacionTab8,
         required this.ponderacionTab9,
         required this.ponderacionTab10,
-        required this.ponderacionTab11});
+        required this.ponderacionTab11,
+        required this.ponderacionTab4,
+        required this.ponderacionTab5
+      });
 
   @override
   State<StatefulWidget> createState() => FormWidgetState12();
@@ -3117,6 +3122,8 @@ class FormWidgetState12 extends State<TurismTable12> {
               ponderacionTab10: widget.ponderacionTab10,
               ponderacionTab11: widget.ponderacionTab11,
               ponderacionTab12: ponderacionTab12,
+              ponderacionTab4: widget.ponderacionTab4,
+              ponderacionTab5: widget.ponderacionTab5,
             )));
   }
 }

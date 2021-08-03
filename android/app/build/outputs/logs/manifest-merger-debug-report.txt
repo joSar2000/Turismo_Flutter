@@ -1,0 +1,637 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+MERGED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+MERGED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:google_maps_flutter] C:\Users\LENOVO\Desktop\turismo_flutter\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\LENOVO\Desktop\turismo_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] C:\Users\LENOVO\Desktop\turismo_flutter\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:location_permissions] C:\Users\LENOVO\Desktop\turismo_flutter\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] C:\Users\LENOVO\Desktop\turismo_flutter\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_cropper] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_cropper\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-30:12
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:hexcolor] C:\Users\LENOVO\Desktop\turismo_flutter\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-18:12
+MERGED from [:permission_handler] C:\Users\LENOVO\Desktop\turismo_flutter\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
+MERGED from [:android_intent] C:\Users\LENOVO\Desktop\turismo_flutter\build\android_intent\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:geolocator] C:\Users\LENOVO\Desktop\turismo_flutter\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8e6b3c22e8169995131a382ee53e8d12\jetified-firebase-appcheck-interop-16.0.0-beta01\AndroidManifest.xml:15:1-26:12
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e596e6063f2d40c60c4e75722994371c\jetified-firebase-auth-interop-19.0.2\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:15:1-40:12
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7a92edf6d86eba12920fd2a3b146d0aa\material-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.yalantis:ucrop:2.2.7] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\060501225bf8cc55eecaaa7cad67f2a7\jetified-ucrop-2.2.7\AndroidManifest.xml:2:1-11:12
+MERGED from [pub.devrel:easypermissions:0.2.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\fc5e1b1bde1e9dc29427a1f51a1a1039\jetified-easypermissions-0.2.0\AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:2:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\476d39e228964b664fad50f0e8df0e10\appcompat-1.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\043d6f8e83f10e51393912bd3a451628\jetified-glide-4.11.0\AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f2e3ea628e4ccb91cd2f230c0df9cfc8\exifinterface-1.3.2\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\02b51a3ec026ef7a26a5b244fa9a71d4\jetified-core-ktx-1.6.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7cdb36d12a0b4e03e8265bb20860bf44\jetified-firebase-components-17.0.0\AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8b8c652d23050120655a23dac6daf947\transition-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d26d940a744d885483f289eb1cd4da81\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\795676b9e46636af14828c9a1dc1bc46\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f7437b3c59bfacbdc85523d95b7efaf7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\234ce155774c9dd46c75e0ecedccc0da\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f41097c730cebc6434d9f2d51bd2e49d\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1ca412b5ae4cdf38325330db753650ec\jetified-firebase-database-collection-18.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0549b1970abf12c4fa68c0b9507bca96\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6b4b195decf898d4783eb811061bf535\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7588edeb701eece00e8c781bb2ef88c7\fragment-1.3.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.3] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\35144aa79e4999a476fbf801852ae8a8\jetified-activity-1.2.3\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e79ebcc52f8f1f729998ddd2394803f9\jetified-appcompat-resources-1.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5d3192adb20d9bf386886018ccfc00f4\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\245aaa699df46d41a171a57f451b218d\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cced6019e4ba2aa0e8c4f9b0c42bf888\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7e2f1c0f522880151e01ce98ebf4c3f7\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5790aed02e41a3a72b215a908fdf5919\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bc41568f187cafaf5fb6dce3136d9ccf\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\abff359926dc653ec85f53a0b815185d\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d68c2dd6c559e1e09125f815ea6604d1\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6825810b1265af64127a63ce937f0eb6\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6e251e626ddee01f89e2773cf95b32aa\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bd8362186b23ee01b95c1b96b220b194\lifecycle-runtime-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d3fca96bb4379e0d1a842188a39af196\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8603565b5a1125305bf57dd37ed81c4b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\85a3ec20d9bbfcdfd0d8096be90d1df4\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\747b868a5fe951f239324c5b751811b0\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\67b3e20252b880c4d75c0bb9d79d1c0c\jetified-gifdecoder-4.11.0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\4eeef2fcb0b12bf52028bdcf5d1c49b9\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c7b30d600fe1b4a44f027f3958914d0\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d8897a0c7a6d411baabc6933517a8838\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\145b3b5f45e16a7a4e3abf5408878e20\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8a43e4cb08b9d5efaaff92255a9e853a\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c760e31cba5c2344894984efa294e1d\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\a38ae4ed5f662e092e6d21ac07ef7365\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8f6fc99f0b968c7750fe1136ad5ccc2f\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e83af6508c9bc5cb96f4eb62866dd65d\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\056c090b7b933fc6addfa1a75beb9e17\jetified-grpc-android-1.28.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9cd4656b7fe37a796b3a4a34c7e0217f\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\deb3b26ccb3276273868dab0f5a9089e\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:2:5-47
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:1-50:12
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:4:5-66
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-67
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-67
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:5:5-79
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:5:22-76
+application
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:7:4-49:19
+MERGED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:19:5-28:19
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:19:5-28:19
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-16:19
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-16:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8e6b3c22e8169995131a382ee53e8d12\jetified-firebase-appcheck-interop-16.0.0-beta01\AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8e6b3c22e8169995131a382ee53e8d12\jetified-firebase-appcheck-interop-16.0.0-beta01\AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e596e6063f2d40c60c4e75722994371c\jetified-firebase-auth-interop-19.0.2\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e596e6063f2d40c60c4e75722994371c\jetified-firebase-auth-interop-19.0.2\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:25:5-38:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7a92edf6d86eba12920fd2a3b146d0aa\material-1.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7a92edf6d86eba12920fd2a3b146d0aa\material-1.0.0\AndroidManifest.xml:22:5-20
+MERGED from [pub.devrel:easypermissions:0.2.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\fc5e1b1bde1e9dc29427a1f51a1a1039\jetified-easypermissions-0.2.0\AndroidManifest.xml:12:5-20
+MERGED from [pub.devrel:easypermissions:0.2.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\fc5e1b1bde1e9dc29427a1f51a1a1039\jetified-easypermissions-0.2.0\AndroidManifest.xml:12:5-20
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:13:5-20:19
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:13:5-20:19
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\043d6f8e83f10e51393912bd3a451628\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\043d6f8e83f10e51393912bd3a451628\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f41097c730cebc6434d9f2d51bd2e49d\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f41097c730cebc6434d9f2d51bd2e49d\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0549b1970abf12c4fa68c0b9507bca96\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0549b1970abf12c4fa68c0b9507bca96\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6b4b195decf898d4783eb811061bf535\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6b4b195decf898d4783eb811061bf535\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\67b3e20252b880c4d75c0bb9d79d1c0c\jetified-gifdecoder-4.11.0\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\67b3e20252b880c4d75c0bb9d79d1c0c\jetified-gifdecoder-4.11.0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\4eeef2fcb0b12bf52028bdcf5d1c49b9\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\4eeef2fcb0b12bf52028bdcf5d1c49b9\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:screenOrientation
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:23:9-45
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-35
+	android:label
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:8:9-40
+	android:windowSoftInputMode
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:26:9-56
+	android:configChanges
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-59
+	android:allowBackup
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-35
+	android:icon
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:9:9-43
+	android:theme
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-59
+activity#com.sistemasUTPL.turismo_flutter.MainActivity
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:11:9-40:20
+	android:launchMode
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:14:13-43
+	android:hardwareAccelerated
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:17:13-47
+	android:windowSoftInputMode
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:18:13-55
+	android:configChanges
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:16:13-163
+	android:theme
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:15:13-47
+	android:foregroundServiceType
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:13:13-53
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:12:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:23:13-26:17
+	android:resource
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:25:15-52
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:24:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:32:13-35:17
+	android:resource
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:34:15-61
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:33:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:36:13-39:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:37:17-68
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:37:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:38:17-76
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:38:27-74
+meta-data#flutterEmbedding
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:43:9-45:33
+	android:value
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:45:13-30
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:44:13-44
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:47:8-48:69
+	android:value
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:48:12-67
+	android:name
+		ADDED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml:47:19-64
+uses-sdk
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+MERGED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] C:\Users\LENOVO\Desktop\turismo_flutter\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] C:\Users\LENOVO\Desktop\turismo_flutter\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\LENOVO\Desktop\turismo_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\LENOVO\Desktop\turismo_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\Users\LENOVO\Desktop\turismo_flutter\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\Users\LENOVO\Desktop\turismo_flutter\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location_permissions] C:\Users\LENOVO\Desktop\turismo_flutter\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location_permissions] C:\Users\LENOVO\Desktop\turismo_flutter\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\LENOVO\Desktop\turismo_flutter\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\LENOVO\Desktop\turismo_flutter\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_cropper] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_cropper\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_cropper] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_cropper\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:hexcolor] C:\Users\LENOVO\Desktop\turismo_flutter\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:hexcolor] C:\Users\LENOVO\Desktop\turismo_flutter\build\hexcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] C:\Users\LENOVO\Desktop\turismo_flutter\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] C:\Users\LENOVO\Desktop\turismo_flutter\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:android_intent] C:\Users\LENOVO\Desktop\turismo_flutter\build\android_intent\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:android_intent] C:\Users\LENOVO\Desktop\turismo_flutter\build\android_intent\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] C:\Users\LENOVO\Desktop\turismo_flutter\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] C:\Users\LENOVO\Desktop\turismo_flutter\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8e6b3c22e8169995131a382ee53e8d12\jetified-firebase-appcheck-interop-16.0.0-beta01\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta01] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8e6b3c22e8169995131a382ee53e8d12\jetified-firebase-appcheck-interop-16.0.0-beta01\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e596e6063f2d40c60c4e75722994371c\jetified-firebase-auth-interop-19.0.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e596e6063f2d40c60c4e75722994371c\jetified-firebase-auth-interop-19.0.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7a92edf6d86eba12920fd2a3b146d0aa\material-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7a92edf6d86eba12920fd2a3b146d0aa\material-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.yalantis:ucrop:2.2.7] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\060501225bf8cc55eecaaa7cad67f2a7\jetified-ucrop-2.2.7\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.yalantis:ucrop:2.2.7] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\060501225bf8cc55eecaaa7cad67f2a7\jetified-ucrop-2.2.7\AndroidManifest.xml:7:5-9:41
+MERGED from [pub.devrel:easypermissions:0.2.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\fc5e1b1bde1e9dc29427a1f51a1a1039\jetified-easypermissions-0.2.0\AndroidManifest.xml:8:5-10:41
+MERGED from [pub.devrel:easypermissions:0.2.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\fc5e1b1bde1e9dc29427a1f51a1a1039\jetified-easypermissions-0.2.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\476d39e228964b664fad50f0e8df0e10\appcompat-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\476d39e228964b664fad50f0e8df0e10\appcompat-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\043d6f8e83f10e51393912bd3a451628\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\043d6f8e83f10e51393912bd3a451628\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f2e3ea628e4ccb91cd2f230c0df9cfc8\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f2e3ea628e4ccb91cd2f230c0df9cfc8\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\02b51a3ec026ef7a26a5b244fa9a71d4\jetified-core-ktx-1.6.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\02b51a3ec026ef7a26a5b244fa9a71d4\jetified-core-ktx-1.6.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7cdb36d12a0b4e03e8265bb20860bf44\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7cdb36d12a0b4e03e8265bb20860bf44\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8b8c652d23050120655a23dac6daf947\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8b8c652d23050120655a23dac6daf947\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d26d940a744d885483f289eb1cd4da81\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d26d940a744d885483f289eb1cd4da81\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\795676b9e46636af14828c9a1dc1bc46\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\795676b9e46636af14828c9a1dc1bc46\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f7437b3c59bfacbdc85523d95b7efaf7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f7437b3c59bfacbdc85523d95b7efaf7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\234ce155774c9dd46c75e0ecedccc0da\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\234ce155774c9dd46c75e0ecedccc0da\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f41097c730cebc6434d9f2d51bd2e49d\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f41097c730cebc6434d9f2d51bd2e49d\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1ca412b5ae4cdf38325330db753650ec\jetified-firebase-database-collection-18.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1ca412b5ae4cdf38325330db753650ec\jetified-firebase-database-collection-18.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0549b1970abf12c4fa68c0b9507bca96\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0549b1970abf12c4fa68c0b9507bca96\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6b4b195decf898d4783eb811061bf535\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6b4b195decf898d4783eb811061bf535\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7588edeb701eece00e8c781bb2ef88c7\fragment-1.3.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7588edeb701eece00e8c781bb2ef88c7\fragment-1.3.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.3] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\35144aa79e4999a476fbf801852ae8a8\jetified-activity-1.2.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.3] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\35144aa79e4999a476fbf801852ae8a8\jetified-activity-1.2.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e79ebcc52f8f1f729998ddd2394803f9\jetified-appcompat-resources-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e79ebcc52f8f1f729998ddd2394803f9\jetified-appcompat-resources-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5d3192adb20d9bf386886018ccfc00f4\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5d3192adb20d9bf386886018ccfc00f4\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\245aaa699df46d41a171a57f451b218d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\245aaa699df46d41a171a57f451b218d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cced6019e4ba2aa0e8c4f9b0c42bf888\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cced6019e4ba2aa0e8c4f9b0c42bf888\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7e2f1c0f522880151e01ce98ebf4c3f7\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\7e2f1c0f522880151e01ce98ebf4c3f7\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5790aed02e41a3a72b215a908fdf5919\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5790aed02e41a3a72b215a908fdf5919\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bc41568f187cafaf5fb6dce3136d9ccf\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bc41568f187cafaf5fb6dce3136d9ccf\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\abff359926dc653ec85f53a0b815185d\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\abff359926dc653ec85f53a0b815185d\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d68c2dd6c559e1e09125f815ea6604d1\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d68c2dd6c559e1e09125f815ea6604d1\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6825810b1265af64127a63ce937f0eb6\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6825810b1265af64127a63ce937f0eb6\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6e251e626ddee01f89e2773cf95b32aa\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\6e251e626ddee01f89e2773cf95b32aa\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\83daf3c3778ecdff5de6cc52b9e7fc01\core-1.6.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bd8362186b23ee01b95c1b96b220b194\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\bd8362186b23ee01b95c1b96b220b194\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d3fca96bb4379e0d1a842188a39af196\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d3fca96bb4379e0d1a842188a39af196\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8603565b5a1125305bf57dd37ed81c4b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8603565b5a1125305bf57dd37ed81c4b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\85a3ec20d9bbfcdfd0d8096be90d1df4\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\85a3ec20d9bbfcdfd0d8096be90d1df4\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\747b868a5fe951f239324c5b751811b0\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\747b868a5fe951f239324c5b751811b0\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\67b3e20252b880c4d75c0bb9d79d1c0c\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\67b3e20252b880c4d75c0bb9d79d1c0c\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\4eeef2fcb0b12bf52028bdcf5d1c49b9\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\4eeef2fcb0b12bf52028bdcf5d1c49b9\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c7b30d600fe1b4a44f027f3958914d0\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c7b30d600fe1b4a44f027f3958914d0\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d8897a0c7a6d411baabc6933517a8838\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\d8897a0c7a6d411baabc6933517a8838\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\145b3b5f45e16a7a4e3abf5408878e20\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\145b3b5f45e16a7a4e3abf5408878e20\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8a43e4cb08b9d5efaaff92255a9e853a\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8a43e4cb08b9d5efaaff92255a9e853a\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c760e31cba5c2344894984efa294e1d\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\1c760e31cba5c2344894984efa294e1d\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\a38ae4ed5f662e092e6d21ac07ef7365\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\a38ae4ed5f662e092e6d21ac07ef7365\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8f6fc99f0b968c7750fe1136ad5ccc2f\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\8f6fc99f0b968c7750fe1136ad5ccc2f\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e83af6508c9bc5cb96f4eb62866dd65d\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\e83af6508c9bc5cb96f4eb62866dd65d\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\056c090b7b933fc6addfa1a75beb9e17\jetified-grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\056c090b7b933fc6addfa1a75beb9e17\jetified-grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9cd4656b7fe37a796b3a4a34c7e0217f\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9cd4656b7fe37a796b3a4a34c7e0217f\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\deb3b26ccb3276273868dab0f5a9089e\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\deb3b26ccb3276273868dab0f5a9089e\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\LENOVO\Desktop\turismo_flutter\android\app\src\debug\AndroidManifest.xml
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:33:9-37:35
+MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:33:9-37:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:19:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_database] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-127
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
+ADDED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:cloud_firestore] C:\Users\LENOVO\Desktop\turismo_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_storage] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
+ADDED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_core] C:\Users\LENOVO\Desktop\turismo_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker] C:\Users\LENOVO\Desktop\turismo_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+uses-permission#android.permission.CAMERA
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+MERGED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+MERGED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-62
+uses-permission#android.permission.VIBRATE
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:11:5-66
+MERGED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:11:5-66
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
+uses-permission#android.permission.FLASHLIGHT
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-69
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-66
+uses-feature#android.hardware.camera
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-60
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:11:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-70
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-67
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-68
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:14:22-65
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-80
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-80
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-80
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:15:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-81
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+MERGED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:16:22-78
+activity#com.shinow.qrscan.SecondActivity
+ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-69
+	android:name
+		ADDED from [:qrscan] C:\Users\LENOVO\Desktop\turismo_flutter\build\qrscan\intermediates\library_manifest\debug\AndroidManifest.xml:27:19-66
+uses-permission#android.permission.ACCESS_MEDIA_LOCATION
+ADDED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from [:photo_manager] C:\Users\LENOVO\Desktop\turismo_flutter\build\photo_manager\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-77
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
+service#com.lyokone.location.FlutterLocationService
+ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-15:56
+	android:enabled
+		ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-35
+	android:exported
+		ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+	android:foregroundServiceType
+		ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-53
+	android:name
+		ADDED from [:location] C:\Users\LENOVO\Desktop\turismo_flutter\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-71
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-71
+	android:name
+		ADDED from [:camera] C:\Users\LENOVO\Desktop\turismo_flutter\build\camera\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-68
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\056c090b7b933fc6addfa1a75beb9e17\jetified-grpc-android-1.28.0\AndroidManifest.xml:11:5-79
+MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\056c090b7b933fc6addfa1a75beb9e17\jetified-grpc-android-1.28.0\AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:13:22-76
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:23.0.1] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\cbb4dd00a77ee30c7ef3a16d677c1603\jetified-firebase-firestore-23.0.1\AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\f3c8bd8b60c16750b457c15e78b78c98\jetified-firebase-storage-20.0.0\AndroidManifest.xml:34:17-107
+meta-data#com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar
+ADDED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-database:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\0013dd98eea50b5e81d5dfaf00ca8108\jetified-firebase-database-20.0.0\AndroidManifest.xml:33:17-109
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dd3c2617c0f6359f3b13e51ce6c2db19\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\72d334123caa7b49d25370f72044eb4f\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+activity#com.uuzuche.lib_zxing.activity.CaptureActivity
+ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:14:9-19:63
+	android:screenOrientation
+		ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:17:13-49
+	android:windowSoftInputMode
+		ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:19:13-60
+	android:configChanges
+		ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:16:13-63
+	android:theme
+		ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:18:13-63
+	android:name
+		ADDED from [com.github.leyan95:android-zxingLibrary:0.1.2-PRE] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\5911fbca40fd3b38246cceb0b8c3f3c2\jetified-android-zxingLibrary-0.1.2-PRE\AndroidManifest.xml:15:13-74
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\891c642bb12c828ea6c35881dd153d53\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\9417d41dde92678ab8488ec0684ca850\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\LENOVO\.gradle\caches\transforms-2\files-2.1\dabbfad2e70891dcde7050cbeba12e6d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58

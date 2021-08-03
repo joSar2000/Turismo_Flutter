@@ -47,6 +47,7 @@ class final_page extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio;
   final String observaciones_servicio;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -64,6 +65,7 @@ class final_page extends StatefulWidget {
   final String cultura;
   final String aventura;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -609,6 +611,8 @@ class final_page extends StatefulWidget {
   final double ponderacionTab12;
   //Taba13
   final String descripcion_atractivo;
+  //Tabla14
+  final String fuente_anexos;
   //Tabla16
   final String nombres;
   final String institucion;
@@ -1220,6 +1224,9 @@ class final_page extends StatefulWidget {
     required this.email,
     required this.telefono,
     required this.firma,
+    required this.fuente_anexos,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
   }) : super(key: key);
 
   @override
@@ -1238,6 +1245,25 @@ class FinalPage extends State<final_page> {
     suma = 0;
     jerarquia = "";
     _setJerarquia();
+  }
+
+  void _showAlertDialog(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Su información fue enviada con éxito',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
   }
 
   @override
@@ -1267,17 +1293,7 @@ class FinalPage extends State<final_page> {
               Navigator.pop(context);
             },
           ),
-          actions: <Widget> [
-            IconButton(
-              icon: Icon(Icons.map_outlined,
-                size: 35.0,
-                color: HexColor("#A65005"),),
-              onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TurismTable15()));
-                //guardarPreferencias();
-              },
-            ),
-          ],
+
         ),
         body: ListView(
           children: <Widget> [
@@ -1344,7 +1360,7 @@ class FinalPage extends State<final_page> {
                           Column(
                             children: <Widget> [
                               Text(
-                                  "Ponderación",
+                                  "Resultado",
                                 textAlign: TextAlign.center,
                                   style: GoogleFonts.dmSans(
                                     fontWeight: FontWeight.bold,
@@ -1388,7 +1404,7 @@ class FinalPage extends State<final_page> {
                             Column(
                               children: <Widget> [
                                 Text(
-                                    "null",
+                                    "${widget.ponderacionTab4}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.dmSans(
                                       fontWeight: FontWeight.bold,
@@ -1432,7 +1448,7 @@ class FinalPage extends State<final_page> {
                             Column(
                               children: <Widget> [
                                 Text(
-                                    "null",
+                                    "${widget.ponderacionTab5}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.dmSans(
                                       fontWeight: FontWeight.bold,
@@ -1814,6 +1830,7 @@ class FinalPage extends State<final_page> {
           backgroundColor: Colors.yellow,
           onPressed: () {
             _sendData(context);
+            _showAlertDialog(context);
           },
         ),
         floatingActionButtonLocation:
@@ -2439,12 +2456,15 @@ class FinalPage extends State<final_page> {
       'ponderacionTab11': widget.ponderacionTab11,
       'ponderacionTab12': widget.ponderacionTab12,
       'descripcion_atractivo': widget.descripcion_atractivo,
+      'fuente_anexos': widget.fuente_anexos,
       'nombres': widget.nombres,
       'institucion': widget.institucion,
       'cargo': widget.cargo,
       'email': widget.email,
       'telefono': widget.telefono,
       'firma': widget.firma,
+      'ponderacionTab4' : widget.ponderacionTab4,
+      'ponderacionTab5' : widget.ponderacionTab5
     });
   }
 }
