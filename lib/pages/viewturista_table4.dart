@@ -73,12 +73,17 @@ class TableTurism4 extends StatefulWidget {
 
 class FormWidgetState4 extends State<TableTurism4> {
 
-  final _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey3 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey4 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey5 = GlobalKey<FormState>();
+
   String seleccionTab4 = "Primer Orden";
   String seleccion1Tab4 = "Maritimo";
   String seleccion2Tab4 = "Nacional";
   String seleccion3Tab4 = "Bus";
-  double ponderacionTab4 = 0;
+  double ponderacionTab4 = 1;
   TextEditingController accs_ciudad_cercana = TextEditingController();
   TextEditingController accs_distancia_ciudad = TextEditingController();
   TextEditingController accs_tiempo_auto = TextEditingController();
@@ -101,6 +106,7 @@ class FormWidgetState4 extends State<TableTurism4> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    ponderacionTab4 = 1;
   }
 
   _increment() {
@@ -113,6 +119,39 @@ class FormWidgetState4 extends State<TableTurism4> {
     setState(() {
       ponderacionTab4 --;
     });
+  }
+
+  void validateAndSave() {
+    final FormState? form = _formKey.currentState;
+    final FormState? form2 = _formKey2.currentState;
+    final FormState? form3 = _formKey3.currentState;
+    final FormState? form4 = _formKey4.currentState;
+    final FormState? form5 = _formKey5.currentState;
+    if (form!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form2!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form3!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form4!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
+    if (form5!.validate()) {
+      print('Form is valid');
+    } else {
+      print('Form is not invalid');
+    }
   }
 
   @override
@@ -148,6 +187,8 @@ class FormWidgetState4 extends State<TableTurism4> {
                 color: HexColor("#A65005"),),
               onPressed: () async {
                 _sendData(context);
+                validateAndSave();
+                print(ponderacionTab4);
                 //guardarPreferencias();
               },
             ),
@@ -159,13 +200,16 @@ class FormWidgetState4 extends State<TableTurism4> {
             new Column(
               children: <Widget> [
                 new Form(
-                  key: _formkey,
+                  key: _formKey,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
                       TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_ciudad_cercana,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -178,16 +222,10 @@ class FormWidgetState4 extends State<TableTurism4> {
                           hintText: "Especifique Nombre de la ciudad más cercana",
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
-                      ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_distancia_ciudad,
                         maxLines: 3,
@@ -200,17 +238,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Distancia desde la ciudad",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_tiempo_auto,
                         maxLines: 3,
@@ -223,17 +255,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Tiempo en auto al atractivo",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_latitud,
                         maxLines: 3,
@@ -246,17 +272,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Latitud",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_longitud,
                         maxLines: 3,
@@ -269,17 +289,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Longitud",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_obser,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -295,6 +309,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                     ],
                   ),
                 ),
+
                 new Container(
                   padding: EdgeInsets.all(15.0),
                   child: Center(
@@ -318,12 +333,16 @@ class FormWidgetState4 extends State<TableTurism4> {
                     )),
                 _crearComboBox("Tipo de Via"),
                 new Form(
+                  key: _formKey2,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_coor_inicio,
                         maxLines: 3,
@@ -336,17 +355,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Coordenada de Inicio",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_coor_fin,
                         maxLines: 3,
@@ -359,17 +372,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Coordenada de Fin",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         keyboardType: TextInputType.number,
                         controller: accs_distancia,
                         maxLines: 3,
@@ -382,17 +389,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Distancia (KM)",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_tipo_material,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -404,17 +405,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Tipo de Material",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_estado,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -426,17 +421,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Estado",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_obs_terrestre,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -452,6 +441,7 @@ class FormWidgetState4 extends State<TableTurism4> {
                     ],
                   ),
                 ),
+
                 new Container(
                   padding: EdgeInsets.all(15.0),
                   child: Center(
@@ -465,12 +455,16 @@ class FormWidgetState4 extends State<TableTurism4> {
                 ),
                 _crearComboBox1("Tipo de Via"),
                 new Form(
+                  key: _formKey3,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_puerto,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -482,17 +476,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique Puerto/Muelle de Partida",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_obs_acuatico,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -521,12 +509,16 @@ class FormWidgetState4 extends State<TableTurism4> {
                 ),
                 _crearComboBox2("Tipo de Vuelo"),
                 new Form(
+                  key: _formKey4,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_obs_aereo,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -555,12 +547,16 @@ class FormWidgetState4 extends State<TableTurism4> {
                 ),
                 _crearComboBox3("Servicios"),
                 new Form(
+                  key: _formKey5,
                   child: Column(
                     children: <Widget> [
                       SizedBox(
                         height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_especifique_servicio,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -572,17 +568,11 @@ class FormWidgetState4 extends State<TableTurism4> {
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: "Especifique",
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                new Form(
-                  child: Column(
-                    children: <Widget> [
-                      SizedBox(
-                        height: 1,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: (value) {
+                          value!.isEmpty ? _decrement() : _increment();
+                        },
                         controller: accs_obs_servicio,
                         maxLines: 3,
                         style: GoogleFonts.dmSans(
@@ -808,6 +798,7 @@ class FormWidgetState4 extends State<TableTurism4> {
           seleccion5Tab3: widget.seleccion5Tab3,
           seleccion2Tab3: widget.seleccion2Tab3,
           seleccion1Tab4: seleccion1Tab4,
+          ponderacionTab4: ponderacionTab4,
         ))
     );
   }

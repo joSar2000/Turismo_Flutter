@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:turismo_flutter/pages/final_page.dart';
 import 'package:turismo_flutter/pages/viewturista_table16.dart';
+import 'package:turismo_flutter/pages/viewturista_table17.dart';
 
 class TurismTable15 extends StatefulWidget {
 
@@ -51,6 +52,7 @@ class TurismTable15 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -68,6 +70,7 @@ class TurismTable15 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -1211,6 +1214,8 @@ class TurismTable15 extends StatefulWidget {
     required this.ponderacionTab12,
     required this.descripcion_atractivo,
     required this.fuente_anexos,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
   });
 
   @override
@@ -1236,6 +1241,7 @@ class _MapaState extends State<TurismTable15> {
     populateClients();
     super.initState();
     _set();
+    Scaffold();
   }
 
 
@@ -1412,7 +1418,7 @@ class _MapaState extends State<TurismTable15> {
   void _sendData(BuildContext context) {
     Navigator.push(context,
         //MaterialPageRoute(builder: (context) => TurismTable14())
-        MaterialPageRoute(builder: (context) => TurismTable16(
+        MaterialPageRoute(builder: (context) => TableTurism17(
             si_estado_conservacion: widget.si_estado_conservacion,
             observaciones_atractivo_U: widget.observaciones_atractivo_U,
             atractivo_U: widget.atractivo_U,
@@ -2024,7 +2030,9 @@ class _MapaState extends State<TurismTable15> {
             ponderacionTab11: widget.ponderacionTab11,
             ponderacionTab12: widget.ponderacionTab12,
             descripcion_atractivo: widget.descripcion_atractivo,
-            fuente_anexos: widget.fuente_anexos
+            fuente_anexos: widget.fuente_anexos,
+          ponderacionTab4: widget.ponderacionTab4,
+          ponderacionTab5: widget.ponderacionTab5,
 
         ))
     );

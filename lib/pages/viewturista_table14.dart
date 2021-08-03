@@ -55,6 +55,7 @@ class TurismTable14 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -72,6 +73,7 @@ class TurismTable14 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -1214,6 +1216,8 @@ class TurismTable14 extends StatefulWidget {
     required this.ponderacionTab11,
     required this.ponderacionTab12,
     required this.descripcion_atractivo,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
   });
 
   @override
@@ -1258,6 +1262,25 @@ class FormWidgetState14 extends State<TurismTable14>  {
       return croppedImage;
     }
     return File(image.path);
+  }
+
+  void _showAlertDialogSaveImages(BuildContext context) {
+    showDialog <String> (
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AVISO', textAlign: TextAlign.center,),
+          content: const Text(
+            'Tus imágenes han sido almacenadas con éxito',
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        )
+    );
   }
 
 
@@ -1368,6 +1391,7 @@ class FormWidgetState14 extends State<TurismTable14>  {
                                       if(image2==null)
                                         return;
                                       viewModel.setImage2(image2);
+                                      viewModel.uploadFile2(image2);
                                     },
                                   ),
                                 ),
@@ -1410,6 +1434,7 @@ class FormWidgetState14 extends State<TurismTable14>  {
                         child: FloatingActionButton(
                           onPressed: () {
                             viewModel.Carga();
+                            _showAlertDialogSaveImages(context);
                           },
                           heroTag: "enviarImages",
                           child: Icon(Icons.save),
@@ -2070,7 +2095,9 @@ class FormWidgetState14 extends State<TurismTable14>  {
           ponderacionTab11: widget.ponderacionTab11,
           ponderacionTab12: widget.ponderacionTab12,
           descripcion_atractivo: widget.descripcion_atractivo,
-          fuente_anexos: fuente_anexos
+          fuente_anexos: fuente_anexos,
+          ponderacionTab5: widget.ponderacionTab5,
+          ponderacionTab4: widget.ponderacionTab4,
 
         ))
     );

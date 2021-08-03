@@ -46,6 +46,7 @@ class TurismTable16 extends StatefulWidget {
   final String observaciones_aereo;
   final String especifique_servicio ;
   final String observaciones_servicio ;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -63,6 +64,7 @@ class TurismTable16 extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -1208,6 +1210,8 @@ class TurismTable16 extends StatefulWidget {
     required this.ponderacionTab12,
     required this.descripcion_atractivo,
     required this.fuente_anexos,
+    required this.ponderacionTab4,
+    required this.ponderacionTab5,
   }) : super(key: key);
 
   @override
@@ -1412,7 +1416,7 @@ class TurismTable16State extends State<TurismTable16> {
                         padding: EdgeInsets.all(15.0),
                         child: TextFormField(
                           keyboardType: TextInputType.phone,
-                          maxLength: 11,
+                          maxLength: 10,
                           enabled: true,
                           controller: obs_telef,
                           maxLines: 1,
@@ -2128,6 +2132,8 @@ class TurismTable16State extends State<TurismTable16> {
         telefono: telefono,
         firma: firma,
         fuente_anexos: widget.fuente_anexos,
+        ponderacionTab5: widget.ponderacionTab5,
+        ponderacionTab4: widget.ponderacionTab4,
       ))
     );
   }

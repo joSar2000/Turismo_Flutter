@@ -60,6 +60,7 @@ class FormSaveWidget extends StatefulWidget {
   final String seleccion1Tab4;
   final String seleccion2Tab4 ;
   final String seleccion3Tab4;
+  final double ponderacionTab4;
   //Tabla5
   final String estableci_registrados;
   final String numero_mesas;
@@ -77,6 +78,7 @@ class FormSaveWidget extends StatefulWidget {
   final String cultura ;
   final String aventura ;
   final String observaciones_guia;
+  final double ponderacionTab5;
   //Tabla6
   final bool si_estado_conservacion;
   final bool no_estado_conservacion;
@@ -280,6 +282,8 @@ class FormSaveWidget extends StatefulWidget {
         required this.seleccion2Tab4,
         required this.seleccion3Tab4,
         required this.ponderacionTab6,
+        required this.ponderacionTab4,
+        required this.ponderacionTab5,
 
       })
       : super(key: key);
@@ -9840,6 +9844,8 @@ class FormWidgetState extends State<FormSaveWidget> {
                   seleccion3: widget.seleccion3,
                   ponderacionTab6: widget.ponderacionTab6,
                   ponderacionTab7: ponderacionTab7,
+                  ponderacionTab5: widget.ponderacionTab5,
+                  ponderacionTab4: widget.ponderacionTab4,
                 )));
   }
 

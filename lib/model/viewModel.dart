@@ -38,16 +38,26 @@ class HomePageViewModel extends ChangeNotifier{
         .ref()
         .child('viewTuristas/${image.path}');
     firebase_storage.UploadTask uploadTask = storageReference.putFile(image);
-    print('File Uploaded');
+    print('File1 Uploaded');
     String returnURL = "";
-    await storageReference.getDownloadURL().then((fileURL) {
-      returnURL =  fileURL;
-    });
+
+    return returnURL;
+  }
+  Future<String> uploadFile2(var file2) async {
+    firebase_storage.Reference storageReference = firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('viewTuristas/${image2.path}');
+
+    firebase_storage.UploadTask uploadTask = storageReference.putFile(image2);
+    print('File2 Uploaded');
+    String returnURL = "";
+
     return returnURL;
   }
 
   void Carga () {
     uploadFile(image);
+    uploadFile2(image2);
   }
 
 }
